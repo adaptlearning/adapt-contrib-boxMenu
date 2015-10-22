@@ -10,6 +10,7 @@
             "alt": "Welcome to Adapt Learning",
             "src": "course/en/images/origami-menu-one.jpg"
         },
+        "linkTextLocked":"Locked",
         "linkText":"View",
         "durationLabel":"Duration:",
         "duration":"2 mins"

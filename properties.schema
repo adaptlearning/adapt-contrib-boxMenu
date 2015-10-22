@@ -24,6 +24,13 @@
       "default": "You have reached the end of the menu.",
       "inputType": "Text",
       "validators": []
+    },
+    "_sequential": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "inputType": {"type": "Boolean", "options": [true, false]},
+      "validators": []
     }
   },
   "properties": {
