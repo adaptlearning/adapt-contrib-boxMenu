@@ -25,7 +25,7 @@
       "inputType": "Text",
       "validators": []
     },
-    "_sequential": {
+    "_isSequentialStepLocking": {
       "type": "boolean",
       "required": false,
       "default": false,

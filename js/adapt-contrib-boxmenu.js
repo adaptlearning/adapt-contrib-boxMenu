@@ -6,7 +6,7 @@ define([
     var BoxMenuView = MenuView.extend({
 
         preRender: function() {
-            if( this.model.get( '_globals' )._menu._boxmenu._sequential === true ) {
+            if( this.model.get( '_globals' )._menu._boxmenu._isSequentialStepLocking === true ) {
                 var blLock = false;
 
                 this.model.getChildren().each(
@@ -20,11 +20,7 @@ define([
                 );
             }
 
-            if( !$( 'html' ).is( '.ie6, .ie7, .ie8' ) ) {
-                this.$el.css( 'opacity', 0 );
-            }
-
-            this.listenTo( this.model, 'change:_isReady', this.isReady );
+            MenuView.prototype.preRender.apply( this, arguments );
         },
 
         postRender: function() {
