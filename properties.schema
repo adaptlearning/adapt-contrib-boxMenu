@@ -25,12 +25,21 @@
       "inputType": "Text",
       "validators": []
     },
-    "_isSequentialStepLocking": {
-      "type": "boolean",
-      "required": false,
-      "default": false,
-      "inputType": {"type": "Boolean", "options": [true, false]},
-      "validators": []
+    "_stepLocking": {
+        "_isEnabled": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "inputType": {"type": "Boolean", "options": [true, false]},
+          "validators": []
+        },
+        "_style": {
+          "type": "string",
+          "required": false,
+          "default": "sequential",
+          "inputType": "Text",
+          "validators": []
+        }
     }
   },
   "properties": {

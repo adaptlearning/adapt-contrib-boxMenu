@@ -1,8 +1,8 @@
-// articles.json
+// contentObjects.json
 {
     "_id":"co-05",
     "_parentId":"course",
-    "_type":"page",
+    "_type":"menu",
     "_classes":"",
     "title":"Welcome to Adapt Learning",
     "displayTitle":"Welcome to Adapt Learning",
@@ -11,13 +11,17 @@
         "alt": "Welcome to Adapt Learning",
         "src": "course/en/images/origami-menu-one.jpg"
     },
-    "linkTextLocked":"Locked",
-    "linkText":"View",
     "durationLabel":"Duration:",
-    "duration":"2 mins"
+    "duration":"2 mins",
+    "linkText":"View",
+    "linkTextLocked": "Locked",
+    "_stepLocking": {
+      "_isEnabled": true,
+      "_style": "sequential"
+    }
 }
 
-//course.json
+// course.json
 {
   "_globals": {
     "_menu": {
@@ -26,7 +30,7 @@
         "menuItem": "Menu item.",
         "menuEnd": "You have reached the end of the menu.",
         "_stepLocking": {
-          "_isEnabled": true,
+          "_isEnabled": false,
           "_style": "sequential"
         }
       }

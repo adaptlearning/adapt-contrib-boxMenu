@@ -6,18 +6,24 @@ define([
     var BoxMenuView = MenuView.extend({
 
         preRender: function() {
-            try {
-                var objMenuStepLockingOptions = this.model.get( '_globals' )._menu._boxmenu._stepLocking;
+            var objStepLockingOptions = {};
 
-                if( objMenuStepLockingOptions._isEnabled === true ) {
-                    switch( objMenuStepLockingOptions._style ) {
-                        case "sequential":
-                            this.lockItemsAfterCurrent();
-                            break;
-                    }
+            if( this.model.get( '_stepLocking' ) ) {
+                objStepLockingOptions = this.model.get( '_stepLocking' );
+            } else if( this.model.get( '_globals' ) &&
+                    this.model.get( '_globals' )._menu &&
+                    this.model.get( '_globals' )._menu._boxmenu &&
+                    this.model.get( '_globals' )._menu._boxmenu._stepLocking ) {
+                objStepLockingOptions = this.model.get( '_globals' )._menu._boxmenu._stepLocking;
+            }
+
+            if( objStepLockingOptions._isEnabled === true &&
+                    objStepLockingOptions._style ) {
+                switch( objStepLockingOptions._style ) {
+                    case "sequential":
+                        this.lockItemsAfterCurrent();
+                        break;
                 }
-            } catch( e ) {
-                // Some older courses may not set step locking options
             }
 
             MenuView.prototype.preRender.apply( this, arguments );
