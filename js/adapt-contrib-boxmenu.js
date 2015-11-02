@@ -6,21 +6,35 @@ define([
     var BoxMenuView = MenuView.extend({
 
         preRender: function() {
-            if( this.model.get( '_globals' )._menu._boxmenu._isSequentialStepLocking === true ) {
-                var blLock = false;
+            try {
+                var objMenuStepLockingOptions = this.model.get( '_globals' )._menu._boxmenu._stepLocking;
 
-                this.model.getChildren().each(
-                    function( objMenuItem ) {
-                        objMenuItem.set( '_isLocked', blLock );
-
-                        if( !objMenuItem.get( '_isComplete' ) ) {
-                            blLock = true;
-                        }
+                if( objMenuStepLockingOptions._isEnabled === true ) {
+                    switch( objMenuStepLockingOptions._style ) {
+                        case "sequential":
+                            this.lockItemsAfterCurrent();
+                            break;
                     }
-                );
+                }
+            } catch( e ) {
+                // Some older courses may not set step locking options
             }
 
             MenuView.prototype.preRender.apply( this, arguments );
+        },
+
+        lockItemsAfterCurrent: function() {
+            var blLock = false;
+
+            this.model.getChildren().each(
+                function( objMenuItem ) {
+                    objMenuItem.set( '_isLocked', blLock );
+
+                    if( !objMenuItem.get( '_isComplete' ) ) {
+                        blLock = true;
+                    }
+                }
+            );
         },
 
         postRender: function() {

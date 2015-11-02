@@ -25,7 +25,10 @@
         "ariaRegion": "Menu",
         "menuItem": "Menu item.",
         "menuEnd": "You have reached the end of the menu.",
-        "_isSequentialStepLocking": true
+        "_stepLocking": {
+          "_isEnabled": true,
+          "_style": "sequential"
+        }
       }
     }
   }
