@@ -24,6 +24,22 @@
       "default": "You have reached the end of the menu.",
       "inputType": "Text",
       "validators": []
+    },
+    "_stepLocking": {
+        "_isEnabled": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "inputType": {"type": "Boolean", "options": [true, false]},
+          "validators": []
+        },
+        "_style": {
+          "type": "string",
+          "required": false,
+          "default": "sequential",
+          "inputType": "Text",
+          "validators": []
+        }
     }
   },
   "properties": {

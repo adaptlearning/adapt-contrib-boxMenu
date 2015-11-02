@@ -5,6 +5,44 @@ define([
 
     var BoxMenuView = MenuView.extend({
 
+        preRender: function() {
+            var objStepLockingOptions = {};
+
+            if( this.model.get( '_stepLocking' ) ) {
+                objStepLockingOptions = this.model.get( '_stepLocking' );
+            } else if( this.model.get( '_globals' ) &&
+                    this.model.get( '_globals' )._menu &&
+                    this.model.get( '_globals' )._menu._boxmenu &&
+                    this.model.get( '_globals' )._menu._boxmenu._stepLocking ) {
+                objStepLockingOptions = this.model.get( '_globals' )._menu._boxmenu._stepLocking;
+            }
+
+            if( objStepLockingOptions._isEnabled === true &&
+                    objStepLockingOptions._style ) {
+                switch( objStepLockingOptions._style ) {
+                    case "sequential":
+                        this.lockItemsAfterCurrent();
+                        break;
+                }
+            }
+
+            MenuView.prototype.preRender.apply( this, arguments );
+        },
+
+        lockItemsAfterCurrent: function() {
+            var blLock = false;
+
+            this.model.getChildren().each(
+                function( objMenuItem ) {
+                    objMenuItem.set( '_isLocked', blLock );
+
+                    if( !objMenuItem.get( '_isComplete' ) ) {
+                        blLock = true;
+                    }
+                }
+            );
+        },
+
         postRender: function() {
             var nthChild = 0;
             this.model.getChildren().each(function(item) {
@@ -31,6 +69,7 @@ define([
             return [
                 'menu-item',
                 'menu-item-' + this.model.get('_id') ,
+                this.model.get('_isLocked') ? 'locked' : 'unlocked',
                 this.model.get('_classes'),
                 'nth-child-' + nthChild,
                 nthChild % 2 === 0 ? 'nth-child-even' : 'nth-child-odd'
