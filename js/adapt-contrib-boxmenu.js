@@ -9,12 +9,19 @@ define([
             return MenuView.prototype.className.apply(this) + " boxmenu-menu";
         },
 
+        attributes: function() {
+            return MenuView.prototype.resultExtend('attributes', {
+                'role': 'main',
+                'aria-labelledby': this.model.get('_id')+'-heading'
+            }, this);
+        },
+
         postRender: function() {
             var nthChild = 0;
             this.model.getChildren().each(function(item) {
                 if (item.get('_isAvailable') && !item.get('_isHidden')) {
                     item.set('_nthChild', ++nthChild);
-                    this.$('.menu-container-inner').append(new BoxMenuItemView({model: item}).$el);
+                    this.$('.js-children').append(new BoxMenuItemView({model: item}).$el);
                 }
 
                 if(item.get('_isHidden')) {
@@ -31,6 +38,13 @@ define([
 
         events: {
             'click button' : 'onClickMenuItemButton'
+        },
+
+        attributes: function() {
+            return MenuView.prototype.resultExtend('attributes', {
+                'role': 'listitem',
+                'aria-labelledby': this.model.get('_id') + '-heading'
+            }, this);
         },
 
         className: function() {
