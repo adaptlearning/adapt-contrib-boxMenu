@@ -21,7 +21,7 @@
       </div>
       {{/if}}
 
-      {{a11y_aria_image _graphic.alt}}
+      {{#if _graphic.alt}}{{a11y_aria_image _graphic.alt}}{{/if}}
 
       {{#if body}}
       <div class="boxmenu__item-body">
