@@ -36,17 +36,13 @@ define([
     },
 
     postRender: function() {
-      // var graphic = this.model.get('_graphic');
-      // if (graphic && graphic.src) {
-      //   this.$el.imageready(this.setReadyStatus.bind(this));
-      //   return;
-      // }
+      var graphic = this.model.get('_graphic');
+      if (graphic && graphic.src) {
+        this.$el.imageready(this.setReadyStatus.bind(this));
+        return;
+      }
 
-      // this.setReadyStatus();
-
-      this.$el.imageready(_.bind(function() {
-        this.setReadyStatus();
-      }, this));
+      this.setReadyStatus();
     },
 
     onClickMenuItemButton: function(event) {
