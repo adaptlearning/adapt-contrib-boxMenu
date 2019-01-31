@@ -43,7 +43,7 @@ define([
         attributes: function() {
             return _.extend(MenuView.prototype.attributes.call(this), {
                 'role': 'listitem',
-                'aria-labelledby': this.model.get('_id')+'-heading'
+                'aria-labelledby': this.model.get('_id') + '-heading'
             });
         },
 
