@@ -10,10 +10,10 @@ define([
         },
 
         attributes: function() {
-            return MenuView.prototype.resultExtend('attributes', {
+            return _.extend(MenuView.prototype.attributes.call(this), {
                 'role': 'main',
                 'aria-labelledby': this.model.get('_id')+'-heading'
-            }, this);
+            });
         },
 
         postRender: function() {
@@ -41,10 +41,10 @@ define([
         },
 
         attributes: function() {
-            return MenuView.prototype.resultExtend('attributes', {
+            return _.extend(MenuView.prototype.attributes.call(this), {
                 'role': 'listitem',
-                'aria-labelledby': this.model.get('_id') + '-heading'
-            }, this);
+                'aria-labelledby': this.model.get('_id')+'-heading'
+            });
         },
 
         className: function() {
