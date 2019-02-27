@@ -1,19 +1,19 @@
 {{import_globals}}
 
-<div class="boxmenu__container">
-  <div class='boxmenu__container-inner'>
+<div class="menu__container boxmenu__container">
+  <div class='menu__container-inner boxmenu__container-inner'>
 
-    <div class="boxmenu__header">
-      <div class="boxmenu__header-inner">
+    <div class="menu__header boxmenu__header">
+      <div class="menu__header-inner boxmenu__header-inner">
 
         {{#if displayTitle}}
-        <div class="boxmenu__title">
+        <div class="menu__title boxmenu__title">
 
           {{#unless _disableAccessibleState}}
           <div class="js-heading"></div>
           {{/unless}}
 
-          <div class="boxmenu__title-inner" {{#unless _disableAccessibleState}}aria-hidden="true"{{/unless}}>
+          <div class="menu__title-inner boxmenu__title-inner" {{#unless _disableAccessibleState}}aria-hidden="true"{{/unless}}>
             {{{compile displayTitle}}}
           </div>
 
@@ -21,16 +21,16 @@
         {{/if}}
 
         {{#if body}}
-        <div class="boxmenu__body">
-          <div class="boxmenu__body-inner">
+        <div class="menu__body boxmenu__body">
+          <div class="menu__body-inner boxmenu__body-inner">
             {{{compile body}}}
           </div>
         </div>
         {{/if}}
 
         {{#if instruction}}
-        <div class="boxmenu__instruction">
-          <div class="boxmenu__instruction-inner">
+        <div class="menu__instruction boxmenu__instruction">
+          <div class="menu__instruction-inner boxmenu__instruction-inner">
             {{{compile instruction}}}
           </div>
         </div>
@@ -39,8 +39,8 @@
       </div>
     </div>
 
-    <div class="boxmenu__item-container">
-      <div class="boxmenu__item-container-inner js-children" role="list">
+    <div class="menu__item-container boxmenu__item-container">
+      <div class="menu__item-container-inner boxmenu__item-container-inner js-children" role="list">
         {{!-- Menu items render here --}}
       </div>
     </div>
