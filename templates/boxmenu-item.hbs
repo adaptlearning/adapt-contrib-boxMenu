@@ -1,25 +1,25 @@
 {{import_globals}}
 <div class="menu-item-inner">
-    <div class="menu-item-graphic">
-        {{#if _graphic.src}}
-            <img src="{{_graphic.src}}" aria-hidden="true" />
-        {{/if}}
-    </div>
-    <div class="menu-item-title">
-        <div class="js-heading" data-a11y-heading-type="menuItem"></div>
-        <div class="menu-item-title-inner h3 accessible-text-block" aria-hidden="true">{{{compile displayTitle}}}</div>
-    </div>
-    {{#if _graphic.src}}{{a11y_aria_image _graphic.alt}}{{/if}}
-    <div class="menu-item-body">
-        <div class="menu-item-body-inner">{{{compile body}}}</div>
-    </div>
-    <div class="menu-item-button">
-        {{#if duration}}
-            <span class="menu-item-duration">{{#if _globals._menu._boxmenu.durationLabel}}{{{_globals._menu._boxmenu.durationLabel}}}{{/if}} {{{duration}}}</span>
-        {{/if}}
-        <div class="js-menu-item-progress"></div>
-        <button aria-label="{{#if _isVisited}}{{_globals._accessibility._ariaLabels.visited}}{{/if}} {{linkText}}" class="{{#if _isVisited}}visited{{/if}} {{#if _isLocked}}disabled{{/if}}" {{#if _isLocked}}disabled="disabled"{{/if}}>
-            {{{linkText}}}
-        </button>
-    </div>
+  <div class="menu-item-graphic">
+    {{#if _graphic.src}}
+      <img src="{{_graphic.src}}" aria-hidden="true" />
+    {{/if}}
+  </div>
+  <div class="menu-item-title">
+    <div class="js-heading" data-a11y-heading-type="menuItem"></div>
+    <div class="menu-item-title-inner h3 accessible-text-block" aria-hidden="true">{{{compile displayTitle}}}</div>
+  </div>
+  {{#if _graphic.src}}{{a11y_aria_image _graphic.alt}}{{/if}}
+  <div class="menu-item-body">
+    <div class="menu-item-body-inner">{{{compile body}}}</div>
+  </div>
+  <div class="menu-item-button">
+    {{#if duration}}
+      <span class="menu-item-duration">{{#if _globals._menu._boxmenu.durationLabel}}{{{_globals._menu._boxmenu.durationLabel}}}{{/if}} {{{duration}}}</span>
+    {{/if}}
+    <div class="js-menu-item-progress"></div>
+    <button aria-label="{{#if _isVisited}}{{_globals._accessibility._ariaLabels.visited}}{{/if}} {{linkText}}" class="{{#if _isVisited}}visited{{/if}} {{#if _isLocked}}disabled{{/if}}" {{#if _isLocked}}disabled="disabled"{{/if}}>
+      {{{linkText}}}
+    </button>
+  </div>
 </div>
