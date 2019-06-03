@@ -1,4 +1,14 @@
 .boxmenu {
+  .l-container-responsive(@max-width);
+
+  &__header {
+    .l-container-responsive(@device-width-large);
+  }
+
+  &__item-container {
+    .l-container-responsive(@device-width-large);
+  }
+
   &__item-container-inner {
     display: flex;
     flex-wrap: wrap;
