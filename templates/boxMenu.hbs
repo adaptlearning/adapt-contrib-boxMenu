@@ -2,6 +2,7 @@
 
 <div class="menu__inner boxmenu__inner">
 
+  {{#any displayTitle subTitle body instruction}}
   <div class="menu__header boxmenu__header">
     <div class="menu__header-inner boxmenu__header-inner">
 
@@ -16,6 +17,14 @@
           {{{compile displayTitle}}}
         </div>
 
+      </div>
+      {{/if}}
+
+      {{#if subTitle}}
+      <div class="menu__subtitle boxmenu__subtitle">
+        <div class="menu__subtitle-inner boxmenu__subtitle-inner">
+          {{{compile subTitle}}}
+        </div>
       </div>
       {{/if}}
 
@@ -37,6 +46,7 @@
 
     </div>
   </div>
+  {{/any}}
 
   <div class="menu__item-container boxmenu__item-container">
     <div class="menu__item-container-inner boxmenu__item-container-inner js-children" role="list">
