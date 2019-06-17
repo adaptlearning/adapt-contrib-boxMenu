@@ -2,7 +2,7 @@
 
 <div class="menu__inner boxmenu__inner">
 
-  {{#any displayTitle subTitle body instruction}}
+  {{#any displayTitle subtitle body instruction}}
   <div class="menu__header boxmenu__header">
     <div class="menu__header-inner boxmenu__header-inner">
 
@@ -20,10 +20,10 @@
       </div>
       {{/if}}
 
-      {{#if subTitle}}
+      {{#if subtitle}}
       <div class="menu__subtitle boxmenu__subtitle">
         <div class="menu__subtitle-inner boxmenu__subtitle-inner">
-          {{{compile subTitle}}}
+          {{{compile subtitle}}}
         </div>
       </div>
       {{/if}}
