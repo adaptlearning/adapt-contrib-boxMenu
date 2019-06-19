@@ -7,7 +7,7 @@
   "displayName": "Box menu",
   "menu": "boxMenu",
   "description": "A core bundled menu",
-  "main": "js/adapt-contrib-boxmenu.js",
+  "main": "js/adapt-contrib-boxMenu.js",
   "keywords": [
     "adapt-plugin",
     "adapt-menu"
