@@ -1,3 +1,20 @@
+// course.json
+    "_boxMenu": {
+        "_menuHeader": {
+            "_backgroundImage": {
+                "_large": "course/en/images/origami-menu-one.jpg",
+                "_medium": "course/en/images/origami-menu-one.jpg",
+                "_small": "course/en/images/origami-menu-one.jpg"
+            },
+            "_minimumHeights": {
+                "_large": "6.25",
+                "_medium": "7.5",
+                "_small": "2.5"
+            }
+        }
+    }
+
+// contentObjects.json
     {
         "_id": "co-05",
         "_parentId": "course",
