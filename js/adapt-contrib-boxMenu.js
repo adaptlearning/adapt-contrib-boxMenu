@@ -12,7 +12,11 @@ define([
     },
 
     processHeader: function() {
-      var header = this.model.get('_boxMenu')._menuHeader;
+      var config = this.model.get('_boxMenu');
+
+      if (!config) return;
+
+      var header = config._menuHeader;
       var $header = this.$('.menu__header');
 
       if (!header) return;
