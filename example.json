@@ -7,9 +7,9 @@
                 "_small": "course/en/images/origami-menu-one.jpg"
             },
             "_minimumHeights": {
-                "_large": "6.25",
-                "_medium": "7.5",
-                "_small": "2.5"
+                "_large": "600px",
+                "_medium": "400px",
+                "_small": "200px"
             }
         }
     }
