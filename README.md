@@ -32,9 +32,35 @@ The Adapt framework does not allow the installation of more than one menu at a t
 
 ## Settings Overview
 
-The attributes listed below are used in *contentObjects.json* to configure **Box Menu**, and are properly formatted as JSON in [*example.json*](https://github.com/adaptlearning/adapt-contrib-boxmenu/blob/master/example.json). Visit the [**Box Menu** wiki](https://github.com/adaptlearning/adapt-contrib-boxmenu/wiki) for more information about how they appear in the [authoring tool](https://github.com/adaptlearning/adapt_authoring/wiki). 
+The attributes listed below are used in *course.json* and *contentObjects.json* to configure **Box Menu**, and are properly formatted as JSON in [*example.json*](https://github.com/adaptlearning/adapt-contrib-boxmenu/blob/master/example.json). Visit the [**Box Menu** wiki](https://github.com/adaptlearning/adapt-contrib-boxmenu/wiki) for more information about how they appear in the [authoring tool](https://github.com/adaptlearning/adapt_authoring/wiki). 
 
 ### Attributes
+
+#### *course.json*
+The following attributes, set within *course.json*, configure the defaults for **Box Menu**.
+
+**_boxMenu** (object): The boxMenu object that contains value for **_menuHeader**.
+
+**_menuHeader** (object): The menuHeader object that contains values for **_backgroundImage** and **_minimumHeights**.
+
+**_backgroundImage** (object): The backgroundImage object that contains values for **_large**, **_medium** and **_small**.
+
+>**_large** (string): File name (including path) of the image used with large device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
+
+>**_medium** (string): File name (including path) of the image used with medium device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
+
+>**_small** (string): File name (including path) of the image used with small device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
+
+**_minimumHeights** (object): The minimumHeights object that contains values for **_large**, **_medium** and **_small**.
+
+>**_large** (number): The minimum height should only be used in instances where the menu header height needs to be greater than the content e.g. to prevent a background image being cropped.
+
+>**_medium** (number): The minimum height should only be used in instances where the menu header height needs to be greater than the content e.g. to prevent a background image being cropped.
+
+>**_small** (number): The minimum height should only be used in instances where the menu header height needs to be greater than the content e.g. to prevent a background image being cropped.
+
+#### *contentObjects.json*
+The following attributes, set within *contentObjects.json*, configure the defaults for **Box Menu**.
 
 **_id** (string): This is a unique identifier that establishes relationships with other content structures. It is referenced in *articles.json* as the `_parentid` of an article model.   
 
