@@ -1,4 +1,4 @@
-// course.json
+    // course.json
     "_boxMenu": {
         "_menuHeader": {
             "_backgroundImage": {
@@ -14,7 +14,7 @@
         }
     }
 
-// contentObjects.json
+    // contentObjects.json
     {
         "_id": "co-05",
         "_parentId": "course",
