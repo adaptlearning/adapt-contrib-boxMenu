@@ -6,20 +6,26 @@ define([
 
   var BoxMenuView = MenuView.extend({
 
-    postRender: function() {
-      MenuView.prototype.postRender.apply(this);
+    initialize: function() {
+      MenuView.prototype.initialize.apply(this);
+      this.processHeader();
+
+      this.listenTo(Adapt, {
+        "device:resize": this.onDeviceResize
+      });
+    },
+
+    onDeviceResize: function() {
       this.processHeader();
     },
 
     processHeader: function() {
       var config = this.model.get('_boxMenu');
-
-      if (!config) return;
-
-      var header = config._menuHeader;
-      var $header = this.$('.menu__header');
+      var header = config && config._menuHeader;
 
       if (!header) return;
+
+      var $header = this.$('.menu__header');
 
       this.setElementBackground(header, $header);
       this.setElementMinHeight(header, $header);
@@ -51,28 +57,28 @@ define([
     },
 
     setElementMinHeight: function(config, $element) {
-      var minHeights = config._minHeight;
+      var minimumHeights = config._minimumHeights;
 
-      if (!minHeights) return;
+      if (!minimumHeights) return;
 
-      var minHeight;
+      var minimumHeight;
 
       switch (Adapt.device.screenSize) {
         case "large":
-          minHeight = minHeights._large;
+          minimumHeight = minimumHeights._large;
           break;
         case "medium":
-          minHeight = minHeights._medium;
+          minimumHeight = minimumHeights._medium;
           break;
         default:
-          minHeight = minHeights._small;
+          minimumHeight = minimumHeights._small;
       }
 
-      if (!minHeight) return;
+      if (!minimumHeight) return;
 
       $element
         .addClass('has-min-height')
-        .css("min-height", minHeight + "px");
+        .css("min-height", minimumHeight + "px");
     }
 
   }, {
