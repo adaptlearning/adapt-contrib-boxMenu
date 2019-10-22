@@ -12,6 +12,6 @@
     "adapt-plugin",
     "adapt-menu"
   ],
-  "license": "GPLv3",
+  "license": "GPL-3.0",
   "targetAttribute": "_boxMenu"
 }
