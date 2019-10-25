@@ -11,7 +11,7 @@ define([
       this.processHeader();
 
       this.listenTo(Adapt, {
-        "device:resize": this.onDeviceResize
+        "device:changed": this.onDeviceResize
       });
     },
 
