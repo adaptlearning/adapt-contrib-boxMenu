@@ -49,11 +49,15 @@ define([
           backgroundImage = backgroundImages._small;
       }
 
-      if (!backgroundImage) return;
-
-      $element
-        .addClass("has-bg-image")
-        .css("background-image", "url(" + backgroundImage + ")");
+      if (backgroundImage) {
+        $element
+          .addClass("has-bg-image")
+          .css("background-image", "url(" + backgroundImage + ")");
+      } else {
+        $element
+          .removeClass("has-bg-image")
+          .css("background-image", "");
+      }
     },
 
     setElementMinHeight: function(config, $element) {
@@ -74,11 +78,15 @@ define([
           minimumHeight = minimumHeights._small;
       }
 
-      if (!minimumHeight) return;
-
-      $element
-        .addClass('has-min-height')
-        .css("min-height", minimumHeight + "px");
+      if (minimumHeight) {
+        $element
+          .addClass("has-min-height")
+          .css("min-height", minimumHeight + "px");
+      } else {
+        $element
+          .removeClass("has-min-height")
+          .css("min-height", "");
+      }
     }
 
   }, {
