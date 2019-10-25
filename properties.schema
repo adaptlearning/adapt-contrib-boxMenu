@@ -28,15 +28,76 @@
               "type": "object",
               "required": false,
               "properties": {
+                "_backgroundImage": {
+                  "type": "object",
+                  "required": false,
+                  "legend": "Menu background image",
+                  "properties": {
+                    "_large": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Large background image - used on desktop"
+                    },
+                    "_medium": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Medium background image - used on tablet"
+                    },
+                    "_small": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Small background image - used on mobile"
+                    }
+                  }
+                },
+                "_backgroundStyles": {
+                  "type": "object",
+                  "required": false,
+                  "legend": "Menu background image styles",
+                  "properties": {
+                    "backgroundRepeat": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "inputType": {"type":"Select", "options":["repeat","repeat-x","repeat-y","no-repeat"]},
+                      "title": "Set if/how the background image repeats",
+                      "help": "Repeat-x: The background image is repeated only horizontally. Repeat-y: The background image is repeated only vertically."
+                    },
+                    "backgroundSize": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "inputType": {"type":"Select", "options":["auto","cover","contain"]},
+                      "title": "Set the size of the background image",
+                      "help": "Auto: The background image is displayed in its original size. Cover: Resize the background image to cover the entire container, even if it has to stretch or crop the image. Contain: Resize the background image to make sure the image is fully visible."
+                    },
+                    "backgroundPosition": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "inputType": {"type":"Select", "options":["left top","left center","left bottom","center top","center center","center bottom","right top","right center","right bottom"]},
+                      "title": "Set the position of the background image",
+                      "help": "The first value is the horizontal position and the second value is the vertical."
+                    }
+                  }
+                },
                 "_menuHeader": {
                   "type": "object",
                   "required": false,
-                  "title": "Menu Header",
                   "properties": {
                     "_backgroundImage": {
                       "type": "object",
                       "required": false,
-                      "title": "Menu header background image",
+                      "legend": "Menu header background image",
                       "properties": {
                         "_large": {
                           "type": "string",
@@ -64,10 +125,41 @@
                         }
                       }
                     },
+                    "_backgroundStyles": {
+                      "type": "object",
+                      "required": false,
+                      "legend": "Menu header background image styles",
+                      "properties": {
+                        "backgroundRepeat": {
+                          "type": "string",
+                          "required": false,
+                          "default": "",
+                          "inputType": {"type":"Select", "options":["repeat","repeat-x","repeat-y","no-repeat"]},
+                          "title": "Set if/how the background image repeats",
+                          "help": "Repeat-x: The background image is repeated only horizontally. Repeat-y: The background image is repeated only vertically."
+                        },
+                        "backgroundSize": {
+                          "type": "string",
+                          "required": false,
+                          "default": "",
+                          "inputType": {"type":"Select", "options":["auto","cover","contain"]},
+                          "title": "Set the size of the background image",
+                          "help": "Auto: The background image is displayed in its original size. Cover: Resize the background image to cover the entire container, even if it has to stretch or crop the image. Contain: Resize the background image to make sure the image is fully visible."
+                        },
+                        "backgroundPosition": {
+                          "type": "string",
+                          "required": false,
+                          "default": "",
+                          "inputType": {"type":"Select", "options":["left top","left center","left bottom","center top","center center","center bottom","right top","right center","right bottom"]},
+                          "title": "Set the position of the background image",
+                          "help": "The first value is the horizontal position and the second value is the vertical."
+                        }
+                      }
+                    },
                     "_minimumHeights": {
                       "type": "object",
                       "required": false,
-                      "title": "Minimum height",
+                      "legend": "Menu header minimum height",
                       "properties": {
                         "_large": {
                           "type": "number",

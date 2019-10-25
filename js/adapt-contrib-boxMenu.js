@@ -8,7 +8,7 @@ define([
 
     initialize: function() {
       MenuView.prototype.initialize.apply(this);
-      this.processHeader();
+      this.setStyles();
 
       this.listenTo(Adapt, {
         "device:changed": this.onDeviceResize
@@ -16,7 +16,56 @@ define([
     },
 
     onDeviceResize: function() {
+      this.setStyles();
+    },
+
+    setStyles: function() {
+      this.setBackgroundImage();
+      this.setBackgroundStyles();
       this.processHeader();
+    },
+
+    setBackgroundImage: function() {
+      var config = this.model.get('_boxMenu');
+      var backgroundImages = config && config._backgroundImage;
+
+      if (!backgroundImages) return;
+
+      var backgroundImage;
+
+      switch (Adapt.device.screenSize) {
+        case "large":
+          backgroundImage = backgroundImages._large;
+          break;
+        case "medium":
+          backgroundImage = backgroundImages._medium;
+          break;
+        default:
+          backgroundImage = backgroundImages._small;
+      }
+
+      if (backgroundImage) {
+        this.$el
+          .addClass("has-bg-image")
+          .css("background-image", "url(" + backgroundImage + ")");
+      } else {
+        this.$el
+          .removeClass("has-bg-image")
+          .css("background-image", "");
+      }
+    },
+
+    setBackgroundStyles: function () {
+      var config = this.model.get('_boxMenu');
+      var styles = config && config._backgroundStyles;
+
+      if (!styles) return;
+
+      this.$el.css({
+        'background-repeat': styles.backgroundRepeat,
+        'background-size': styles.backgroundSize,
+        'background-position': styles.backgroundPosition
+      });
     },
 
     processHeader: function() {
@@ -27,11 +76,12 @@ define([
 
       var $header = this.$('.menu__header');
 
-      this.setElementBackground(header, $header);
-      this.setElementMinHeight(header, $header);
+      this.setHeaderBackgroundImage(header, $header);
+      this.setHeaderBackgroundStyles(header, $header);
+      this.setHeaderMinimumHeight(header, $header);
     },
 
-    setElementBackground: function(config, $element) {
+    setHeaderBackgroundImage: function(config, $header) {
       var backgroundImages = config._backgroundImage;
 
       if (!backgroundImages) return;
@@ -50,17 +100,29 @@ define([
       }
 
       if (backgroundImage) {
-        $element
+        $header
           .addClass("has-bg-image")
           .css("background-image", "url(" + backgroundImage + ")");
       } else {
-        $element
+        $header
           .removeClass("has-bg-image")
           .css("background-image", "");
       }
     },
 
-    setElementMinHeight: function(config, $element) {
+    setHeaderBackgroundStyles: function (config, $header) {
+      var styles = config._backgroundStyles;
+
+      if (!styles) return;
+
+      $header.css({
+        'background-repeat': styles.backgroundRepeat,
+        'background-size': styles.backgroundSize,
+        'background-position': styles.backgroundPosition
+      });
+    },
+
+    setHeaderMinimumHeight: function(config, $header) {
       var minimumHeights = config._minimumHeights;
 
       if (!minimumHeights) return;
@@ -79,11 +141,11 @@ define([
       }
 
       if (minimumHeight) {
-        $element
+        $header
           .addClass("has-min-height")
           .css("min-height", minimumHeight + "px");
       } else {
-        $element
+        $header
           .removeClass("has-min-height")
           .css("min-height", "");
       }
