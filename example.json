@@ -1,4 +1,36 @@
-   {
+    // course.json
+    "_boxMenu": {
+        "_backgroundImage": {
+            "_large": "course/en/images/example.jpg",
+            "_medium": "course/en/images/example.jpg",
+            "_small": "course/en/images/example.jpg"
+        },
+        "_backgroundStyles": {
+            "_backgroundSize": "contain",
+            "_backgroundRepeat": "repeat",
+            "_backgroundPosition": "center center"
+        },
+        "_menuHeader": {
+            "_backgroundImage": {
+                "_large": "course/en/images/example.jpg",
+                "_medium": "course/en/images/example.jpg",
+                "_small": "course/en/images/example.jpg"
+            },
+            "_backgroundStyles": {
+                "_backgroundSize": "contain",
+                "_backgroundRepeat": "repeat",
+                "_backgroundPosition": "center center"
+            },
+            "_minimumHeights": {
+                "_large": 600,
+                "_medium": 400,
+                "_small": 200
+            }
+        }
+    }
+
+    // contentObjects.json
+    {
         "_id": "co-05",
         "_parentId": "course",
         "_type": "page",
