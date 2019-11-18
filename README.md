@@ -14,7 +14,7 @@ As Adapt's *[core menu](https://github.com/adaptlearning/adapt_framework/wiki/Co
 
 * If **Box Menu** has been uninstalled from the Adapt framework, it may be reinstalled.
 With the [Adapt CLI](https://github.com/adaptlearning/adapt-cli) installed, run the following from the command line:  
-`adapt install adapt-contrib-boxmenu`
+`adapt install adapt-contrib-boxMenu`
 
     Alternatively, this component can also be installed by adding the following line of code to the *adapt.json* file:  
     `"adapt-contrib-boxMenu": "*"`  
