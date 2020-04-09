@@ -1,8 +1,9 @@
 define([
   'core/js/adapt',
   'core/js/views/menuView',
-  "./adapt-contrib-boxMenuItemView"
-], function(Adapt, MenuView, BoxMenuItemView) {
+  "./adapt-contrib-boxMenuItemView",
+  "./adapt-contrib-boxMenuGroupView"
+], function(Adapt, MenuView, BoxMenuItemView, BoxMenuGroupView) {
 
   var BoxMenuView = MenuView.extend({
 
@@ -17,6 +18,30 @@ define([
 
     onDeviceResize: function() {
       this.setStyles();
+    },
+
+    addChildren: function() {
+      var nthChild = 0;
+      var models = this.model.getChildren().models;
+      this.childViews = {};
+      models.forEach(function(model) {
+        if (!model.get('_isAvailable')) return;
+
+        nthChild++;
+        model.set('_nthChild', nthChild);
+
+        var ChildView = (model.get('_type') === 'menu' && model.get('_boxMenu') && model.get('_boxMenu')._renderAsGroup) ?
+          BoxMenuGroupView :
+          BoxMenuItemView;
+
+        var $parentContainer = this.$(this.constructor.childContainer);
+        var childView = new ChildView({ model: model });
+
+        this.childViews[model.get('_id')] = childView;
+
+        $parentContainer.append(childView.$el);
+
+      }.bind(this));
     },
 
     setStyles: function() {
@@ -152,7 +177,6 @@ define([
     }
 
   }, {
-    childView: BoxMenuItemView,
     className: 'boxmenu',
     template: 'boxMenu'
   });

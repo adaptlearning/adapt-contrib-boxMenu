@@ -1,11 +1,9 @@
-.boxmenu {
-  .l-container-responsive(@max-width);
-
+.boxmenu-group {
   &__header-inner {
     .l-container-responsive(@device-width-large);
   }
 
-  &__item-container:not(.has-groups) &__item-container-inner {
+  &__item-container-inner {
     display: flex;
     flex-wrap: wrap;
     .l-container-responsive(@device-width-large);
