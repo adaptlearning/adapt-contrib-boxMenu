@@ -194,7 +194,24 @@
           }
         },
         "contentobject": {
-          "type": "object"
+          "type": "object",
+          "properties": {
+            "_boxMenu": {
+              "type": "object",
+              "required": false,
+              "properties": {
+                "_renderAsGroup": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": false,
+                  "title": "Enable as menu group?",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Enable this option if you wish to this content object as a group for other content objects to render into. Useful for grouping items on a menu into different sections."
+                }
+              }
+            }
+          }
         },
         "article": {
           "type": "object"
