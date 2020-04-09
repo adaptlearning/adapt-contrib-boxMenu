@@ -92,6 +92,47 @@ The following attributes, set within *contentObjects.json*, configure the defaul
 
 **duration** (string): Optional text which follows **durationLabel** (e.g., `"2 mins"`).  
 
+**\_boxMenu** (object): The boxMenu object that contains value for **\_renderAsGroup**.
+
+>**\_renderAsGroup** (boolean): Enable this option if you wish to this content object to act as a group for other content objects to render into on the menu. Useful for grouping items on a menu into different sections. Framework users: Change the type of this content object from `page` to `menu` and update the `_parentId` of the child items to be this content objects id. AT users: Add a submenu and enable the `Enable as menu group?` option on the submenu item. All users: If accessibility is required, update the aria level values in config.json / configuration settings so the title heirarchy of remains intact. Includes support for `displayTitle`, `body`, and `instruction`. 
+
+```
+    {
+        "_id": "co-00",
+        "_parentId": "course",
+        "_type": "menu",
+        "title": "Group 1",
+        "displayTitle": "Group 1",
+        "body": "Body",
+        "instruction": "Instruction",
+        "_boxMenu": {
+            "_renderAsGroup": true
+        }
+    },
+    {
+        "_id": "co-100",
+        "_parentId": "co-00",
+        "_type": "page",
+        "_classes": "",
+        "_htmlClasses": "",
+        "title": "Title",
+        "displayTitle": "Title",
+        "body": "Body",
+        "instruction": "Instruction"
+    },
+    {
+        "_id": "co-200",
+        "_parentId": "co-00",
+        "_type": "page",
+        "_classes": "",
+        "_htmlClasses": "",
+        "title": "Title",
+        "displayTitle": "Title",
+        "body": "Body",
+        "instruction": "Instruction"
+    }
+```
+
 <div float align=right><a href="#top">Back to Top</a></div>  
 
 ### Accessibility
