@@ -166,8 +166,8 @@ define([
     view: BoxMenuView
   });
 
-  // Use for "_component": "boxmenu", or "_view": "boxmenu" and "_model": "boxmenu"
-  Adapt.register('boxmenu', {
+  // Use for "_component": "boxMenu", or "_view": "boxMenu" and "_model": "boxMenu"
+  Adapt.register('boxMenu', {
     view: BoxMenuView,
     model: MenuModel.extend({})
   });
