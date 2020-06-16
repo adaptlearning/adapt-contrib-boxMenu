@@ -1,6 +1,6 @@
 define([
-  "core/js/views/menuItemView",
-  "./adapt-contrib-boxMenuItemView"
+  'core/js/views/menuItemView',
+  './adapt-contrib-boxMenuItemView'
 ], function(MenuItemView, BoxMenuItemView) {
 
   var BoxMenuGroupView = MenuItemView.extend({
