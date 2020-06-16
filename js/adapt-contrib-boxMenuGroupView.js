@@ -5,16 +5,12 @@ define([
 
   var BoxMenuGroupView = MenuItemView.extend({
 
-    initialize: function(options) {
-      MenuItemView.prototype.initialize.call(this, options);
-    },
-
     postRender: function() {
       _.defer(function() {
         this.addChildren();
       }.bind(this));
       this.$el.imageready(this.setReadyStatus.bind(this));
-      $('.boxmenu__item-container').addClass('has-groups');
+      this.$('.boxmenu__item-container').addClass('has-groups');
     }
 
   }, {
