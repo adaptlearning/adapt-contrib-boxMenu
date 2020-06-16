@@ -1,8 +1,9 @@
 define([
   'core/js/adapt',
+  'core/js/models/menuModel',
   'core/js/views/menuView',
   "./adapt-contrib-boxMenuItemView"
-], function(Adapt, MenuView, BoxMenuItemView) {
+], function(Adapt, MenuModel, MenuView, BoxMenuItemView) {
 
   var BoxMenuView = MenuView.extend({
 
@@ -157,8 +158,18 @@ define([
     template: 'boxMenu'
   });
 
-  Adapt.on('router:menu', function(model) {
-    $('#wrapper').append(new BoxMenuView({model: model}).$el);
+  // Use as default "_type": "course" or "_type": "menu" view.
+  // Note: This is necessary to maintain legacy behaviour in the AAT where
+  // only one menu is usable per course and the course / menu is assumed to be
+  // a core model and use the only installed MenuView.
+  Adapt.register('course menu', {
+    view: BoxMenuView
+  });
+
+  // Use for "_component": "boxMenu", or "_view": "boxMenu" and "_model": "boxMenu"
+  Adapt.register('boxMenu', {
+    view: BoxMenuView,
+    model: MenuModel.extend({})
   });
 
 });
