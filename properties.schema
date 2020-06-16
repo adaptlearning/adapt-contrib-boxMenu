@@ -207,7 +207,7 @@
                   "title": "Enable as menu group?",
                   "inputType": "Checkbox",
                   "validators": [],
-                  "help": "Enable this option if you wish to this content object as a group for other content objects to render into. Useful for grouping items on a menu into different sections."
+                  "help": "Enable this option to render items into a group on the menu. Groups can display a title, body, and instruction text."
                 }
               }
             }
