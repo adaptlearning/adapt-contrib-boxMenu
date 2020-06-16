@@ -98,43 +98,6 @@ The following attributes, set within *contentObjects.json*, configure the defaul
 
 >Framework: Change the group content object type to `menu` and update the `_parentId` of the children content objects to match the group content object `_id`. Authoring Tool: Add a submenu and check the 'Enable as menu group?' setting. All users: If accessibility is required update the aria level values in config settings so the title heirarchy of remains intact. 
 
-```
-    {
-        "_id": "co-00",
-        "_parentId": "course",
-        "_type": "menu",
-        "title": "Group 1",
-        "displayTitle": "Group 1",
-        "body": "Body",
-        "instruction": "Instruction",
-        "_boxMenu": {
-            "_renderAsGroup": true
-        }
-    },
-    {
-        "_id": "co-100",
-        "_parentId": "co-00",
-        "_type": "page",
-        "_classes": "",
-        "_htmlClasses": "",
-        "title": "Title",
-        "displayTitle": "Title",
-        "body": "Body",
-        "instruction": "Instruction"
-    },
-    {
-        "_id": "co-200",
-        "_parentId": "co-00",
-        "_type": "page",
-        "_classes": "",
-        "_htmlClasses": "",
-        "title": "Title",
-        "displayTitle": "Title",
-        "body": "Body",
-        "instruction": "Instruction"
-    }
-```
-
 <div float align=right><a href="#top">Back to Top</a></div>  
 
 ### Accessibility
