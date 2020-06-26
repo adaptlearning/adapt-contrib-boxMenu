@@ -96,7 +96,7 @@ The following attributes, set within *contentObjects.json*, configure the defaul
 
 >**\_renderAsGroup** (boolean): Enable this option to render items into a group on the menu. Groups can display a title, body, and instruction text. 
 
->Framework: Change the group content object type to `menu` and update the `_parentId` of the children content objects to match the group content object `_id`. Authoring Tool: Add a submenu and check the 'Enable as menu group?' setting. All users: If accessibility is required update the aria level values in config settings so the title heirarchy of remains intact. 
+>Framework: Change the group content object type to `menu` and update the `_parentId` of the children content objects to match the group content object `_id`. Authoring Tool: Add a submenu and check the 'Enable as menu group?' setting. All users: If accessibility is required update the aria level values in config settings so the title heirarchy remains intact. 
 
 <div float align=right><a href="#top">Back to Top</a></div>  
 
