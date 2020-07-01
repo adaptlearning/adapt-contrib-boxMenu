@@ -46,3 +46,40 @@
         "linkText": "View",
         "duration": "2 mins"
     }
+
+    // contentObjects.json
+    // Render menu with grouped items
+    {
+        "_id": "co-00",
+        "_parentId": "course",
+        "_type": "menu",
+        "title": "Group 1",
+        "displayTitle": "Group 1",
+        "body": "Body",
+        "instruction": "Instruction",
+        "_boxMenu": {
+            "_renderAsGroup": true
+        }
+    },
+    {
+        "_id": "co-100",
+        "_parentId": "co-00",
+        "_type": "page",
+        "_classes": "",
+        "_htmlClasses": "",
+        "title": "Title",
+        "displayTitle": "Title",
+        "body": "Body",
+        "instruction": "Instruction"
+    },
+    {
+        "_id": "co-200",
+        "_parentId": "co-00",
+        "_type": "page",
+        "_classes": "",
+        "_htmlClasses": "",
+        "title": "Title",
+        "displayTitle": "Title",
+        "body": "Body",
+        "instruction": "Instruction"
+    }

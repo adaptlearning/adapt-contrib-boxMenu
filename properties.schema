@@ -194,7 +194,24 @@
           }
         },
         "contentobject": {
-          "type": "object"
+          "type": "object",
+          "properties": {
+            "_boxMenu": {
+              "type": "object",
+              "required": false,
+              "properties": {
+                "_renderAsGroup": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": false,
+                  "title": "Enable as menu group?",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Enable this option to render items into a group on the menu. Groups can display a title, body, and instruction text."
+                }
+              }
+            }
+          }
         },
         "article": {
           "type": "object"

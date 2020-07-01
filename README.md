@@ -92,6 +92,12 @@ The following attributes, set within *contentObjects.json*, configure the defaul
 
 **duration** (string): Optional text which follows **durationLabel** (e.g., `"2 mins"`).  
 
+**\_boxMenu** (object): The boxMenu object that contains value for **\_renderAsGroup**.
+
+>**\_renderAsGroup** (boolean): Enable this option to render items into a group on the menu. Groups can display a title, body, and instruction text. 
+
+>Framework: Change the group content object type to `menu` and update the `_parentId` of the children content objects to match the group content object `_id`. Authoring Tool: Add a submenu and check the 'Enable as menu group?' setting. All users: If accessibility is required update the aria level values in config settings so the title heirarchy remains intact. 
+
 <div float align=right><a href="#top">Back to Top</a></div>  
 
 ### Accessibility

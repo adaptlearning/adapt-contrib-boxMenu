@@ -1,5 +1,5 @@
 define([
-  "core/js/views/menuItemView"
+  'core/js/views/menuItemView'
 ], function(MenuItemView) {
 
   var BoxMenuItemView = MenuItemView.extend({
