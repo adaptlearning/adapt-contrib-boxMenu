@@ -24,7 +24,7 @@ define([
     addChildren: function() {
       var nthChild = 0;
       var models = this.model.getChildren().models;
-      this.childViews = {};
+      var childViews = {};
       models.forEach(function(model) {
         if (!model.get('_isAvailable')) return;
 
@@ -38,11 +38,14 @@ define([
         var $parentContainer = this.$(this.constructor.childContainer);
         var childView = new ChildView({ model: model });
 
-        this.childViews[model.get('_id')] = childView;
+        childViews[model.get('_id')] = childView;
 
         $parentContainer.append(childView.$el);
 
       }.bind(this));
+
+      this.setChildViews(Object.values(childViews));
+
     },
 
     setStyles: function() {
