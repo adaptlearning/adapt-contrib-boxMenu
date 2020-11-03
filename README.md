@@ -41,23 +41,31 @@ The following attributes, set within *course.json*, configure the defaults for *
 
 **\_boxMenu** (object): The boxMenu object that contains value for **\_menuHeader**.
 
-**\_menuHeader** (object): The menuHeader object that contains values for **\_backgroundImage** and **\_minimumHeights**.
+>**\_menuHeader** (object): The menuHeader object that contains values for **\_backgroundImage** and **\_minimumHeights**.
 
-**\_backgroundImage** (object): The backgroundImage object that contains values for **\_large**, **\_medium** and **\_small**.
+>>**\_backgroundImage** (object): The backgroundImage object that contains values for **\_large**, **\_medium** and **\_small**.
 
->**\_large** (string): File name (including path) of the image used with large device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
+>>>**\_large** (string): File name (including path) of the image used with large device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
 
->**\_medium** (string): File name (including path) of the image used with medium device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
+>>>**\_medium** (string): File name (including path) of the image used with medium device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
 
->**\_small** (string): File name (including path) of the image used with small device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
+>>>**\_small** (string): File name (including path) of the image used with small device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
 
-**\_minimumHeights** (object): The minimumHeights object that contains values for **\_large**, **\_medium** and **\_small**.
+>>**\_minimumHeights** (object): The minimumHeights object that contains values for **\_large**, **\_medium** and **\_small**.
 
->**\_large** (number): The minimum height should only be used in instances where the menu header height needs to be greater than the content e.g. to prevent a background image being cropped.
+>>>**\_large** (number): The minimum height should only be used in instances where the menu header height needs to be greater than the content e.g. to prevent a background image being cropped.
 
->**\_medium** (number): The minimum height should only be used in instances where the menu header height needs to be greater than the content e.g. to prevent a background image being cropped.
+>>>**\_medium** (number): The minimum height should only be used in instances where the menu header height needs to be greater than the content e.g. to prevent a background image being cropped.
 
->**\_small** (number): The minimum height should only be used in instances where the menu header height needs to be greater than the content e.g. to prevent a background image being cropped.
+>>>**\_small** (number): The minimum height should only be used in instances where the menu header height needs to be greater than the content e.g. to prevent a background image being cropped.
+
+**\_globals** (object): The Globals object that contains value for **\_menu**.
+
+>**\_menu** (object): The menu object that contains value for **\_boxMenu**.
+
+>>**\_boxMenu** (object): The boxMenu object that contains value for **durationLabel**.
+
+>>>**durationLabel** (string): Optional text which precedes **duration** (e.g., `"Duration:"`).
 
 #### *contentObjects.json*
 The following attributes, set within *contentObjects.json*, configure the defaults for **Box Menu**.
@@ -88,8 +96,6 @@ The following attributes, set within *contentObjects.json*, configure the defaul
 
 **linkText** (string): This text is displayed on the menu item's link/button.  
 
-**durationLabel** (string): Optional text which precedes **duration** (e.g., `"Duration:"`).  
-
 **duration** (string): Optional text which follows **durationLabel** (e.g., `"2 mins"`).  
 
 **\_boxMenu** (object): The boxMenu object that contains value for **\_renderAsGroup**.
@@ -99,10 +105,6 @@ The following attributes, set within *contentObjects.json*, configure the defaul
 >Framework: Change the group content object type to `menu` and update the `_parentId` of the children content objects to match the group content object `_id`. Authoring Tool: Add a submenu and check the 'Enable as menu group?' setting. All users: If accessibility is required update the aria level values in config settings so the title heirarchy remains intact. 
 
 <div float align=right><a href="#top">Back to Top</a></div>  
-
-### Accessibility
-Several menu-related elements are assigned a label using the [aria-label](https://github.com/adaptlearning/adapt_framework/wiki/Aria-Labels) attribute: **ariaRegion**, **menuItem**, and **menuEnd**. These labels are not visible elements. They are utilized by assistive technology such as screen readers. Should the label texts need to be customised, they can be found within the **globals** object in [*properties.schema*](https://github.com/adaptlearning/adapt-contrib-boxmenu/blob/master/properties.schema).   
-<div float align=right><a href="#top">Back to Top</a></div>
 
 ## Limitations
 
