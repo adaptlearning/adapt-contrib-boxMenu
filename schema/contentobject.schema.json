@@ -10,13 +10,13 @@
       "properties": {
         "_boxMenu": {
           "type": "object",
-          "title": "Box menu",
+          "title": "Box Menu",
           "default": {},
           "properties": {
             "_renderAsGroup": {
               "type": "boolean",
-              "title": "Enable as menu group?",
-              "description": "Enable this option to render items into a group on the menu. Groups can display a title, body, and instruction text.",
+              "title": "Make this a parent group of menu items",
+              "description": "Enable this option to render items into a group on the menu. Groups can display a title, body, and instruction text",
               "default": false
             }
           }
