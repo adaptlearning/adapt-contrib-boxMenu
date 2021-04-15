@@ -40,9 +40,9 @@
               "properties": {
                 "_large": {
                   "type": "string",
+                  "isObjectId": true,
                   "title": "Large",
                   "description": "Large background image - used on desktop",
-                  "default": "",
                   "_backboneForms": {
                     "type": "Asset",
                     "media": "image"
@@ -50,9 +50,9 @@
                 },
                 "_medium": {
                   "type": "string",
+                  "isObjectId": true,
                   "title": "Medium",
                   "description": "Medium background image - used on tablet",
-                  "default": "",
                   "_backboneForms": {
                     "type": "Asset",
                     "media": "image"
@@ -60,9 +60,9 @@
                 },
                 "_small": {
                   "type": "string",
+                  "isObjectId": true,
                   "title": "Small",
                   "description": "Small background image - used on mobile",
-                  "default": "",
                   "_backboneForms": {
                     "type": "Asset",
                     "media": "image"
@@ -135,9 +135,9 @@
                   "properties": {
                     "_large": {
                       "type": "string",
+                      "isObjectId": true,
                       "title": "Large",
                       "description": "Large background image - used on desktop",
-                      "default": "",
                       "_backboneForms": {
                         "type": "Asset",
                         "media": "image"
@@ -145,9 +145,9 @@
                     },
                     "_medium": {
                       "type": "string",
+                      "isObjectId": true,
                       "title": "Medium",
                       "description": "Medium background image - used on tablet",
-                      "default": "",
                       "_backboneForms": {
                         "type": "Asset",
                         "media": "image"
@@ -155,9 +155,9 @@
                     },
                     "_small": {
                       "type": "string",
+                      "isObjectId": true,
                       "title": "Small",
                       "description": "Small background image - used on mobile",
-                      "default": "",
                       "_backboneForms": {
                         "type": "Asset",
                         "media": "image"
