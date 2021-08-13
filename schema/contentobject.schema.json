@@ -1,0 +1,27 @@
+{
+  "$anchor": "boxMenu-contentobject",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$patch": {
+    "source": {
+      "$ref": "contentobject"
+    },
+    "with": {
+      "properties": {
+        "_boxMenu": {
+          "type": "object",
+          "title": "Box Menu",
+          "default": {},
+          "properties": {
+            "_renderAsGroup": {
+              "type": "boolean",
+              "title": "Make this a parent group of menu items",
+              "description": "Enable this option to render items into a group on the menu. Groups can display a title, body, and instruction text",
+              "default": false
+            }
+          }
+        }
+      }
+    }
+  }
+}
