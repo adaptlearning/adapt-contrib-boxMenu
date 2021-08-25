@@ -6,37 +6,45 @@ define([
   './adapt-contrib-boxMenuGroupView'
 ], function(Adapt, MenuModel, MenuView, BoxMenuItemView, BoxMenuGroupView) {
 
-  var BoxMenuView = MenuView.extend({
+  class BoxMenuView extends MenuView {
 
-    initialize: function() {
+    get template() {
+      return 'boxmenu';
+    }
+
+    className() {
+      return 'boxmenu';
+    }
+
+    initialize() {
       MenuView.prototype.initialize.apply(this);
       this.setStyles();
 
       this.listenTo(Adapt, {
         'device:changed': this.onDeviceResize
       });
-    },
+    }
 
-    onDeviceResize: function() {
+    onDeviceResize() {
       this.setStyles();
-    },
+    }
 
-    addChildren: function() {
-      var nthChild = 0;
-      var models = this.model.getChildren().models;
-      var childViews = [];
+    addChildren() {
+      let nthChild = 0;
+      const models = this.model.getChildren().models;
+      const childViews = [];
       models.forEach(function(model) {
         if (!model.get('_isAvailable')) return;
 
         nthChild++;
         model.set('_nthChild', nthChild);
 
-        var ChildView = (model.get('_type') === 'menu' && model.get('_boxMenu') && model.get('_boxMenu')._renderAsGroup) ?
+        const ChildView = (model.get('_type') === 'menu' && model.get('_boxMenu') && model.get('_boxMenu')._renderAsGroup) ?
           BoxMenuGroupView :
           BoxMenuItemView;
 
-        var $parentContainer = this.$(this.constructor.childContainer);
-        var childView = new ChildView({ model: model });
+        const $parentContainer = this.$(this.constructor.childContainer);
+        const childView = new ChildView({ model: model });
 
         childViews.push(childView);
 
@@ -46,21 +54,21 @@ define([
 
       this.setChildViews(childViews);
 
-    },
+    }
 
-    setStyles: function() {
+    setStyles() {
       this.setBackgroundImage();
       this.setBackgroundStyles();
       this.processHeader();
-    },
+    }
 
-    setBackgroundImage: function() {
-      var config = this.model.get('_boxMenu');
-      var backgroundImages = config && config._backgroundImage;
+    setBackgroundImage() {
+      const config = this.model.get('_boxMenu');
+      const backgroundImages = config && config._backgroundImage;
 
       if (!backgroundImages) return;
 
-      var backgroundImage;
+      let backgroundImage;
 
       switch (Adapt.device.screenSize) {
         case 'large':
@@ -82,11 +90,11 @@ define([
           .removeClass('has-bg-image')
           .css('background-image', '');
       }
-    },
+    }
 
-    setBackgroundStyles: function () {
-      var config = this.model.get('_boxMenu');
-      var styles = config && config._backgroundStyles;
+    setBackgroundStyles() {
+      const config = this.model.get('_boxMenu');
+      const styles = config && config._backgroundStyles;
 
       if (!styles) return;
 
@@ -95,27 +103,27 @@ define([
         'background-size': styles._backgroundSize,
         'background-position': styles._backgroundPosition
       });
-    },
+    }
 
-    processHeader: function() {
-      var config = this.model.get('_boxMenu');
-      var header = config && config._menuHeader;
+    processHeader() {
+      const config = this.model.get('_boxMenu');
+      const header = config && config._menuHeader;
 
       if (!header) return;
 
-      var $header = this.$('.menu__header');
+      const $header = this.$('.menu__header');
 
       this.setHeaderBackgroundImage(header, $header);
       this.setHeaderBackgroundStyles(header, $header);
       this.setHeaderMinimumHeight(header, $header);
-    },
+    }
 
-    setHeaderBackgroundImage: function(config, $header) {
-      var backgroundImages = config._backgroundImage;
+    setHeaderBackgroundImage(config, $header) {
+      const backgroundImages = config._backgroundImage;
 
       if (!backgroundImages) return;
 
-      var backgroundImage;
+      let backgroundImage;
 
       switch (Adapt.device.screenSize) {
         case 'large':
@@ -137,10 +145,10 @@ define([
           .removeClass('has-bg-image')
           .css('background-image', '');
       }
-    },
+    }
 
-    setHeaderBackgroundStyles: function (config, $header) {
-      var styles = config._backgroundStyles;
+    setHeaderBackgroundStyles(config, $header) {
+      const styles = config._backgroundStyles;
 
       if (!styles) return;
 
@@ -149,14 +157,14 @@ define([
         'background-size': styles._backgroundSize,
         'background-position': styles._backgroundPosition
       });
-    },
+    }
 
-    setHeaderMinimumHeight: function(config, $header) {
-      var minimumHeights = config._minimumHeights;
+    setHeaderMinimumHeight(config, $header) {
+      const minimumHeights = config._minimumHeights;
 
       if (!minimumHeights) return;
 
-      var minimumHeight;
+      let minimumHeight;
 
       switch (Adapt.device.screenSize) {
         case 'large':
@@ -180,10 +188,7 @@ define([
       }
     }
 
-  }, {
-    className: 'boxmenu',
-    template: 'boxMenu'
-  });
+  }
 
   // Use as default "_type": "course" or "_type": "menu" view.
   // Note: This is necessary to maintain legacy behaviour in the AAT where
@@ -198,5 +203,4 @@ define([
     view: BoxMenuView,
     model: MenuModel.extend({})
   });
-
 });

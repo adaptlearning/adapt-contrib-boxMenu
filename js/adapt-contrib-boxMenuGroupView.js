@@ -3,20 +3,25 @@ define([
   './adapt-contrib-boxMenuItemView'
 ], function(MenuItemView, BoxMenuItemView) {
 
-  var BoxMenuGroupView = MenuItemView.extend({
+  class BoxMenuGroupView extends MenuItemView {
 
-    postRender: function() {
+    get template() {
+      return 'boxmenu-group';
+    }
+
+    className() {
+      return 'boxMenuGroup';
+    }
+
+    postRender() {
       _.defer(this.addChildren.bind(this));
       this.$el.imageready(this.setReadyStatus.bind(this));
       this.$el.parents('.boxmenu__item-container').addClass('has-groups');
     }
+  }
 
-  }, {
-    childContainer: '.js-group-children',
-    childView: BoxMenuItemView,
-    className: 'boxmenu-group',
-    template: 'boxMenuGroup'
-  });
+  BoxMenuGroupView.childContainer = '.js-group-children';
+  BoxMenuGroupView.childView = BoxMenuItemView;
 
   return BoxMenuGroupView;
 

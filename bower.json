@@ -1,7 +1,7 @@
 {
   "name": "adapt-contrib-boxMenu",
-  "version": "5.2.0",
-  "framework": ">=5.7",
+  "version": "5.3.0",
+  "framework": ">=5.8",
   "homepage": "https://github.com/adaptlearning/adapt-contrib-boxMenu",
   "issues": "https://github.com/adaptlearning/adapt_framework/issues/new",
   "menu": "boxMenu",
