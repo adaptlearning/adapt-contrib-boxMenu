@@ -33,7 +33,7 @@ define([
       let nthChild = 0;
       const models = this.model.getChildren().models;
       const childViews = [];
-      models.forEach(function(model) {
+      models.forEach(model => {
         if (!model.get('_isAvailable')) return;
 
         nthChild++;
@@ -49,8 +49,7 @@ define([
         childViews.push(childView);
 
         $parentContainer.append(childView.$el);
-
-      }.bind(this));
+      });
 
       this.setChildViews(childViews);
 
