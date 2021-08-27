@@ -1,202 +1,201 @@
-define([
-  'core/js/adapt',
-  'core/js/models/menuModel',
-  'core/js/views/menuView',
-  './adapt-contrib-boxMenuItemView',
-  './adapt-contrib-boxMenuGroupView'
-], function(Adapt, MenuModel, MenuView, BoxMenuItemView, BoxMenuGroupView) {
+import Adapt from 'core/js/adapt';
+import MenuModel from 'core/js/models/menuModel';
+import MenuView from 'core/js/views/menuView';
+import BoxMenuItemView from './adapt-contrib-boxMenuItemView';
+import BoxMenuGroupView from './adapt-contrib-boxMenuGroupView';
 
-  var BoxMenuView = MenuView.extend({
+class BoxMenuView extends MenuView {
 
-    initialize: function() {
-      MenuView.prototype.initialize.apply(this);
-      this.setStyles();
+  className() {
+    return 'boxmenu';
+  }
 
-      this.listenTo(Adapt, {
-        'device:changed': this.onDeviceResize
-      });
-    },
+  initialize() {
+    super.initialize();
+    this.setStyles();
 
-    onDeviceResize: function() {
-      this.setStyles();
-    },
+    this.listenTo(Adapt, {
+      'device:changed': this.onDeviceResize
+    });
+  }
 
-    addChildren: function() {
-      var nthChild = 0;
-      var models = this.model.getChildren().models;
-      var childViews = [];
-      models.forEach(function(model) {
-        if (!model.get('_isAvailable')) return;
+  onDeviceResize() {
+    this.setStyles();
+  }
 
-        nthChild++;
-        model.set('_nthChild', nthChild);
+  addChildren() {
+    let nthChild = 0;
+    const models = this.model.getChildren().models;
+    const childViews = [];
+    models.forEach(model => {
+      if (!model.get('_isAvailable')) return;
 
-        var ChildView = (model.get('_type') === 'menu' && model.get('_boxMenu') && model.get('_boxMenu')._renderAsGroup) ?
-          BoxMenuGroupView :
-          BoxMenuItemView;
+      nthChild++;
+      model.set('_nthChild', nthChild);
 
-        var $parentContainer = this.$(this.constructor.childContainer);
-        var childView = new ChildView({ model: model });
+      const ChildView = (model.get('_type') === 'menu' && model.get('_boxMenu') && model.get('_boxMenu')._renderAsGroup) ?
+        BoxMenuGroupView :
+        BoxMenuItemView;
 
-        childViews.push(childView);
+      const $parentContainer = this.$(this.constructor.childContainer);
+      const childView = new ChildView({ model });
 
-        $parentContainer.append(childView.$el);
+      childViews.push(childView);
 
-      }.bind(this));
+      $parentContainer.append(childView.$el);
+    });
 
-      this.setChildViews(childViews);
+    this.setChildViews(childViews);
+  }
 
-    },
+  setStyles() {
+    this.setBackgroundImage();
+    this.setBackgroundStyles();
+    this.processHeader();
+  }
 
-    setStyles: function() {
-      this.setBackgroundImage();
-      this.setBackgroundStyles();
-      this.processHeader();
-    },
+  setBackgroundImage() {
+    const config = this.model.get('_boxMenu');
+    const backgroundImages = config && config._backgroundImage;
 
-    setBackgroundImage: function() {
-      var config = this.model.get('_boxMenu');
-      var backgroundImages = config && config._backgroundImage;
+    if (!backgroundImages) return;
 
-      if (!backgroundImages) return;
+    let backgroundImage;
 
-      var backgroundImage;
-
-      switch (Adapt.device.screenSize) {
-        case 'large':
-          backgroundImage = backgroundImages._large;
-          break;
-        case 'medium':
-          backgroundImage = backgroundImages._medium;
-          break;
-        default:
-          backgroundImage = backgroundImages._small;
-      }
-
-      if (backgroundImage) {
-        this.$el
-          .addClass('has-bg-image')
-          .css('background-image', 'url(' + backgroundImage + ')');
-      } else {
-        this.$el
-          .removeClass('has-bg-image')
-          .css('background-image', '');
-      }
-    },
-
-    setBackgroundStyles: function () {
-      var config = this.model.get('_boxMenu');
-      var styles = config && config._backgroundStyles;
-
-      if (!styles) return;
-
-      this.$el.css({
-        'background-repeat': styles._backgroundRepeat,
-        'background-size': styles._backgroundSize,
-        'background-position': styles._backgroundPosition
-      });
-    },
-
-    processHeader: function() {
-      var config = this.model.get('_boxMenu');
-      var header = config && config._menuHeader;
-
-      if (!header) return;
-
-      var $header = this.$('.menu__header');
-
-      this.setHeaderBackgroundImage(header, $header);
-      this.setHeaderBackgroundStyles(header, $header);
-      this.setHeaderMinimumHeight(header, $header);
-    },
-
-    setHeaderBackgroundImage: function(config, $header) {
-      var backgroundImages = config._backgroundImage;
-
-      if (!backgroundImages) return;
-
-      var backgroundImage;
-
-      switch (Adapt.device.screenSize) {
-        case 'large':
-          backgroundImage = backgroundImages._large;
-          break;
-        case 'medium':
-          backgroundImage = backgroundImages._medium;
-          break;
-        default:
-          backgroundImage = backgroundImages._small;
-      }
-
-      if (backgroundImage) {
-        $header
-          .addClass('has-bg-image')
-          .css('background-image', 'url(' + backgroundImage + ')');
-      } else {
-        $header
-          .removeClass('has-bg-image')
-          .css('background-image', '');
-      }
-    },
-
-    setHeaderBackgroundStyles: function (config, $header) {
-      var styles = config._backgroundStyles;
-
-      if (!styles) return;
-
-      $header.css({
-        'background-repeat': styles._backgroundRepeat,
-        'background-size': styles._backgroundSize,
-        'background-position': styles._backgroundPosition
-      });
-    },
-
-    setHeaderMinimumHeight: function(config, $header) {
-      var minimumHeights = config._minimumHeights;
-
-      if (!minimumHeights) return;
-
-      var minimumHeight;
-
-      switch (Adapt.device.screenSize) {
-        case 'large':
-          minimumHeight = minimumHeights._large;
-          break;
-        case 'medium':
-          minimumHeight = minimumHeights._medium;
-          break;
-        default:
-          minimumHeight = minimumHeights._small;
-      }
-
-      if (minimumHeight) {
-        $header
-          .addClass('has-min-height')
-          .css('min-height', minimumHeight + 'px');
-      } else {
-        $header
-          .removeClass('has-min-height')
-          .css('min-height', '');
-      }
+    switch (Adapt.device.screenSize) {
+      case 'large':
+        backgroundImage = backgroundImages._large;
+        break;
+      case 'medium':
+        backgroundImage = backgroundImages._medium;
+        break;
+      default:
+        backgroundImage = backgroundImages._small;
     }
 
-  }, {
-    className: 'boxmenu',
-    template: 'boxMenu'
-  });
+    if (backgroundImage) {
+      this.$el
+        .addClass('has-bg-image')
+        .css('background-image', 'url(' + backgroundImage + ')');
+      return;
+    }
+    this.$el
+      .removeClass('has-bg-image')
+      .css('background-image', '');
+  }
 
-  // Use as default "_type": "course" or "_type": "menu" view.
-  // Note: This is necessary to maintain legacy behaviour in the AAT where
-  // only one menu is usable per course and the course / menu is assumed to be
-  // a core model and use the only installed MenuView.
-  Adapt.register('course menu', {
-    view: BoxMenuView
-  });
+  setBackgroundStyles() {
+    const config = this.model.get('_boxMenu');
+    const styles = config && config._backgroundStyles;
 
-  // Use for "_component": "boxMenu", or "_view": "boxMenu" and "_model": "boxMenu"
-  Adapt.register('boxMenu', {
-    view: BoxMenuView,
-    model: MenuModel.extend({})
-  });
+    if (!styles) return;
 
+    this.$el.css({
+      'background-repeat': styles._backgroundRepeat,
+      'background-size': styles._backgroundSize,
+      'background-position': styles._backgroundPosition
+    });
+  }
+
+  processHeader() {
+    const config = this.model.get('_boxMenu');
+    const header = config && config._menuHeader;
+
+    if (!header) return;
+
+    const $header = this.$('.menu__header');
+
+    this.setHeaderBackgroundImage(header, $header);
+    this.setHeaderBackgroundStyles(header, $header);
+    this.setHeaderMinimumHeight(header, $header);
+  }
+
+  setHeaderBackgroundImage(config, $header) {
+    const backgroundImages = config._backgroundImage;
+
+    if (!backgroundImages) return;
+
+    let backgroundImage;
+
+    switch (Adapt.device.screenSize) {
+      case 'large':
+        backgroundImage = backgroundImages._large;
+        break;
+      case 'medium':
+        backgroundImage = backgroundImages._medium;
+        break;
+      default:
+        backgroundImage = backgroundImages._small;
+    }
+
+    if (backgroundImage) {
+      $header
+        .addClass('has-bg-image')
+        .css('background-image', 'url(' + backgroundImage + ')');
+      return;
+    }
+    $header
+      .removeClass('has-bg-image')
+      .css('background-image', '');
+  }
+
+  setHeaderBackgroundStyles(config, $header) {
+    const styles = config._backgroundStyles;
+
+    if (!styles) return;
+
+    $header.css({
+      'background-repeat': styles._backgroundRepeat,
+      'background-size': styles._backgroundSize,
+      'background-position': styles._backgroundPosition
+    });
+  }
+
+  setHeaderMinimumHeight(config, $header) {
+    const minimumHeights = config._minimumHeights;
+
+    if (!minimumHeights) return;
+
+    let minimumHeight;
+
+    switch (Adapt.device.screenSize) {
+      case 'large':
+        minimumHeight = minimumHeights._large;
+        break;
+      case 'medium':
+        minimumHeight = minimumHeights._medium;
+        break;
+      default:
+        minimumHeight = minimumHeights._small;
+    }
+
+    if (minimumHeight) {
+      $header
+        .addClass('has-min-height')
+        .css('min-height', minimumHeight + 'px');
+      return;
+    }
+    $header
+      .removeClass('has-min-height')
+      .css('min-height', '');
+  }
+
+}
+
+BoxMenuView.template = 'boxMenu';
+
+// Use as default "_type": "course" or "_type": "menu" view.
+// Note: This is necessary to maintain legacy behaviour in the AAT where
+// only one menu is usable per course and the course / menu is assumed to be
+// a core model and use the only installed MenuView.
+Adapt.register('course menu', {
+  view: BoxMenuView
 });
+
+// Use for "_component": "boxMenu", or "_view": "boxMenu" and "_model": "boxMenu"
+Adapt.register('boxMenu', {
+  view: BoxMenuView,
+  model: MenuModel.extend({})
+});
+
+export default BoxMenuView;

@@ -1,23 +1,26 @@
-define([
-  'core/js/views/menuItemView',
-  './adapt-contrib-boxMenuItemView'
-], function(MenuItemView, BoxMenuItemView) {
+import MenuItemView from 'core/js/views/menuItemView';
+import BoxMenuItemView from './adapt-contrib-boxMenuItemView';
 
-  var BoxMenuGroupView = MenuItemView.extend({
+class BoxMenuGroupView extends MenuItemView {
 
-    postRender: function() {
-      _.defer(this.addChildren.bind(this));
-      this.$el.imageready(this.setReadyStatus.bind(this));
-      this.$el.parents('.boxmenu__item-container').addClass('has-groups');
-    }
+  static childContainer() {
+    return '.js-group-children';
+  }
 
-  }, {
-    childContainer: '.js-group-children',
-    childView: BoxMenuItemView,
-    className: 'boxmenu-group',
-    template: 'boxMenuGroup'
-  });
+  static childView() {
+    return BoxMenuItemView;
+  }
 
-  return BoxMenuGroupView;
+  className() {
+    return 'boxMenuGroup';
+  }
 
-});
+  postRender() {
+    _.defer(this.addChildren.bind(this));
+    this.$el.imageready(this.setReadyStatus.bind(this));
+    this.$el.parents('.boxmenu__item-container').addClass('has-groups');
+  }
+}
+BoxMenuGroupView.template = 'boxmenu-group';
+
+export default BoxMenuGroupView;
