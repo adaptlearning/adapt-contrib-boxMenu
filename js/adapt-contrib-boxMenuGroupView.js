@@ -21,9 +21,6 @@ class BoxMenuGroupView extends MenuItemView {
     this.$el.parents('.boxmenu__item-container').addClass('has-groups');
   }
 }
-
-BoxMenuGroupView.childContainer = '.js-group-children';
-BoxMenuGroupView.childView = BoxMenuItemView;
 BoxMenuGroupView.template = 'boxmenu-group';
 
 export default BoxMenuGroupView;

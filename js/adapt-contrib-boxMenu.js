@@ -46,7 +46,6 @@ class BoxMenuView extends MenuView {
     });
 
     this.setChildViews(childViews);
-
   }
 
   setStyles() {
@@ -78,11 +77,11 @@ class BoxMenuView extends MenuView {
       this.$el
         .addClass('has-bg-image')
         .css('background-image', 'url(' + backgroundImage + ')');
-    } else {
-      this.$el
-        .removeClass('has-bg-image')
-        .css('background-image', '');
+      return;
     }
+    this.$el
+      .removeClass('has-bg-image')
+      .css('background-image', '');
   }
 
   setBackgroundStyles() {
@@ -133,11 +132,11 @@ class BoxMenuView extends MenuView {
       $header
         .addClass('has-bg-image')
         .css('background-image', 'url(' + backgroundImage + ')');
-    } else {
-      $header
-        .removeClass('has-bg-image')
-        .css('background-image', '');
+      return;
     }
+    $header
+      .removeClass('has-bg-image')
+      .css('background-image', '');
   }
 
   setHeaderBackgroundStyles(config, $header) {
@@ -174,11 +173,11 @@ class BoxMenuView extends MenuView {
       $header
         .addClass('has-min-height')
         .css('min-height', minimumHeight + 'px');
-    } else {
-      $header
-        .removeClass('has-min-height')
-        .css('min-height', '');
+      return;
     }
+    $header
+      .removeClass('has-min-height')
+      .css('min-height', '');
   }
 
 }
