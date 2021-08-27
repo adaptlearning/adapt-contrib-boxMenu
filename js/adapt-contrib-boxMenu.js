@@ -38,7 +38,7 @@ class BoxMenuView extends MenuView {
         BoxMenuItemView;
 
       const $parentContainer = this.$(this.constructor.childContainer);
-      const childView = new ChildView({ model: model });
+      const childView = new ChildView({ model });
 
       childViews.push(childView);
 
