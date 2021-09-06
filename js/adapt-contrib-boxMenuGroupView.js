@@ -3,14 +3,6 @@ import BoxMenuItemView from './adapt-contrib-boxMenuItemView';
 
 class BoxMenuGroupView extends MenuItemView {
 
-  static childContainer() {
-    return '.js-group-children';
-  }
-
-  static childView() {
-    return BoxMenuItemView;
-  }
-
   className() {
     return 'boxMenuGroup';
   }
@@ -21,6 +13,9 @@ class BoxMenuGroupView extends MenuItemView {
     this.$el.parents('.boxmenu__item-container').addClass('has-groups');
   }
 }
+
 BoxMenuGroupView.template = 'boxmenu-group';
+BoxMenuGroupView.childContainer = '.js-group-children';
+BoxMenuGroupView.childView = BoxMenuItemView;
 
 export default BoxMenuGroupView;

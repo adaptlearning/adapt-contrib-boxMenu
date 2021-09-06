@@ -1,4 +1,5 @@
 import MenuItemView from 'core/js/views/menuItemView';
+import router from 'core/js/router';
 
 class BoxMenuItemView extends MenuItemView {
 
@@ -15,7 +16,7 @@ class BoxMenuItemView extends MenuItemView {
   onClickMenuItemButton(event) {
     if (event && event.preventDefault) event.preventDefault();
     if (this.model.get('_isLocked')) return;
-    Backbone.history.navigate('#/id/' + this.model.get('_id'), { trigger: true });
+    router.navigateToElement(this.model.get('_id'));
   }
 }
 
