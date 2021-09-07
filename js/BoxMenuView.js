@@ -1,7 +1,7 @@
 import Adapt from 'core/js/adapt';
 import MenuView from 'core/js/views/menuView';
-import BoxMenuItemView from './adapt-contrib-boxMenuItemView';
-import BoxMenuGroupView from './adapt-contrib-boxMenuGroupView';
+import BoxMenuItemView from './BoxMenuItemView';
+import BoxMenuGroupView from './BoxMenuGroupView';
 
 class BoxMenuView extends MenuView {
 

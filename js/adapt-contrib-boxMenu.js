@@ -1,6 +1,6 @@
 import Adapt from 'core/js/adapt';
 import MenuModel from 'core/js/models/menuModel';
-import BoxMenuView from './adapt-contrib-boxMenuView';
+import BoxMenuView from './BoxMenuView';
 
 // Use as default "_type": "course" or "_type": "menu" view.
 // Note: This is necessary to maintain legacy behaviour in the AAT where

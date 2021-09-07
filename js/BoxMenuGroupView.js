@@ -1,5 +1,5 @@
 import MenuItemView from 'core/js/views/menuItemView';
-import BoxMenuItemView from './adapt-contrib-boxMenuItemView';
+import BoxMenuItemView from './BoxMenuItemView';
 
 class BoxMenuGroupView extends MenuItemView {
 
