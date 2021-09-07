@@ -74,7 +74,7 @@ class BoxMenuView extends MenuView {
 
   processHeader() {
     const config = this.model.get('_boxMenu');
-    const header = config && config._menuHeader;
+    const header = config?._menuHeader;
 
     if (!header) return;
 
