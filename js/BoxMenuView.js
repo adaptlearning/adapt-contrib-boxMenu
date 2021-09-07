@@ -78,37 +78,39 @@ class BoxMenuView extends MenuView {
 
     if (!header) return;
 
-    this.setHeaderBackgroundImage(header);
-    this.setHeaderBackgroundStyles(header);
-    this.setHeaderMinimumHeight(header);
+    const $header = this.$('.menu__header');
+
+    this.setHeaderBackgroundImage(header, $header);
+    this.setHeaderBackgroundStyles(header, $header);
+    this.setHeaderMinimumHeight(header, $header);
   }
 
-  setHeaderBackgroundImage(config) {
+  setHeaderBackgroundImage(config, $header) {
     const backgroundImages = config._backgroundImage;
     if (!backgroundImages) return;
     const backgroundImage = backgroundImages[`_${Adapt.device.screenSize}`] ?? backgroundImages._small;
-    this.$el
+    $header
       .toggleClass('has-bg-image', Boolean(backgroundImage))
       .css('background-image', backgroundImage ? 'url(' + backgroundImage + ')' : '');
   }
 
-  setHeaderBackgroundStyles(config) {
+  setHeaderBackgroundStyles(config, $header) {
     const styles = config._backgroundStyles;
 
     if (!styles) return;
 
-    this.$el.css({
+    $header.css({
       'background-repeat': styles._backgroundRepeat,
       'background-size': styles._backgroundSize,
       'background-position': styles._backgroundPosition
     });
   }
 
-  setHeaderMinimumHeight(config) {
+  setHeaderMinimumHeight(config, $header) {
     const minimumHeights = config._minimumHeights;
     if (!minimumHeights) return;
     const minimumHeight = minimumHeights[`_${Adapt.device.screenSize}`] ?? minimumHeights._small;
-    this.$el
+    $header
       .toggleClass('has-min-height', Boolean(minimumHeight))
       .css('min-height', minimumHeight ? minimumHeight + 'px' : '');
   }
