@@ -53,29 +53,18 @@ class BoxMenuView extends MenuView {
 
   setBackgroundImage() {
     const config = this.model.get('_boxMenu');
-    const backgroundImages = config && config._backgroundImage;
-
+    const backgroundImages = config?._backgroundImage;
     if (!backgroundImages) return;
-
     const backgroundImage = backgroundImages[`_${Adapt.device.screenSize}`] ?? backgroundImages._small;
-
-    if (backgroundImage) {
-      this.$el
-        .addClass('has-bg-image')
-        .css('background-image', 'url(' + backgroundImage + ')');
-      return;
-    }
     this.$el
-      .removeClass('has-bg-image')
-      .css('background-image', '');
+      .toggleClass('has-bg-image', Boolean(backgroundImage))
+      .css('background-image', backgroundImage ? 'url(' + backgroundImage + ')' : '');
   }
 
   setBackgroundStyles() {
     const config = this.model.get('_boxMenu');
-    const styles = config && config._backgroundStyles;
-
+    const styles = config?._backgroundStyles;
     if (!styles) return;
-
     this.$el.css({
       'background-repeat': styles._backgroundRepeat,
       'background-size': styles._backgroundSize,
@@ -89,59 +78,39 @@ class BoxMenuView extends MenuView {
 
     if (!header) return;
 
-    const $header = this.$('.menu__header');
-
-    this.setHeaderBackgroundImage(header, $header);
-    this.setHeaderBackgroundStyles(header, $header);
-    this.setHeaderMinimumHeight(header, $header);
+    this.setHeaderBackgroundImage(header);
+    this.setHeaderBackgroundStyles(header);
+    this.setHeaderMinimumHeight(header);
   }
 
-  setHeaderBackgroundImage(config, $header) {
+  setHeaderBackgroundImage(config) {
     const backgroundImages = config._backgroundImage;
-
     if (!backgroundImages) return;
-
     const backgroundImage = backgroundImages[`_${Adapt.device.screenSize}`] ?? backgroundImages._small;
-
-    if (backgroundImage) {
-      $header
-        .addClass('has-bg-image')
-        .css('background-image', 'url(' + backgroundImage + ')');
-      return;
-    }
-    $header
-      .removeClass('has-bg-image')
-      .css('background-image', '');
+    this.$el
+      .toggleClass('has-bg-image', Boolean(backgroundImage))
+      .css('background-image', backgroundImage ? 'url(' + backgroundImage + ')' : '');
   }
 
-  setHeaderBackgroundStyles(config, $header) {
+  setHeaderBackgroundStyles(config) {
     const styles = config._backgroundStyles;
 
     if (!styles) return;
 
-    $header.css({
+    this.$el.css({
       'background-repeat': styles._backgroundRepeat,
       'background-size': styles._backgroundSize,
       'background-position': styles._backgroundPosition
     });
   }
 
-  setHeaderMinimumHeight(config, $header) {
+  setHeaderMinimumHeight(config) {
     const minimumHeights = config._minimumHeights;
-
     if (!minimumHeights) return;
-
     const minimumHeight = minimumHeights[`_${Adapt.device.screenSize}`] ?? minimumHeights._small;
-
-    if (minimumHeight) {
-      $header
-        .addClass('has-min-height')
-        .css('min-height', minimumHeight + 'px');
-      return;
-    }
-    $header
-      .removeClass('has-min-height')
-      .css('min-height', '');
+    this.$el
+      .toggleClass('has-min-height', Boolean(minimumHeight))
+      .css('min-height', minimumHeight ? minimumHeight + 'px' : '');
   }
 
 }
