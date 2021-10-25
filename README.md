@@ -39,9 +39,29 @@ The attributes listed below are used in *course.json* and *contentObjects.json* 
 #### *course.json*
 The following attributes, set within *course.json*, configure the defaults for **Box Menu**.
 
-**\_boxMenu** (object): The boxMenu object that contains value for **\_menuHeader**.
+**\_boxMenu** (object): The boxMenu object that contains value for **\_backgroundImage**, **\_backgroundStyles**, and **\_menuHeader**.
 
->**\_menuHeader** (object): The menuHeader object that contains values for **\_backgroundImage** and **\_minimumHeights**.
+>**\_backgroundImage** (object): The backgroundImage object that contains values for **\_large**, **\_medium** and **\_small**.
+
+>>**\_large** (string): File name (including path) of the image used with large device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
+
+>>**\_medium** (string): File name (including path) of the image used with medium device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
+
+>>**\_small** (string): File name (including path) of the image used with small device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
+
+>**\_backgroundStyles** (object): Additional attributes available to customise how background images display. The backgroundStyles object contains attributes for **\_backgroundRepeat**, **\_backgroundSize** and **\_backgroundPosition**.
+
+>>**\_backgroundRepeat** (string): This attribute defines how the background image repeats. Options include **repeat**, **repeat-x**, **repeat-y** and **no-repeat**.
+Repeat-x: The background image is repeated only horizontally. Repeat-y: The background image is repeated only vertically.
+
+>>**\_backgroundSize** (string): This attribute defines the size the background image display. Options include **auto**, **cover**, **contain**, and **100% 100%**.
+Auto: The background image is displayed in its original size. Cover: Resize the background image to cover the entire container, even if it has to stretch or crop the image. Contain: Resize the background image to make sure the image is fully visible. 100% 100%: Resize the background image to match the dimensions of the container.
+
+>>**\_backgroundPosition** (string): This attribute sets the position of the background image. Options include **left top**, **left center**, **left bottom**, **center top**, **center center**, **center bottom**, **right top**, **right center**, **right bottom**.
+The first value is the horizontal position and the second value is the vertical.
+
+
+>**\_menuHeader** (object): The menuHeader object that contains values for **\_backgroundImage**, **\_backgroundStyles**, and **\_minimumHeights**.
 
 >>**\_backgroundImage** (object): The backgroundImage object that contains values for **\_large**, **\_medium** and **\_small**.
 
@@ -50,6 +70,17 @@ The following attributes, set within *course.json*, configure the defaults for *
 >>>**\_medium** (string): File name (including path) of the image used with medium device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
 
 >>>**\_small** (string): File name (including path) of the image used with small device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
+
+>>**\_backgroundStyles** (object): Additional attributes available to customise how background images display. The backgroundStyles object contains attributes for **\_backgroundRepeat**, **\_backgroundSize** and **\_backgroundPosition**.
+
+>>>**\_backgroundRepeat** (string): This attribute defines how the background image repeats. Options include **repeat**, **repeat-x**, **repeat-y** and **no-repeat**.
+Repeat-x: The background image is repeated only horizontally. Repeat-y: The background image is repeated only vertically.
+
+>>>**\_backgroundSize** (string): This attribute defines the size the background image display. Options include **auto**, **cover**, **contain**, and **100% 100%**.
+Auto: The background image is displayed in its original size. Cover: Resize the background image to cover the entire container, even if it has to stretch or crop the image. Contain: Resize the background image to make sure the image is fully visible. 100% 100%: Resize the background image to match the dimensions of the container.
+
+>>>**\_backgroundPosition** (string): This attribute sets the position of the background image. Options include **left top**, **left center**, **left bottom**, **center top**, **center center**, **center bottom**, **right top**, **right center**, **right bottom**.
+The first value is the horizontal position and the second value is the vertical.
 
 >>**\_minimumHeights** (object): The minimumHeights object that contains values for **\_large**, **\_medium** and **\_small**.
 
@@ -102,7 +133,7 @@ The following attributes, set within *contentObjects.json*, configure the defaul
 
 >**\_renderAsGroup** (boolean): Enable this option to render items into a group on the menu. Groups can display a title, body, and instruction text. 
 
->Framework: Change the group content object type to `menu` and update the `_parentId` of the children content objects to match the group content object `_id`. Authoring Tool: Add a submenu and check the 'Enable as menu group?' setting. All users: If accessibility is required update the aria level values in config settings so the title heirarchy remains intact. 
+>Framework: Change the group content object type to `menu` and update the `_parentId` of the children content objects to match the group content object `_id`. Authoring Tool: Add a submenu and check the 'Enable as menu group?' setting. All users: If accessibility is required update the aria level values in config settings so the title hierarchy remains intact. 
 
 <div float align=right><a href="#top">Back to Top</a></div>  
 
@@ -111,7 +142,7 @@ The following attributes, set within *contentObjects.json*, configure the defaul
 No known limitations.
 
 ----------------------------
-**Version number:**  5.3.0   <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a>  
+**Version number:**  5.3.1   <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a>  
 **Framework versions:**  5.8+  
 **Author / maintainer:** Adapt Core Team with [contributors](https://github.com/adaptlearning/adapt-contrib-boxmenu/graphs/contributors)  
 **Accessibility support:** WAI AA  
