@@ -118,7 +118,7 @@ class BoxMenuView extends MenuView {
 
 }
 
-BoxMenuView.template = 'boxMenu';
 BoxMenuView.className = 'boxmenu';
+BoxMenuView.template = 'boxMenu';
 
 export default BoxMenuView;
