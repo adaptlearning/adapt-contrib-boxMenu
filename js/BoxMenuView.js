@@ -5,10 +5,6 @@ import BoxMenuGroupView from './BoxMenuGroupView';
 
 class BoxMenuView extends MenuView {
 
-  className() {
-    return 'boxmenu';
-  }
-
   initialize() {
     super.initialize();
     this.setStyles();
@@ -123,5 +119,6 @@ class BoxMenuView extends MenuView {
 }
 
 BoxMenuView.template = 'boxMenu';
+BoxMenuView.className = 'boxmenu';
 
 export default BoxMenuView;
