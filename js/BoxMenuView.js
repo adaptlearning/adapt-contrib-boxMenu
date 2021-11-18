@@ -26,6 +26,10 @@ class BoxMenuView extends MenuView {
     const childViews = [];
     models.forEach(model => {
       if (!model.get('_isAvailable')) return;
+      if (model.get('_isHidden')) {
+        model.set('_isReady', true);
+        return;
+      }
 
       nthChild++;
       model.set('_nthChild', nthChild);
