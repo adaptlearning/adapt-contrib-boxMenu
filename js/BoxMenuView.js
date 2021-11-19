@@ -5,10 +5,6 @@ import BoxMenuGroupView from './BoxMenuGroupView';
 
 class BoxMenuView extends MenuView {
 
-  className() {
-    return 'boxmenu';
-  }
-
   initialize() {
     super.initialize();
     this.setStyles();
@@ -26,6 +22,11 @@ class BoxMenuView extends MenuView {
     const childViews = [];
     models.forEach(model => {
       if (!model.get('_isAvailable')) return;
+
+      if (model.get('_isHidden')) {
+        model.set('_isReady', true);
+        return;
+      }
 
       nthChild++;
       model.set('_nthChild', nthChild);
@@ -117,6 +118,7 @@ class BoxMenuView extends MenuView {
 
 }
 
+BoxMenuView.className = 'boxmenu';
 BoxMenuView.template = 'boxMenu';
 
 export default BoxMenuView;
