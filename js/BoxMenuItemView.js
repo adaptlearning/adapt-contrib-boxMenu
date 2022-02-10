@@ -4,7 +4,7 @@ import router from 'core/js/router';
 class BoxMenuItemView extends MenuItemView {
 
   className() {
-    return 'boxmenu-item';
+    return super.className() + 'boxmenu-item';
   }
 
   events() {
