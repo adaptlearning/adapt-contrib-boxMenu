@@ -4,7 +4,7 @@ import BoxMenuItemView from './BoxMenuItemView';
 class BoxMenuGroupView extends MenuItemView {
 
   className() {
-    return 'boxMenuGroup';
+    return `${super.className()} boxmenu-group`;
   }
 
   postRender() {
