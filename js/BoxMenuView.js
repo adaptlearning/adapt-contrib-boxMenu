@@ -51,9 +51,16 @@ class BoxMenuView extends MenuView {
   }
 
   setStyles() {
+    this.addBackgroundLayer();
     this.setBackgroundImage();
     this.setBackgroundStyles();
     this.processHeader();
+  }
+
+  addBackgroundLayer() {
+    if (this.$el.find(' > .background').length) return;
+    this.$background = $('<div class="background" aria-hidden="true"></div>')
+      .prependTo(this.$el);
   }
 
   setBackgroundImage() {
@@ -61,8 +68,8 @@ class BoxMenuView extends MenuView {
     const backgroundImages = config?._backgroundImage;
     if (!backgroundImages) return;
     const backgroundImage = backgroundImages[`_${Adapt.device.screenSize}`] ?? backgroundImages._small;
-    this.$el
-      .toggleClass('has-bg-image', Boolean(backgroundImage))
+    this.$el.toggleClass('has-bg-image', Boolean(backgroundImage));
+    this.$background
       .css('background-image', backgroundImage ? 'url(' + backgroundImage + ')' : '');
   }
 
@@ -70,7 +77,7 @@ class BoxMenuView extends MenuView {
     const config = this.model.get('_boxMenu');
     const styles = config?._backgroundStyles;
     if (!styles) return;
-    this.$el.css({
+    this.$background.css({
       'background-repeat': styles._backgroundRepeat,
       'background-size': styles._backgroundSize,
       'background-position': styles._backgroundPosition
@@ -80,31 +87,32 @@ class BoxMenuView extends MenuView {
   processHeader() {
     const config = this.model.get('_boxMenu');
     const header = config?._menuHeader;
-
     if (!header) return;
-
     const $header = this.$('.menu__header');
-
+    this.addHeaderBackgroundLayer($header);
     this.setHeaderBackgroundImage(header, $header);
     this.setHeaderBackgroundStyles(header, $header);
     this.setHeaderMinimumHeight(header, $header);
+  }
+
+  addHeaderBackgroundLayer($header) {
+    if ($header.find(' > .background').length) return;
+    this.$headerBackground = $('<div class="background" aria-hidden="true"></div>')
+      .prependTo($header);
   }
 
   setHeaderBackgroundImage(config, $header) {
     const backgroundImages = config._backgroundImage;
     if (!backgroundImages) return;
     const backgroundImage = backgroundImages[`_${Adapt.device.screenSize}`] ?? backgroundImages._small;
-    $header
-      .toggleClass('has-bg-image', Boolean(backgroundImage))
-      .css('background-image', backgroundImage ? 'url(' + backgroundImage + ')' : '');
+    $header.toggleClass('has-bg-image', Boolean(backgroundImage));
+    this.$headerBackground.css('background-image', backgroundImage ? 'url(' + backgroundImage + ')' : '');
   }
 
   setHeaderBackgroundStyles(config, $header) {
     const styles = config._backgroundStyles;
-
     if (!styles) return;
-
-    $header.css({
+    this.$headerBackground.css({
       'background-repeat': styles._backgroundRepeat,
       'background-size': styles._backgroundSize,
       'background-position': styles._backgroundPosition
