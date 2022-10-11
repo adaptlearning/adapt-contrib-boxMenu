@@ -8,15 +8,7 @@
 
       {{#if displayTitle}}
       <div class="menu__title boxmenu__title">
-
-        {{#unless _disableAccessibleState}}
-        <div class="js-heading"></div>
-        {{/unless}}
-
-        <div class="menu__title-inner boxmenu__title-inner" {{#unless _disableAccessibleState}}aria-hidden="true"{{/unless}}>
-          {{{compile displayTitle}}}
-        </div>
-
+        <div class="menu__title-inner boxmenu__title-inner js-heading"></div>
       </div>
       {{/if}}
 
