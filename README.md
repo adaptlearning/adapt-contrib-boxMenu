@@ -62,7 +62,7 @@ The first value is the horizontal position and the second value is the vertical.
 
 >**\_menuHeader** (object): The menuHeader object that contains values for **\_textAlignment**, **\_backgroundImage**, **\_backgroundStyles**, and **\_minimumHeights**.
 
->>**\_textAlignment** (object): The text alignment object that contains values for **\_title**, **\_bodyy**, and **\_instruction**.
+>>**\_textAlignment** (object): The text alignment object that contains values for **\_title**, **\_body**, and **\_instruction**.
 
 >>>**\_title**: (string): This attribute defines the alignment of the title element. Properties include **left**, **center**, and **right**.
 Left: Aligns the title to the left of the container. Center: Aligns the title to the center of the container. Right: Aligns the title to the right of the container. The alignment automatically inverses for right-to-left languages. The default is `` which inherits the natural page direction.
