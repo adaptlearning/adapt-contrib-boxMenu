@@ -14,7 +14,7 @@
             "_textAlignment": {
                 "_title": "left",
                 "_body": "center",
-                "_instruction": "right",
+                "_instruction": "right"
             },
             "_backgroundImage": {
                 "_large": "course/en/images/example.jpg",
