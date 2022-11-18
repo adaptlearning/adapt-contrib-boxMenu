@@ -60,8 +60,18 @@ Auto: The background image is displayed in its original size. Cover: Resize the 
 >>**\_backgroundPosition** (string): This attribute sets the position of the background image. Options include **left top**, **left center**, **left bottom**, **center top**, **center center**, **center bottom**, **right top**, **right center**, **right bottom**.
 The first value is the horizontal position and the second value is the vertical.
 
+>**\_menuHeader** (object): The menuHeader object that contains values for **\_textAlignment**, **\_backgroundImage**, **\_backgroundStyles**, and **\_minimumHeights**.
 
->**\_menuHeader** (object): The menuHeader object that contains values for **\_backgroundImage**, **\_backgroundStyles**, and **\_minimumHeights**.
+>>**\_textAlignment** (object): The text alignment object that contains values for **\_title**, **\_body**, and **\_instruction**.
+
+>>>**\_title**: (string): This attribute defines the alignment of the title element. Properties include **left**, **center**, and **right**.
+Left: Aligns the title to the left of the container. Center: Aligns the title to the center of the container. Right: Aligns the title to the right of the container. The alignment automatically inverses for right-to-left languages. The default is `` which inherits the natural page direction.
+
+>>>**\_body**: (string): This attribute defines the alignment of the body element. Properties include **left**, **center**, and **right**.
+Left: Aligns the body to the left of the container. Center: Aligns the body to the center of the container. Right: Aligns the body to the right of the container. The alignment automatically inverses for right-to-left languages. The default is `` which inherits the natural page direction.
+
+>>>**\_instruction**: (string): This attribute defines the alignment of the instruction element. Properties include **left**, **center**, and **right**.
+Left: Aligns the instruction to the left of the container. Center: Aligns the instruction to the center of the container. Right: Aligns the instruction to the right of the container. The alignment automatically inverses for right-to-left languages. The default is `` which inherits the natural page direction.
 
 >>**\_backgroundImage** (object): The backgroundImage object that contains values for **\_large**, **\_medium** and **\_small**.
 
@@ -142,9 +152,9 @@ The following attributes, set within *contentObjects.json*, configure the defaul
 No known limitations.
 
 ----------------------------
-**Version number:**  5.4.1   <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a>
-**Framework versions:**  5.8+
-**Author / maintainer:** Adapt Core Team with [contributors](https://github.com/adaptlearning/adapt-contrib-boxmenu/graphs/contributors)
-**Accessibility support:** WAI AA
-**RTL support:** Yes
-**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 12+13 for macOS/iOS/iPadOS, Opera
+**Version number:**  5.4.1   <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a><br>
+**Framework versions:**  5.8+<br>
+**Author / maintainer:** Adapt Core Team with [contributors](https://github.com/adaptlearning/adapt-contrib-boxmenu/graphs/contributors)<br>
+**Accessibility support:** WAI AA<br>
+**RTL support:** Yes<br>
+**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 14 for macOS/iOS/iPadOS, Opera<br>

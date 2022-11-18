@@ -11,6 +11,11 @@
             "_backgroundPosition": "center center"
         },
         "_menuHeader": {
+            "_textAlignment": {
+                "_title": "left",
+                "_body": "center",
+                "_instruction": "right"
+            },
             "_backgroundImage": {
                 "_large": "course/en/images/example.jpg",
                 "_medium": "course/en/images/example.jpg",

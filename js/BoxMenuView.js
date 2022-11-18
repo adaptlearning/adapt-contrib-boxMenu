@@ -89,10 +89,20 @@ class BoxMenuView extends MenuView {
     const header = config?._menuHeader;
     if (!header) return;
     const $header = this.$('.menu__header');
+    this.setHeaderTextAlignment(header);
     this.addHeaderBackgroundLayer($header);
     this.setHeaderBackgroundImage(header, $header);
     this.setHeaderBackgroundStyles(header, $header);
     this.setHeaderMinimumHeight(header, $header);
+  }
+
+  setHeaderTextAlignment(config) {
+    const textAlignment = config._textAlignment;
+    if (!textAlignment) return;
+
+    if (textAlignment._title) this.$el.addClass(`title-align-${textAlignment._title}`);
+    if (textAlignment._body) this.$el.addClass(`body-align-${textAlignment._body}`);
+    if (textAlignment._instruction) this.$el.addClass(`instruction-align-${textAlignment._instruction}`);
   }
 
   addHeaderBackgroundLayer($header) {
