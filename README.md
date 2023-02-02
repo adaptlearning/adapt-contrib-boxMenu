@@ -41,6 +41,12 @@ The following attributes, set within *course.json*, configure the defaults for *
 
 **\_boxMenu** (object): The boxMenu object that contains value for **\_backgroundImage**, **\_backgroundStyles**, and **\_menuHeader**.
 
+>**\_graphic_** (object): The graphic object that contains values for **\_src** and **alt**. Typically used to display a logo image
+
+>>**\_src** (string): File name (including path) of the image
+
+>>**alt** (string): A description of the image; required when it has meaning that must be conveyed to the learner. For 'decorative' images, leave this blank
+
 >**\_backgroundImage** (object): The backgroundImage object that contains values for **\_large**, **\_medium** and **\_small**.
 
 >>**\_large** (string): File name (including path) of the image used with large device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
