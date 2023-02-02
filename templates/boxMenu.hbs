@@ -6,6 +6,12 @@
   <div class="menu__header boxmenu__header">
     <div class="menu__header-inner boxmenu__header-inner">
 
+      {{#if _boxmenu._graphic}}
+      <div class="menu__image-container boxmenu__image-container">
+        <img class="menu__image boxmenu__image" src="{{_boxmenu._graphic._src}}"{{#if _boxmenu._graphic.alt}} alt="{{_boxmenu._graphic.alt}}"{{/if}}{{#unless _boxmenu._graphic.alt}} aria-hidden="true"{{/unless}}>
+      </div>
+      {{/if}}
+
       {{#if displayTitle}}
       <div class="menu__title boxmenu__title">
         <div class="menu__title-inner boxmenu__title-inner js-heading"></div>
