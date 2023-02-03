@@ -1,7 +1,7 @@
     // course.json
     "_boxMenu": {
         "_graphic": {
-            "alt": "Logo",
+            "alt": "",
             "_src": "course/en/images/logo-graphic.jpg"
         },
         "_backgroundImage": {
