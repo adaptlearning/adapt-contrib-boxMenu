@@ -1,6 +1,10 @@
 .boxmenu-item {
   width: 100%;
 
+  &.is-locked &__status .icon {
+    .icon-padlock-locked;
+  }
+
   @media (min-width: @device-width-medium) {
     width: 50%;
   }
