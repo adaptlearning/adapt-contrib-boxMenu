@@ -43,6 +43,10 @@
         <button class="btn-text menu-item__button boxmenu-item__button js-btn-click{{#if _isVisited}} is-visited{{/if}}{{#if _isLocked}} is-locked{{/if}}" aria-label="{{_nthChild}} {{title}}.{{#if _isVisited}} {{_globals._accessibility._ariaLabels.visited}}{{/if}}{{#if _isOptional}} {{_globals._accessibility._ariaLabels.optional}}{{/if}}{{#if _isComplete}} {{_globals._accessibility._ariaLabels.complete}}{{/if}}"{{#if _isLocked}} aria-disabled="true"{{/if}}>
           {{{linkText}}}
         </button>
+
+        <span class='menu-item__status boxmenu-item__status'>
+          <span class='icon'></span>
+        </span>
       </div>
 
     </div>
