@@ -33,7 +33,10 @@ class BoxMenuView extends MenuView {
       }
 
       nthChild++;
-      model.set('_nthChild', nthChild);
+      model.set({
+        _nthChild: nthChild,
+        _totalChild: models.length
+      });
 
       const ChildView = (model.get('_type') === 'menu' && model.get('_boxMenu') && model.get('_boxMenu')._renderAsGroup) ?
         BoxMenuGroupView :
