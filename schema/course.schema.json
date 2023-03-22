@@ -12,16 +12,23 @@
           "type": "object",
           "default": {},
           "properties": {
-            "_boxMenu": {
+            "_menu": {
               "type": "object",
               "default": {},
               "properties": {
-                "durationLabel": {
-                  "type": "string",
-                  "title": "Duration label",
-                  "default": "Duration:",
-                  "_adapt": {
-                    "translatable": true
+                "_boxMenu": {
+                  "type": "object",
+                  "title": "Box Menu",
+                  "default": {},
+                  "properties": {
+                    "durationLabel": {
+                      "type": "string",
+                      "title": "Duration label",
+                      "default": "Duration:",
+                      "_adapt": {
+                        "translatable": true
+                      }
+                    }
                   }
                 }
               }
