@@ -26,7 +26,13 @@
       </div>
       {{/if}}
 
-      {{#if body}}
+      {{#if pageBody}}
+      <div class="menu__body boxmenu__body">
+        <div class="menu__body-inner boxmenu__body-inner">
+          {{{compile pageBody}}}
+        </div>
+      </div>
+      {{else if body}}
       <div class="menu__body boxmenu__body">
         <div class="menu__body-inner boxmenu__body-inner">
           {{{compile body}}}
