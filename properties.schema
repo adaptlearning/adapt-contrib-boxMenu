@@ -8,7 +8,7 @@
       "type": "string",
       "required": true,
       "title": "Item count label",
-      "default": "Item {{itemNumber}} of {{totalItems}}",
+      "default": "Item {{_nthChild}} of {{_totalChild}}",
       "inputType": "Text",
       "validators": [],
       "translatable": true
