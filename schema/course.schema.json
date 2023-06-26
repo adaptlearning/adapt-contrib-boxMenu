@@ -21,6 +21,14 @@
                   "title": "Box Menu",
                   "default": {},
                   "properties": {
+                    "itemCount": {
+                      "type": "string",
+                      "title": "Item count label",
+                      "default": "Item {{_nthChild}} of {{_totalChild}}",
+                      "_adapt": {
+                        "translatable": true
+                      }
+                    },
                     "durationLabel": {
                       "type": "string",
                       "title": "Duration label",
