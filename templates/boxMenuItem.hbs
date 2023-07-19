@@ -40,7 +40,7 @@
       </div>
 
       <div class="menu-item__button-container boxmenu-item__button-container">
-        <button class="btn-text menu-item__button boxmenu-item__button js-btn-click{{#if _isVisited}} is-visited{{/if}}{{#if _isLocked}} is-locked{{/if}}" aria-label="{{#if _isComplete}}{{_globals._accessibility._ariaLabels.complete}}. {{else _isVisited}}{{_globals._accessibility._ariaLabels.visited}}. {{/if}}{{linkText}} {{title}}. {{{compile _globals._menu._boxMenu.itemCount}}}.{{#if _isOptional}} {{_globals._accessibility._ariaLabels.optional}}{{/if}}"{{#if _isLocked}} aria-disabled="true"{{/if}}>
+        <button class="btn-text menu-item__button boxmenu-item__button js-btn-click{{#if _isVisited}} is-visited{{/if}}{{#if _isLocked}} is-locked{{/if}}" aria-label="{{#if _isComplete}}{{_globals._accessibility._ariaLabels.complete}}. {{else _isVisited}}{{_globals._accessibility._ariaLabels.visited}}. {{/if}}{{linkText}} {{title}}. {{{compile _globals._menu._boxMenu.itemCount}}}.{{#if _isOptional}} {{_globals._accessibility._ariaLabels.optional}}{{/if}}"{{#if _isLocked}} aria-disabled="true"{{/if}} role="link">
           {{{linkText}}}
         </button>
 
