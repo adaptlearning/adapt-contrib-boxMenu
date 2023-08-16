@@ -15,12 +15,9 @@ class BoxMenuGroupView extends MenuItemView {
   }
 
   updateItemCount() {
-    let nthChild = 0;
     const models = this.model.getChildren().models;
     models.forEach(model => {
-      nthChild++;
       model.set({
-        _nthChild: nthChild,
         _totalChild: models.length
       });
     });
