@@ -11,6 +11,13 @@ class BoxMenuGroupView extends MenuItemView {
     _.defer(this.addChildren.bind(this));
     this.$el.imageready(this.setReadyStatus.bind(this));
     this.$el.parents('.boxmenu__item-container').addClass('has-groups');
+    this.updateItemCount();
+  }
+
+  updateItemCount() {
+    const models = this.model.getChildren().models;
+    const totalChildren = models.length;
+    models.forEach(model => model.set('_totalChild', totalChildren));
   }
 }
 
