@@ -12,39 +12,43 @@
       </div>
       {{/if}}
 
-      {{#if displayTitle}}
-      <div class="menu__title boxmenu__title">
-        <div class="menu__title-inner boxmenu__title-inner js-heading"></div>
-      </div>
-      {{/if}}
+      <div class="menu__header-content">
 
-      {{#if subtitle}}
-      <div class="menu__subtitle boxmenu__subtitle">
-        <div class="menu__subtitle-inner boxmenu__subtitle-inner">
-          {{{compile subtitle}}}
+        {{#if displayTitle}}
+        <div class="menu__title boxmenu__title">
+          <div class="menu__title-inner boxmenu__title-inner js-heading"></div>
         </div>
-      </div>
-      {{/if}}
+        {{/if}}
 
-      {{#any body pageBody}}
-      <div class="menu__body boxmenu__body">
-        <div class="menu__body-inner boxmenu__body-inner">
-          {{#if pageBody}}
-          {{{compile pageBody}}}
-          {{else}}
-          {{{compile body}}}
-          {{/if}}
+        {{#if subtitle}}
+        <div class="menu__subtitle boxmenu__subtitle">
+          <div class="menu__subtitle-inner boxmenu__subtitle-inner">
+            {{{compile subtitle}}}
+          </div>
         </div>
-      </div>
-      {{/any}}
+        {{/if}}
 
-      {{#if instruction}}
-      <div class="menu__instruction boxmenu__instruction">
-        <div class="menu__instruction-inner boxmenu__instruction-inner">
-          {{{compile instruction}}}
+        {{#any body pageBody}}
+        <div class="menu__body boxmenu__body">
+          <div class="menu__body-inner boxmenu__body-inner">
+            {{#if pageBody}}
+            {{{compile pageBody}}}
+            {{else}}
+            {{{compile body}}}
+            {{/if}}
+          </div>
         </div>
+        {{/any}}
+
+        {{#if instruction}}
+        <div class="menu__instruction boxmenu__instruction">
+          <div class="menu__instruction-inner boxmenu__instruction-inner">
+            {{{compile instruction}}}
+          </div>
+        </div>
+        {{/if}}
+
       </div>
-      {{/if}}
 
     </div>
   </div>
