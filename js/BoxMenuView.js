@@ -24,7 +24,6 @@ class BoxMenuView extends MenuView {
     let nthChild = 0;
     const models = this.model.getChildren().models;
     const totalChild = this.model.getChildren().where({
-      _isAvailable: true,
       _isHidden: false
     }).length;
 
