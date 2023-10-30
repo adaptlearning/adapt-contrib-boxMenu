@@ -23,6 +23,10 @@ class BoxMenuView extends MenuView {
   addChildren() {
     let nthChild = 0;
     const models = this.model.getChildren().models;
+    const totalChild = this.model.getChildren().where({
+      _isHidden: false
+    }).length;
+
     const childViews = [];
     models.forEach(model => {
       if (!model.get('_isAvailable')) return;
@@ -35,7 +39,7 @@ class BoxMenuView extends MenuView {
       nthChild++;
       model.set({
         _nthChild: nthChild,
-        _totalChild: models.length
+        _totalChild: totalChild
       });
 
       const ChildView = (model.get('_type') === 'menu' && model.get('_boxMenu') && model.get('_boxMenu')._renderAsGroup) ?
