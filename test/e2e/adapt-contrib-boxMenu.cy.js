@@ -1,32 +1,37 @@
 describe('Menu Page', () => {
   beforeEach(() => {
+    cy.getData().then(data => {
+      this.data = data;
+    });
     cy.visit('/');
   });
 
-  it('should have the correct title and description for every language', () => {
-    cy.getData().then(data => {
-      it(`should have the title '${data.course.displayTitle}' and correct description`, () => {
-        cy.get('.menu__title-inner').should('contain', data.course.displayTitle);
-        cy.get('.menu__body-inner').should('contain', data.course.body);
-      });
+  it(`should have the title '${this.data.course.displayTitle}' and correct description`, () => {
+    const { body, displayTitle } = this.data.course
+
+    it(`should have the title '${displayTitle}' and correct description`, () => {
+      cy.get('.menu__title-inner').should('contain', displayTitle);
+      cy.get('.menu__body-inner').should('contain', body);
     });
   });
 
-  it('should display the correct menu tiles for every language', () => {
-    cy.getData().then(data => {
-      it(`should display ${data.contentObjects.length} menu tiles`, () => {
-        cy.get('.menu-item').should('have.length', data.contentObjects.length)
-      });
+  it(`should display ${this.data.contentObjects.length} menu tiles`, () => {
+    const { contentObjects } = this.data;
 
-      it(`should display the correct information in the tile`, () => {
-        cy.get('.menu-item').each(($item, index) => {
-          cy.get($item).within(() => {
-            cy.get('.menu-item__title').should('contain', data.contentObjects[index].displayTitle)
-            cy.get('.menu-item__body').should('contain', data.contentObjects[index].body)
-            cy.get('button').should('contain', data.contentObjects[index].linkText)
-            cy.get('.menu-item__duration').should('contain', data.contentObjects[index].duration)
-            cy.get('img.menu-item__image').should('exist').should('have.attr', 'src', data.contentObjects[index]._graphic.src)
-          });
+    it(`should display ${contentObjects.length} menu tiles`, () => {
+      cy.get('.menu-item').should('have.length', contentObjects.length)
+    });
+
+    it(`should display the correct information in the tile`, () => {
+      cy.get('.menu-item').each(($item, index) => {
+        cy.get($item).within(() => {
+          const { _graphic, body, displayTitle, duration, linkText } = contentObjects[index]
+
+          cy.get('.menu-item__title').should('contain', displayTitle)
+          cy.get('.menu-item__body').should('contain', body)
+          cy.get('button').should('contain', linkText)
+          cy.get('.menu-item__duration').should('contain', duration)
+          cy.get('img.menu-item__image').should('exist').should('have.attr', 'src', _graphic.src)
         });
       });
     });
