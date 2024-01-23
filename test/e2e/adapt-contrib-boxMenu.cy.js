@@ -15,16 +15,38 @@ describe('Menu Page', () => {
     cy.get('.menu-item').should('have.length', this.data.contentObjects.length);
   });
 
-  it(`should display the correct information in each tile`, () => {
+  it('should display the correct information in each tile', () => {
     cy.get('.menu-item').each(($item, index) => {
       cy.get($item).within(() => {
         const { _graphic, body, displayTitle, duration, linkText } = this.data.contentObjects[index];
 
-        cy.get('.menu-item__title').should('contain', displayTitle);
-        cy.get('.menu-item__body').should('contain', body);
-        cy.get('button').should('contain', linkText);
-        cy.get('.menu-item__duration').should('contain', duration);
-        cy.get('img.menu-item__image').should('exist').should('have.attr', 'src', _graphic.src);
+        if (_graphic?.src) {
+          cy.get('img.menu-item__image').should('exist').should('have.attr', 'src', _graphic.src);
+        } else {
+          cy.get('img.menu-item__image').should('not.exist');
+        }
+
+        if (displayTitle) {
+          cy.get('.menu-item__title').should('contain', displayTitle);
+        } else {
+          cy.get('.menu-item__title').should('not.exist');
+        }
+
+        cy.get('menu-item__details-inner').should('contain', _graphic.alt);
+
+        if (body) {
+          cy.get('.menu-item__body').should('contain', body);
+        } else {
+          cy.get('.menu-item__body').should('not.exist');
+        }
+
+        if (duration) {
+          cy.get('.menu-item__duration').should('contain', duration);
+        } else {
+          cy.get('.menu-item__duration').should('not.exist');
+        }
+
+        cy.get('button.boxmenu-item__button').should('contain', linkText);
       });
     });
   });
