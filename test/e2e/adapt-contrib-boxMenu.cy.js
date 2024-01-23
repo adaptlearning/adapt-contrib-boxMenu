@@ -7,10 +7,8 @@ describe('Menu Page', () => {
   it(`should have the title '${this.data.course.displayTitle}' and correct description`, () => {
     const { body, displayTitle } = this.data.course;
 
-    it(`should have the title '${displayTitle}' and correct description`, () => {
-      cy.get('.menu__title-inner').should('contain', displayTitle);
-      cy.get('.menu__body-inner').should('contain', body);
-    });
+    cy.get('.menu__title-inner').should('contain', displayTitle);
+    cy.get('.menu__body-inner').should('contain', body);
   });
 
   it(`should display the correct number (${this.data.contentObjects.length}) of menu tiles`, () => {
