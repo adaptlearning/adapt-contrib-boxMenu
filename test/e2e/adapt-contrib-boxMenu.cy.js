@@ -1,23 +1,25 @@
-describe('Menu Page', () => {
-  beforeEach(() => {
-    cy.getData();
-    cy.visit('/');
+describe('Menu Page', function () {
+  beforeEach(function () {
+    cy.getData().then(function (data) {
+      this.data = data;
+      cy.visit('/');
+    });
   });
 
-  it(`should have the title '${this.data.course.displayTitle}' and correct description`, () => {
+  it(`should have the correct title and description`, function () {
     const { body, displayTitle } = this.data.course;
 
     cy.get('.menu__title-inner').should('contain', displayTitle);
     cy.get('.menu__body-inner').should('contain', body);
   });
 
-  it(`should display the correct number (${this.data.contentObjects.length}) of menu tiles`, () => {
+  it(`should display the correct number of menu tiles`, function () {
     cy.get('.menu-item').should('have.length', this.data.contentObjects.length);
   });
 
-  it('should display the correct information in each tile', () => {
+  it('should display the correct information in each tile', function () {
     cy.get('.menu-item').each(($item, index) => {
-      cy.get($item).within(() => {
+      cy.get($item).within(function () {
         const { _graphic, body, displayTitle, duration, linkText } = this.data.contentObjects[index];
 
         if (_graphic?.src) {
@@ -32,7 +34,7 @@ describe('Menu Page', () => {
           cy.get('.menu-item__title').should('not.exist');
         }
 
-        cy.get('menu-item__details-inner').should('contain', _graphic.alt);
+        cy.get('.menu-item__details-inner').should('contain', _graphic.alt);
 
         if (body) {
           cy.get('.menu-item__body').should('contain', body);
