@@ -4,6 +4,10 @@ describe('Menu Page', function () {
     cy.visit('/');
   });
 
+  it(`should be an instance of a box menu content object`, function () {
+    cy.get('.boxmenu').should('exist');
+  });
+
   it(`should have the correct title and description`, function () {
     const { body, displayTitle } = this.data.course;
 
