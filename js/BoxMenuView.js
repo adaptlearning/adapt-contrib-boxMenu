@@ -1,4 +1,5 @@
 import Adapt from 'core/js/adapt';
+import device from 'core/js/device';
 import MenuView from 'core/js/views/menuView';
 import BoxMenuItemView from './BoxMenuItemView';
 import BoxMenuGroupView from './BoxMenuGroupView';
@@ -74,7 +75,7 @@ class BoxMenuView extends MenuView {
     const config = this.model.get('_boxMenu');
     const backgroundImages = config?._backgroundImage;
     if (!backgroundImages) return;
-    const backgroundImage = backgroundImages[`_${Adapt.device.screenSize}`] ?? backgroundImages._small;
+    const backgroundImage = backgroundImages[`_${device.screenSize}`] ?? backgroundImages._small;
     this.$el.toggleClass('has-bg-image', Boolean(backgroundImage));
     this.$background
       .css('background-image', backgroundImage ? 'url(' + backgroundImage + ')' : '');
@@ -121,7 +122,7 @@ class BoxMenuView extends MenuView {
   setHeaderBackgroundImage(config, $header) {
     const backgroundImages = config._backgroundImage;
     if (!backgroundImages) return;
-    const backgroundImage = backgroundImages[`_${Adapt.device.screenSize}`] ?? backgroundImages._small;
+    const backgroundImage = backgroundImages[`_${device.screenSize}`] ?? backgroundImages._small;
     $header.toggleClass('has-bg-image', Boolean(backgroundImage));
     this.$headerBackground.css('background-image', backgroundImage ? 'url(' + backgroundImage + ')' : '');
   }
@@ -139,7 +140,7 @@ class BoxMenuView extends MenuView {
   setHeaderMinimumHeight(config, $header) {
     const minimumHeights = config._minimumHeights;
     if (!minimumHeights) return;
-    const minimumHeight = minimumHeights[`_${Adapt.device.screenSize}`] ?? minimumHeights._small;
+    const minimumHeight = minimumHeights[`_${device.screenSize}`] ?? minimumHeights._small;
     $header
       .toggleClass('has-min-height', Boolean(minimumHeight))
       .css('min-height', minimumHeight ? minimumHeight + 'px' : '');
