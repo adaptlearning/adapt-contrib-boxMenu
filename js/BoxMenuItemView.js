@@ -8,7 +8,7 @@ class BoxMenuItemView extends MenuItemView {
     return [
       super.className(),
       'boxmenu-item',
-      this.areEntireItemsClickable() && 'is-entire-item-clickable'
+      this.areEntireItemsClickable && 'is-entire-item-clickable'
     ].filter(Boolean).join(' ');
   }
 
@@ -51,7 +51,7 @@ class BoxMenuItemView extends MenuItemView {
     router.navigateToElement(this.model.get('_id'));
   }
 
-  areEntireItemsClickable() {
+  get areEntireItemsClickable() {
     return Adapt.course.get('_boxMenu')?._areEntireItemsClickable;
   }
 }
