@@ -48,6 +48,12 @@
           "title": "Box Menu",
           "default": {},
           "properties": {
+            "_areEntireItemsClickable": {
+              "type": "boolean",
+              "title": "Are entire menu items clickable?",
+              "description": "Enable this option to make each menu item clickable. The menu item button will be hidden.",
+              "default": false
+            },
             "_graphic": {
               "type": "object",
               "title": "Menu logo image",

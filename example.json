@@ -1,5 +1,6 @@
     // course.json
     "_boxMenu": {
+        "_areEntireItemsClickable": false,
         "_graphic": {
             "alt": "",
             "_src": "course/en/images/logo-graphic.jpg"
@@ -35,8 +36,7 @@
                 "_medium": 400,
                 "_small": 200
             }
-        },
-        "_areEntireItemsClickable": true,
+        }
     }
 
     // contentObjects.json
