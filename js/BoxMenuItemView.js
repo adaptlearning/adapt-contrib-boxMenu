@@ -13,12 +13,6 @@ class BoxMenuItemView extends MenuItemView {
   }
 
   events() {
-    if (this.areEntireItemsClickable()) {
-      return {
-        click: 'onClickMenuItemButton'
-      };
-    }
-
     return {
       'click .js-btn-click': 'onClickMenuItemButton'
     };
@@ -58,7 +52,6 @@ class BoxMenuItemView extends MenuItemView {
   }
 
   areEntireItemsClickable() {
-    console.log(this.model);
     return Adapt.course.get('_boxMenu')?._areEntireItemsClickable;
   }
 }
