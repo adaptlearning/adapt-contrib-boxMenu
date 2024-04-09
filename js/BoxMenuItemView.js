@@ -18,25 +18,6 @@ class BoxMenuItemView extends MenuItemView {
     };
   }
 
-  attributes() {
-    const globals = Adapt.course.get('_globals');
-    const ariaLabels = globals._accessibility._ariaLabels;
-    const data = this.model.toJSON();
-    const itemCount = globals._menu._boxMenu.itemCount;
-    const ariaLabel = [
-      this.model.get('_isComplete') && ariaLabels.complete,
-      this.model.get('_isVisited') && ariaLabels.visited,
-      this.model.get('_isOptional') && ariaLabels.optional,
-      Handlebars.compile(itemCount)(data)
-    ].filter(Boolean).join(' ');
-
-    return {
-      ...super.attributes(),
-      role: 'link',
-      'aria-label': ariaLabel
-    };
-  }
-
   onClickMenuItemButton(event) {
     if (event && event.preventDefault) event.preventDefault();
     if (this.model.get('_isLocked')) return;
