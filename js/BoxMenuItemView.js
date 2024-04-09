@@ -5,11 +5,11 @@ import router from 'core/js/router';
 class BoxMenuItemView extends MenuItemView {
 
   className() {
-    let classes = `${super.className()} boxmenu-item`;
-    if (this.areEntireItemsClickable()) {
-      classes += ' is-entire-item-clickable';
-    }
-    return classes;
+    return [
+      super.className(),
+      'boxmenu-item',
+      this.areEntireItemsClickable() && 'is-entire-item-clickable'
+    ].filter(Boolean).join(' ');
   }
 
   events() {
@@ -60,6 +60,7 @@ class BoxMenuItemView extends MenuItemView {
   }
 
   areEntireItemsClickable() {
+    console.log(this.model);
     return Adapt.course.get('_boxMenu')?._areEntireItemsClickable;
   }
 }
