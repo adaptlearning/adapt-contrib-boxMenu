@@ -20,28 +20,19 @@ class BoxMenuItemView extends MenuItemView {
 
   attributes() {
     const globals = Adapt.course.get('_globals');
-    const ariaLabel = [];
-
-    if (this.model.get('_isComplete')) {
-      ariaLabel.push(globals._accessibility._ariaLabels.complete);
-    }
-
-    if (this.model.get('_isVisited')) {
-      ariaLabel.push(globals._accessibility._ariaLabels.visited);
-    }
-
-    if (this.model.get('_isOptional')) {
-      ariaLabel.push(globals._accessibility._ariaLabels.optional);
-    }
-
+    const ariaLabels = globals._accessibility._ariaLabels;
     const data = this.model.toJSON();
-    const itemCount = Handlebars.compile(globals._menu._boxMenu.itemCount)(data);
-    ariaLabel.push(itemCount);
+    const ariaLabel = [
+      this.model.get('_isComplete') && ariaLabels.complete,
+      this.model.get('_isVisited') && ariaLabels.visited,
+      this.model.get('_isOptional') && ariaLabels.optional,
+      Handlebars.compile(globals._menu._boxMenu.itemCount)(data)
+    ].filter(Boolean).join(' ');
 
     return {
       ...super.attributes(),
       role: 'link',
-      'aria-label': ariaLabel.join(' ')
+      'aria-label': ariaLabel
     };
   }
 
