@@ -5,8 +5,11 @@ import router from 'core/js/router';
 class BoxMenuItemView extends MenuItemView {
 
   className() {
-    const entireItemClickable = this.areEntireItemsClickable() ? 'is-entire-item-clickable' : '';
-    return `${super.className()} boxmenu-item ${entireItemClickable}`;
+    let classes = `${super.className()} boxmenu-item`;
+    if (this.areEntireItemsClickable()) {
+      classes += ' is-entire-item-clickable';
+    }
+    return classes;
   }
 
   events() {
@@ -14,11 +17,11 @@ class BoxMenuItemView extends MenuItemView {
       return {
         click: 'onClickMenuItemButton'
       };
-    } else {
-      return {
-        'click .js-btn-click': 'onClickMenuItemButton'
-      };
     }
+
+    return {
+      'click .js-btn-click': 'onClickMenuItemButton'
+    };
   }
 
   attributes() {
