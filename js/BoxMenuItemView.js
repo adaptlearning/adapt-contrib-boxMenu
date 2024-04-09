@@ -44,10 +44,8 @@ class BoxMenuItemView extends MenuItemView {
     const itemCount = Handlebars.compile(globals._menu._boxMenu.itemCount)(data);
     ariaLabel.push(itemCount);
 
-    const parentAttributes = Object.getPrototypeOf(BoxMenuItemView.prototype).attributes.call(this);
-
     return {
-      ...parentAttributes,
+      ...super.attributes(),
       role: 'link',
       'aria-label': ariaLabel.join(' ')
     };
