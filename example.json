@@ -5,6 +5,7 @@
             "_src": "course/en/images/logo-graphic.jpg"
         },
         "_backgroundImage": {
+            "_xlarge": "course/en/images/example.jpg",
             "_large": "course/en/images/example.jpg",
             "_medium": "course/en/images/example.jpg",
             "_small": "course/en/images/example.jpg"
@@ -21,6 +22,7 @@
                 "_instruction": "right"
             },
             "_backgroundImage": {
+                "_xlarge": "course/en/images/example.jpg",
                 "_large": "course/en/images/example.jpg",
                 "_medium": "course/en/images/example.jpg",
                 "_small": "course/en/images/example.jpg"
@@ -31,6 +33,7 @@
                 "_backgroundPosition": "center center"
             },
             "_minimumHeights": {
+                "_xlarge": 600,
                 "_large": 600,
                 "_medium": 400,
                 "_small": 200

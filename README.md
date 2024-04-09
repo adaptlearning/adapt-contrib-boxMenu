@@ -47,7 +47,9 @@ The following attributes, set within *course.json*, configure the defaults for *
 
 >>**alt** (string): A description of the image; required when it has meaning that must be conveyed to the learner. For 'decorative' images, leave this blank
 
->**\_backgroundImage** (object): The backgroundImage object that contains values for **\_large**, **\_medium** and **\_small**.
+>**\_backgroundImage** (object): The backgroundImage object that contains values for **\_xlarge**, **\_large**, **\_medium** and **\_small**.
+
+>>**\_xlarge** (string): File name (including path) of the image used with xlarge device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
 
 >>**\_large** (string): File name (including path) of the image used with large device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
 
@@ -79,7 +81,9 @@ Left: Aligns the body to the left of the container. Center: Aligns the body to t
 >>>**\_instruction**: (string): This attribute defines the alignment of the instruction element. Properties include **left**, **center**, and **right**.
 Left: Aligns the instruction to the left of the container. Center: Aligns the instruction to the center of the container. Right: Aligns the instruction to the right of the container. The alignment automatically inverses for right-to-left languages. The default is `` which inherits the natural page direction.
 
->>**\_backgroundImage** (object): The backgroundImage object that contains values for **\_large**, **\_medium** and **\_small**.
+>>**\_backgroundImage** (object): The backgroundImage object that contains values for **\_xlarge**, **\_large**, **\_medium** and **\_small**.
+
+>>>**\_xlarge** (string): File name (including path) of the image used with xlarge device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
 
 >>>**\_large** (string): File name (including path) of the image used with large device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
 
@@ -98,7 +102,9 @@ Auto: The background image is displayed in its original size. Cover: Resize the 
 >>>**\_backgroundPosition** (string): This attribute sets the position of the background image. Options include **left top**, **left center**, **left bottom**, **center top**, **center center**, **center bottom**, **right top**, **right center**, **right bottom**.
 The first value is the horizontal position and the second value is the vertical.
 
->>**\_minimumHeights** (object): The minimumHeights object that contains values for **\_large**, **\_medium** and **\_small**.
+>>**\_minimumHeights** (object): The minimumHeights object that contains values for **\_xlarge**, **\_large**, **\_medium** and **\_small**.
+
+>>>**\_xlarge** (number): The minimum height should only be used in instances where the menu header height needs to be greater than the content e.g. to prevent a background image being cropped.
 
 >>>**\_large** (number): The minimum height should only be used in instances where the menu header height needs to be greater than the content e.g. to prevent a background image being cropped.
 
