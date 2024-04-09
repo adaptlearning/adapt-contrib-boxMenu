@@ -22,11 +22,12 @@ class BoxMenuItemView extends MenuItemView {
     const globals = Adapt.course.get('_globals');
     const ariaLabels = globals._accessibility._ariaLabels;
     const data = this.model.toJSON();
+    const itemCount = globals._menu._boxMenu.itemCount;
     const ariaLabel = [
       this.model.get('_isComplete') && ariaLabels.complete,
       this.model.get('_isVisited') && ariaLabels.visited,
       this.model.get('_isOptional') && ariaLabels.optional,
-      Handlebars.compile(globals._menu._boxMenu.itemCount)(data)
+      Handlebars.compile(itemCount)(data)
     ].filter(Boolean).join(' ');
 
     return {
