@@ -1,7 +1,7 @@
 {{import_globals}}
 {{import_adapt}}
 
-<div class="menu-item__inner boxmenu-item__inner{{#if Adapt.course._boxMenu._areEntireItemsClickable}} js-btn-click{{/if}}"{{#if Adapt.course._boxMenu._areEntireItemsClickable}} role="link"{{#if _isLocked}} aria-disabled="true"{{/if}}>
+<div class="menu-item__inner boxmenu-item__inner{{#if Adapt.course._boxMenu._areEntireItemsClickable}} js-btn-click{{/if}}"{{#if Adapt.course._boxMenu._areEntireItemsClickable}} role="link"{{/if}}{{#if _isLocked}} aria-disabled="true"{{/if}}>
   {{#if Adapt.course._boxMenu._areEntireItemsClickable}}
   <span class="aria-label">
     {{#if _isComplete}}{{_globals._accessibility._ariaLabels.complete}}. {{else _isVisited}}{{_globals._accessibility._ariaLabels.visited}}. {{/if}}{{#if _isLocked}}{{_globals._accessibility._ariaLabels.locked}}. {{else}}{{linkText}} {{/if}}{{title}}. {{{compile _globals._menu._boxMenu.itemCount}}}.{{#if _isOptional}} {{_globals._accessibility._ariaLabels.optional}}{{/if}}
