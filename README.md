@@ -106,7 +106,7 @@ The first value is the horizontal position and the second value is the vertical.
 
 >>>**\_small** (number): The minimum height should only be used in instances where the menu header height needs to be greater than the content e.g. to prevent a background image being cropped.
 
->>>**__areEntireItemsClickable** (boolean): Indicates if the entire menu item can be clicked to go to the target page. If `true`, the View button will be hidden.
+>>>**\_areEntireItemsClickable** (boolean): Indicates if the entire menu item can be clicked to go to the target page. If `true`, the View button will be hidden.
 
 **\_globals** (object): The Globals object that contains value for **\_menu**.
 
