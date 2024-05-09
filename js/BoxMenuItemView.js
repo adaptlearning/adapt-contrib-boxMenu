@@ -14,12 +14,14 @@ class BoxMenuItemView extends MenuItemView {
 
   events() {
     return {
-      'click .js-btn-click': 'onClickMenuItemButton'
+      'click .js-btn-click': 'onClickMenuItemButton',
+      'keydown .js-btn-click': 'onClickMenuItemButton'
     };
   }
 
   onClickMenuItemButton(event) {
     if (event && event.preventDefault) event.preventDefault();
+    if (event.code && (event.code !== 'Space' && event.code !== 'Enter')) return;
     if (this.model.get('_isLocked')) return;
     router.navigateToElement(this.model.get('_id'));
   }
