@@ -20,8 +20,8 @@ class BoxMenuItemView extends MenuItemView {
   }
 
   onClickMenuItemButton(event) {
-    if (event && event.preventDefault) event.preventDefault();
-    if (event.code && (event.code !== 'Space' && event.code !== 'Enter')) return;
+    if (event.code && !['Space', 'Enter'].includes(event.code)) return;
+    if (event?.preventDefault) event.preventDefault();
     if (this.model.get('_isLocked')) return;
     router.navigateToElement(this.model.get('_id'));
   }
