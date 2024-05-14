@@ -1,5 +1,6 @@
     // course.json
     "_boxMenu": {
+        "_areEntireItemsClickable": false,
         "_graphic": {
             "alt": "",
             "_src": "course/en/images/logo-graphic.jpg"

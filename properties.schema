@@ -37,6 +37,15 @@
               "type": "object",
               "required": false,
               "properties": {
+                "_areEntireItemsClickable": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": false,
+                  "title": "Are entire menu items clickable?",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Enable this option to make each menu item clickable. The menu item button will be hidden."
+                },
                 "_graphic": {
                   "type": "object",
                   "required": false,
