@@ -40,7 +40,8 @@ class BoxMenuView extends MenuView {
       nthChild++;
       model.set({
         _nthChild: nthChild,
-        _totalChild: totalChild
+        _totalChild: totalChild,
+        _isRendered: true
       });
 
       const ChildView = (model.get('_type') === 'menu' && model.get('_boxMenu') && model.get('_boxMenu')._renderAsGroup) ?
@@ -59,31 +60,27 @@ class BoxMenuView extends MenuView {
   }
 
   setStyles() {
-    this.addBackgroundLayer();
     this.setBackgroundImage();
-    this.setBackgroundStyles();
     this.processHeader();
   }
 
-  addBackgroundLayer() {
+  setBackgroundImage() {
+    const backgroundImages = this.model.get('_boxmenu')?._backgroundImage;
+    if (!backgroundImages) return;
+
+    // add background layer
     if (this.$el.find(' > .background').length) return;
     this.$background = $('<div class="background" aria-hidden="true"></div>')
       .prependTo(this.$el);
-  }
 
-  setBackgroundImage() {
-    const config = this.model.get('_boxMenu');
-    const backgroundImages = config?._backgroundImage;
-    if (!backgroundImages) return;
+    // set background image
     const backgroundImage = backgroundImages[`_${device.screenSize}`] ?? backgroundImages._small;
     this.$el.toggleClass('has-bg-image', Boolean(backgroundImage));
     this.$background
       .css('background-image', backgroundImage ? 'url(' + backgroundImage + ')' : '');
-  }
 
-  setBackgroundStyles() {
-    const config = this.model.get('_boxMenu');
-    const styles = config?._backgroundStyles;
+    // set background styles
+    const styles = this.model.get('_boxmenu')._backgroundStyles;
     if (!styles) return;
     this.$background.css({
       'background-repeat': styles._backgroundRepeat,
@@ -93,19 +90,16 @@ class BoxMenuView extends MenuView {
   }
 
   processHeader() {
-    const config = this.model.get('_boxMenu');
-    const header = config?._menuHeader;
+    const header = this.model.get('_boxmenu')?._menuHeader;
     if (!header) return;
     const $header = this.$('.menu__header');
     this.setHeaderTextAlignment(header);
-    this.addHeaderBackgroundLayer($header);
     this.setHeaderBackgroundImage(header, $header);
-    this.setHeaderBackgroundStyles(header, $header);
     this.setHeaderMinimumHeight(header, $header);
   }
 
-  setHeaderTextAlignment(config) {
-    const textAlignment = config._textAlignment;
+  setHeaderTextAlignment(header) {
+    const textAlignment = header._textAlignment;
     if (!textAlignment) return;
 
     if (textAlignment._title) this.$el.addClass(`title-align-${textAlignment._title}`);
@@ -113,22 +107,22 @@ class BoxMenuView extends MenuView {
     if (textAlignment._instruction) this.$el.addClass(`instruction-align-${textAlignment._instruction}`);
   }
 
-  addHeaderBackgroundLayer($header) {
+  setHeaderBackgroundImage(header, $header) {
+    const backgroundImages = header._backgroundImage;
+    if (!backgroundImages) return;
+
+    // add header background layer
     if ($header.find(' > .background').length) return;
     this.$headerBackground = $('<div class="background" aria-hidden="true"></div>')
       .prependTo($header);
-  }
 
-  setHeaderBackgroundImage(config, $header) {
-    const backgroundImages = config._backgroundImage;
-    if (!backgroundImages) return;
+    // add header background image
     const backgroundImage = backgroundImages[`_${device.screenSize}`] ?? backgroundImages._small;
     $header.toggleClass('has-bg-image', Boolean(backgroundImage));
     this.$headerBackground.css('background-image', backgroundImage ? 'url(' + backgroundImage + ')' : '');
-  }
 
-  setHeaderBackgroundStyles(config, $header) {
-    const styles = config._backgroundStyles;
+    // set header background styles
+    const styles = header._backgroundStyles;
     if (!styles) return;
     this.$headerBackground.css({
       'background-repeat': styles._backgroundRepeat,
@@ -137,8 +131,8 @@ class BoxMenuView extends MenuView {
     });
   }
 
-  setHeaderMinimumHeight(config, $header) {
-    const minimumHeights = config._minimumHeights;
+  setHeaderMinimumHeight(header, $header) {
+    const minimumHeights = header._minimumHeights;
     if (!minimumHeights) return;
     const minimumHeight = minimumHeights[`_${device.screenSize}`] ?? minimumHeights._small;
     $header
@@ -148,6 +142,6 @@ class BoxMenuView extends MenuView {
 
 }
 
-BoxMenuView.template = 'boxMenu';
+BoxMenuView.template = 'boxMenu.jsx';
 
 export default BoxMenuView;
