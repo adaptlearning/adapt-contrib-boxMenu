@@ -22,9 +22,7 @@ export default function BoxMenuItem (props) {
   const _globals = Adapt.course.get('_globals');
 
   const durationLabel = duration
-    ? _globals?._menu?._boxMenu?.durationLabel
-      ? `${_globals?._menu?._boxMenu?.durationLabel.trim()} ${duration}`
-      : duration
+    ? [_globals?._menu?._boxMenu?.durationLabel.trim(), duration].filter(Boolean).join(' ')
     : '';
 
   
