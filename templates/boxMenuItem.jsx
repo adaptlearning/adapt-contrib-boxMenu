@@ -25,7 +25,6 @@ export default function BoxMenuItem (props) {
     ? [_globals?._menu?._boxMenu?.durationLabel.trim(), duration].filter(Boolean).join(' ')
     : '';
 
-  
   const visited = _isVisited ? _globals?._accessibility?._ariaLabels?.visited : '';
   const complete = _isComplete ? _globals?._accessibility?._ariaLabels?.complete : '';
   const completion = complete || visited;
@@ -33,7 +32,7 @@ export default function BoxMenuItem (props) {
   const optional = _isOptional ? _globals?._accessibility?._ariaLabels?.optional : '';
   const itemCount = compile(_globals?._menu?._boxMenu?.itemCount || '', { _nthChild, _totalChild });
   const ariaLabel = [
-    completion, locked, `${title}.`, `${itemCount}.`, ${optional}
+    completion, locked, `${title}.`, `${itemCount}.`, `${optional}`
   ].filter(Boolean).join(' ');
 
   return (
