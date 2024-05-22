@@ -1,5 +1,6 @@
 import React from 'react';
 import Adapt from 'core/js/adapt';
+import device from 'core/js/device';
 import { classes, compile } from 'core/js/reactHelpers';
 
 export default function BoxMenu (props) {
@@ -11,7 +12,16 @@ export default function BoxMenu (props) {
     instruction
   } = props;
 
-  const _graphic = Adapt.course.get('_boxmenu')?._graphic;
+  const _boxmenu = Adapt.course.get('_boxmenu');
+
+  // set menu logo image
+  const _graphic = _boxmenu?._graphic;
+
+  // set background image
+  const backgroundImages = _boxmenu?._backgroundImage;
+  const backgroundImage = backgroundImages[`_${device.screenSize}`] ?? backgroundImages._small;
+  // set background styles
+  const styles = _boxmenu._backgroundStyles;
 
   return (
 
@@ -19,6 +29,20 @@ export default function BoxMenu (props) {
 
       {(displayTitle || subtitle || body || instruction) &&
         <div className="menu__header boxmenu__header">
+
+          {backgroundImages &&
+            <div
+              className="background"
+              aria-hidden="true"
+              style={{
+                backgroundImage: 'url(' + backgroundImage + ')',
+                backgroundRepeat: styles._backgroundRepeat,
+                backgroundSize: styles._backgroundSize,
+                backgroundPosition: styles._backgroundPosition
+              }}
+            />
+          }
+
           <div className="menu__header-inner boxmenu__header-inner">
 
             {_graphic?._src &&

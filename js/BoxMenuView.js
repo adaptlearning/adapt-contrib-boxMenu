@@ -7,7 +7,13 @@ import BoxMenuGroupView from './BoxMenuGroupView';
 class BoxMenuView extends MenuView {
 
   className() {
-    return `${super.className()} boxmenu`;
+    const backgroundImages = this.model.get('_boxmenu')?._backgroundImage;
+    const backgroundImage = backgroundImages[`_${device.screenSize}`] ?? backgroundImages._small;
+
+    return [
+      `${super.className()} boxmenu`,
+      backgroundImage && 'has-bg-image'
+    ].join(' ');
   }
 
   initialize() {
@@ -60,33 +66,7 @@ class BoxMenuView extends MenuView {
   }
 
   setStyles() {
-    this.setBackgroundImage();
     this.processHeader();
-  }
-
-  setBackgroundImage() {
-    const backgroundImages = this.model.get('_boxmenu')?._backgroundImage;
-    if (!backgroundImages) return;
-
-    // add background layer
-    if (this.$el.find(' > .background').length) return;
-    this.$background = $('<div class="background" aria-hidden="true"></div>')
-      .prependTo(this.$el);
-
-    // set background image
-    const backgroundImage = backgroundImages[`_${device.screenSize}`] ?? backgroundImages._small;
-    this.$el.toggleClass('has-bg-image', Boolean(backgroundImage));
-    this.$background
-      .css('background-image', backgroundImage ? 'url(' + backgroundImage + ')' : '');
-
-    // set background styles
-    const styles = this.model.get('_boxmenu')._backgroundStyles;
-    if (!styles) return;
-    this.$background.css({
-      'background-repeat': styles._backgroundRepeat,
-      'background-size': styles._backgroundSize,
-      'background-position': styles._backgroundPosition
-    });
   }
 
   processHeader() {
