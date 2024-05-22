@@ -34,7 +34,9 @@ export default function BoxMenuItem (props) {
   const locked = _isLocked ? _globals?._accessibility?._ariaLabels?.locked : linkText;
   const optional = _isOptional ? _globals?._accessibility?._ariaLabels?.optional : '';
   const itemCount = compile(_globals?._menu?._boxMenu?.itemCount || '', { _nthChild, _totalChild });
-  const ariaLabel = `${completion} ${locked} ${title}. ${itemCount}. ${optional}`;
+  const ariaLabel = [
+    completion, locked, `${title}.`, `${itemCount}.`, ${optional}
+  ].filter(Boolean).join(' ');
 
   return (
     <div className="menu-item__inner boxmenu-item__inner">
