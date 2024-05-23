@@ -72,9 +72,7 @@ class BoxMenuView extends MenuView {
   processHeader() {
     const header = this.model.get('_boxmenu')?._menuHeader;
     if (!header) return;
-    const $header = this.$('.menu__header');
     this.setHeaderTextAlignment(header);
-    this.setHeaderMinimumHeight(header, $header);
   }
 
   setHeaderTextAlignment(header) {
@@ -84,15 +82,6 @@ class BoxMenuView extends MenuView {
     if (textAlignment._title) this.$el.addClass(`title-align-${textAlignment._title}`);
     if (textAlignment._body) this.$el.addClass(`body-align-${textAlignment._body}`);
     if (textAlignment._instruction) this.$el.addClass(`instruction-align-${textAlignment._instruction}`);
-  }
-
-  setHeaderMinimumHeight(header, $header) {
-    const minimumHeights = header._minimumHeights;
-    if (!minimumHeights) return;
-    const minimumHeight = minimumHeights[`_${device.screenSize}`] ?? minimumHeights._small;
-    $header
-      .toggleClass('has-min-height', Boolean(minimumHeight))
-      .css('min-height', minimumHeight ? minimumHeight + 'px' : '');
   }
 
 }
