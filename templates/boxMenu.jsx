@@ -24,8 +24,8 @@ export default function BoxMenu (props) {
   // set header background styles
   const headerBackgroundStyles = header._backgroundStyles;
   // set header minimum height
-  const minimumHeights = header._minimumHeights;
-  const minimumHeight = minimumHeights[`_${device.screenSize}`] ?? minimumHeights._small;
+  const headerMinimumHeights = header._minimumHeights;
+  const headerMinimumHeight = headerMinimumHeights[`_${device.screenSize}`] ?? headerMinimumHeights._small;
 
   return (
     <div className="menu__inner boxmenu__inner">
@@ -36,9 +36,9 @@ export default function BoxMenu (props) {
             'menu__header',
             'boxmenu__header',
             headerBackgroundImage && 'has-bg-image',
-            minimumHeight && 'has-min-height'
+            headerMinimumHeight && 'has-min-height'
           ])}
-          style={ minimumHeight ? { minHeight: minimumHeight + 'px' } : null }
+          style={ headerMinimumHeight ? { minHeight: headerMinimumHeight + 'px' } : null }
         >
 
           {headerBackgroundImages &&
