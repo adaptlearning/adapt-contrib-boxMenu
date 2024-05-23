@@ -17,6 +17,12 @@ export default function BoxMenu (props) {
   // set menu logo image
   const _graphic = _boxmenu?._graphic;
 
+  // set menu background image
+  const backgroundImages = _boxmenu?._backgroundImage;
+  const backgroundImage = backgroundImages[`_${device.screenSize}`] ?? backgroundImages._small;
+  // set menu background styles
+  const styles = _boxmenu._backgroundStyles;
+
   // set header background image
   const header = _boxmenu?._menuHeader;
   const headerBackgroundImages = header._backgroundImage;
@@ -28,9 +34,23 @@ export default function BoxMenu (props) {
   const headerMinimumHeight = headerMinimumHeights[`_${device.screenSize}`] ?? headerMinimumHeights._small;
 
   return (
-    <div className="menu__inner boxmenu__inner">
+    <>
+      {backgroundImages &&
+      <div
+        className="background"
+        aria-hidden="true"
+        style={{
+          backgroundImage: 'url(' + backgroundImage + ')',
+          backgroundRepeat: styles._backgroundRepeat,
+          backgroundSize: styles._backgroundSize,
+          backgroundPosition: styles._backgroundPosition
+        }}
+      />
+      }
 
-      {(displayTitle || subtitle || body || instruction) &&
+      <div className="menu__inner boxmenu__inner">
+
+        {(displayTitle || subtitle || body || instruction) &&
         <div
           className={classes([
             'menu__header',
@@ -42,29 +62,29 @@ export default function BoxMenu (props) {
         >
 
           {headerBackgroundImages &&
-            <div
-              className="background"
-              aria-hidden="true"
-              style={{
-                backgroundImage: 'url(' + headerBackgroundImage + ')',
-                backgroundRepeat: headerBackgroundStyles._backgroundRepeat,
-                backgroundSize: headerBackgroundStyles._backgroundSize,
-                backgroundPosition: headerBackgroundStyles._backgroundPosition
-              }}
-            />
+          <div
+            className="background"
+            aria-hidden="true"
+            style={{
+              backgroundImage: 'url(' + headerBackgroundImage + ')',
+              backgroundRepeat: headerBackgroundStyles._backgroundRepeat,
+              backgroundSize: headerBackgroundStyles._backgroundSize,
+              backgroundPosition: headerBackgroundStyles._backgroundPosition
+            }}
+          />
           }
 
           <div className="menu__header-inner boxmenu__header-inner">
 
             {_graphic?._src &&
-              <div className="menu__image-container boxmenu__image-container">
-                <img
-                  className="menu__image boxmenu__image"
-                  src={_graphic?._src}
-                  alt={_graphic?.alt}
-                  aria-hidden={!_graphic?.alt ? true : null}
-                />
-              </div>
+            <div className="menu__image-container boxmenu__image-container">
+              <img
+                className="menu__image boxmenu__image"
+                src={_graphic?._src}
+                alt={_graphic?.alt}
+                aria-hidden={!_graphic?.alt ? true : null}
+              />
+            </div>
             }
 
             <div className="menu__header-content">
@@ -86,9 +106,9 @@ export default function BoxMenu (props) {
               }
 
               {(body || pageBody) &&
-                <div className="menu__body boxmenu__body">
-                  <div className="menu__body-inner boxmenu__body-inner" dangerouslySetInnerHTML={{ __html: compile(pageBody || body) }} />
-                </div>
+              <div className="menu__body boxmenu__body">
+                <div className="menu__body-inner boxmenu__body-inner" dangerouslySetInnerHTML={{ __html: compile(pageBody || body) }} />
+              </div>
               }
 
               {instruction &&
@@ -101,21 +121,22 @@ export default function BoxMenu (props) {
 
           </div>
         </div>
-      }
+        }
 
-      <div className="menu__item-container boxmenu__item-container">
-        <div
-          className={classes([
-            'menu__item-container-inner',
-            'boxmenu__item-container-inner',
-            'js-children'
-          ])}
-          role="list"
-        >
-          {/* Menu items render here */}
+        <div className="menu__item-container boxmenu__item-container">
+          <div
+            className={classes([
+              'menu__item-container-inner',
+              'boxmenu__item-container-inner',
+              'js-children'
+            ])}
+            role="list"
+          >
+            {/* Menu items render here */}
+          </div>
         </div>
-      </div>
 
-    </div>
+      </div>
+    </>
   );
 }
