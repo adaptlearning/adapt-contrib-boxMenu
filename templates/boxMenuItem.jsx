@@ -39,9 +39,9 @@ export default function BoxMenuItem (props) {
     <div className="menu-item__inner boxmenu-item__inner">
 
       {_graphic?.src &&
-        <div className="menu-item__image-container boxmenu-item__image-container">
-          <img className="menu-item__image boxmenu-item__image" src={_graphic.src} aria-hidden="true" />
-        </div>
+      <div className="menu-item__image-container boxmenu-item__image-container">
+        <img className="menu-item__image boxmenu-item__image" src={_graphic.src} aria-hidden="true" />
+      </div>
       }
 
       <div className="menu-item__details boxmenu-item__details">
@@ -60,20 +60,20 @@ export default function BoxMenuItem (props) {
           }
 
           {_graphic?.alt &&
-            <span className="aria-label" dangerouslySetInnerHTML={{ __html: compile(_graphic.alt) }} />
+          <span className="aria-label" dangerouslySetInnerHTML={{ __html: compile(_graphic.alt) }} />
           }
 
           {body &&
-            <div className="menu-item__body boxmenu-item__body">
-              <div className="menu-item__body-inner boxmenu-item__body-inner" dangerouslySetInnerHTML={{ __html: compile(body) }}>
-              </div>
+          <div className="menu-item__body boxmenu-item__body">
+            <div className="menu-item__body-inner boxmenu-item__body-inner" dangerouslySetInnerHTML={{ __html: compile(body) }}>
             </div>
+          </div>
           }
 
           {duration &&
-            <div className="menu-item__duration boxmenu-item__duration">
-              <div className="menu-item__duration-inner boxmenu-item__duration-inner" dangerouslySetInnerHTML={{ __html: compile(durationLabel, props) }} />
-            </div>
+          <div className="menu-item__duration boxmenu-item__duration">
+            <div className="menu-item__duration-inner boxmenu-item__duration-inner" dangerouslySetInnerHTML={{ __html: compile(durationLabel, props) }} />
+          </div>
           }
 
           <div className={classes([

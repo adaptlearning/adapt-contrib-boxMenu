@@ -16,15 +16,15 @@ export default function BoxMenuGroup (props) {
         <div className="menu-group__header-inner boxmenu-group__header-inner">
 
           {displayTitle &&
-            <div className="menu-group__title boxmenu-group__title">
-              <div className={classes([
-                'menu-group__title-inner',
-                'boxmenu-group__title-inner',
-                'js-heading'
-              ])}
-              data-a11y-heading-type="menuGroup"
-              />
-            </div>
+          <div className="menu-group__title boxmenu-group__title">
+            <div className={classes([
+              'menu-group__title-inner',
+              'boxmenu-group__title-inner',
+              'js-heading'
+            ])}
+            data-a11y-heading-type="menuGroup"
+            />
+          </div>
           }
 
           {body &&
