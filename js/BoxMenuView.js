@@ -9,10 +9,14 @@ class BoxMenuView extends MenuView {
   className() {
     const backgroundImages = this.model.get('_boxmenu')?._backgroundImage;
     const backgroundImage = backgroundImages[`_${device.screenSize}`] ?? backgroundImages._small;
+    const textAlignment = this.model.get('_boxmenu')?._menuHeader?._textAlignment;
 
     return [
       `${super.className()} boxmenu`,
-      backgroundImage && 'has-bg-image'
+      backgroundImage && 'has-bg-image',
+      textAlignment._title && `title-align-${textAlignment._title}`,
+      textAlignment._body && `body-align-${textAlignment._body}`,
+      textAlignment._instruction && `instruction-align-${textAlignment._instruction}`
     ].join(' ');
   }
 
@@ -66,22 +70,7 @@ class BoxMenuView extends MenuView {
   }
 
   setStyles() {
-    this.processHeader();
-  }
 
-  processHeader() {
-    const header = this.model.get('_boxmenu')?._menuHeader;
-    if (!header) return;
-    this.setHeaderTextAlignment(header);
-  }
-
-  setHeaderTextAlignment(header) {
-    const textAlignment = header._textAlignment;
-    if (!textAlignment) return;
-
-    if (textAlignment._title) this.$el.addClass(`title-align-${textAlignment._title}`);
-    if (textAlignment._body) this.$el.addClass(`body-align-${textAlignment._body}`);
-    if (textAlignment._instruction) this.$el.addClass(`instruction-align-${textAlignment._instruction}`);
   }
 
 }
