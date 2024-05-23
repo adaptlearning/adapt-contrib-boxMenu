@@ -17,12 +17,6 @@ export default function BoxMenu (props) {
   // set menu logo image
   const _graphic = _boxmenu?._graphic;
 
-  // set background image
-  const backgroundImages = _boxmenu?._backgroundImage;
-  const backgroundImage = backgroundImages[`_${device.screenSize}`] ?? backgroundImages._small;
-  // set background styles
-  const styles = _boxmenu._backgroundStyles;
-
   // set header background image
   const header = _boxmenu?._menuHeader;
   const headerBackgroundImages = header._backgroundImage;
@@ -34,7 +28,6 @@ export default function BoxMenu (props) {
   const minimumHeight = minimumHeights[`_${device.screenSize}`] ?? minimumHeights._small;
 
   return (
-
     <div className="menu__inner boxmenu__inner">
 
       {(displayTitle || subtitle || body || instruction) &&
