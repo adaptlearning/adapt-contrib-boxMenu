@@ -74,7 +74,6 @@ class BoxMenuView extends MenuView {
     if (!header) return;
     const $header = this.$('.menu__header');
     this.setHeaderTextAlignment(header);
-    this.setHeaderBackgroundImage(header, $header);
     this.setHeaderMinimumHeight(header, $header);
   }
 
@@ -85,30 +84,6 @@ class BoxMenuView extends MenuView {
     if (textAlignment._title) this.$el.addClass(`title-align-${textAlignment._title}`);
     if (textAlignment._body) this.$el.addClass(`body-align-${textAlignment._body}`);
     if (textAlignment._instruction) this.$el.addClass(`instruction-align-${textAlignment._instruction}`);
-  }
-
-  setHeaderBackgroundImage(header, $header) {
-    const backgroundImages = header._backgroundImage;
-    if (!backgroundImages) return;
-
-    // add header background layer
-    if ($header.find(' > .background').length) return;
-    this.$headerBackground = $('<div class="background" aria-hidden="true"></div>')
-      .prependTo($header);
-
-    // add header background image
-    const backgroundImage = backgroundImages[`_${device.screenSize}`] ?? backgroundImages._small;
-    $header.toggleClass('has-bg-image', Boolean(backgroundImage));
-    this.$headerBackground.css('background-image', backgroundImage ? 'url(' + backgroundImage + ')' : '');
-
-    // set header background styles
-    const styles = header._backgroundStyles;
-    if (!styles) return;
-    this.$headerBackground.css({
-      'background-repeat': styles._backgroundRepeat,
-      'background-size': styles._backgroundSize,
-      'background-position': styles._backgroundPosition
-    });
   }
 
   setHeaderMinimumHeight(header, $header) {

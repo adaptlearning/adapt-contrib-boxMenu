@@ -23,22 +23,33 @@ export default function BoxMenu (props) {
   // set background styles
   const styles = _boxmenu._backgroundStyles;
 
+  // set header background image
+  const header = _boxmenu?._menuHeader;
+  const headerBackgroundImages = header._backgroundImage;
+  const headerBackgroundImage = headerBackgroundImages[`_${device.screenSize}`] ?? headerBackgroundImages._small;
+  // set background styles
+  const headerBackgroundStyles = header._backgroundStyles;
+
   return (
 
     <div className="menu__inner boxmenu__inner">
 
       {(displayTitle || subtitle || body || instruction) &&
-        <div className="menu__header boxmenu__header">
+        <div className={classes([
+          'menu__header',
+          'boxmenu__header',
+          headerBackgroundImage && 'has-bg-image'
+        ])}>
 
-          {backgroundImages &&
+          {headerBackgroundImages &&
             <div
               className="background"
               aria-hidden="true"
               style={{
-                backgroundImage: 'url(' + backgroundImage + ')',
-                backgroundRepeat: styles._backgroundRepeat,
-                backgroundSize: styles._backgroundSize,
-                backgroundPosition: styles._backgroundPosition
+                backgroundImage: 'url(' + headerBackgroundImage + ')',
+                backgroundRepeat: headerBackgroundStyles._backgroundRepeat,
+                backgroundSize: headerBackgroundStyles._backgroundSize,
+                backgroundPosition: headerBackgroundStyles._backgroundPosition
               }}
             />
           }
