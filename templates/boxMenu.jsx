@@ -12,7 +12,7 @@ export default function BoxMenu (props) {
     instruction
   } = props;
 
-  const _boxmenu = Adapt.course.get('_boxmenu');
+  const _boxMenu = Adapt.course.get('_boxMenu');
 
   // set menu logo image
   const _graphic = _boxmenu?._graphic;
