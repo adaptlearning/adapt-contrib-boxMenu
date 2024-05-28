@@ -39,7 +39,10 @@ export default function BoxMenuGroup (props) {
 
           {instruction &&
           <div className="menu-group__instruction boxmenu-group__instruction">
-            <div className="menu-group__instruction-inner boxmenu-group__instruction-inner" dangerouslySetInnerHTML={{ __html: compile(instruction) }} />
+            <div 
+              className="menu-group__instruction-inner boxmenu-group__instruction-inner" 
+              dangerouslySetInnerHTML={{ __html: compile(instruction) }} 
+            />
           </div>
           }
 
