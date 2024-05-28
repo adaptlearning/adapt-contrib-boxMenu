@@ -119,7 +119,10 @@ export default function BoxMenu (props) {
 
               {instruction &&
               <div className="menu__instruction boxmenu__instruction">
-                <div className="menu__instruction-inner boxmenu__instruction-inner" dangerouslySetInnerHTML={{ __html: compile(instruction) }}/>
+                <div 
+                className="menu__instruction-inner boxmenu__instruction-inner" 
+                dangerouslySetInnerHTML={{ __html: compile(instruction) }}
+              />
               </div>
               }
 
