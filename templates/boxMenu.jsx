@@ -87,7 +87,7 @@ export default function BoxMenu (props) {
             </div>
             }
 
-            <div className="menu__header-content">
+            <div className="menu__header-content boxmenu__header-content">
 
               {displayTitle &&
               <div className="menu__title boxmenu__title">
