@@ -30,7 +30,10 @@ export default function BoxMenuGroup (props) {
 
           {body &&
           <div className="menu-group__body boxmenu-group__body">
-            <div className="menu-group__body-inner boxmenu-group__body-inner" dangerouslySetInnerHTML={{ __html: compile(body) }} />
+            <div 
+              className="menu-group__body-inner boxmenu-group__body-inner" 
+              dangerouslySetInnerHTML={{ __html: compile(body) }} 
+            />
           </div>
           }
 
