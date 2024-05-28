@@ -8,7 +8,7 @@ class BoxMenuView extends MenuView {
   className() {
     const backgroundImages = this.model.get('_boxMenu')?._backgroundImage;
     const backgroundImage = backgroundImages[`_${device.screenSize}`] ?? backgroundImages._small;
-    const textAlignment = this.model.get('_boxmenu')?._menuHeader?._textAlignment;
+    const textAlignment = this.model.get('_boxMenu')?._menuHeader?._textAlignment;
 
     return [
       `${super.className()} boxmenu`,
