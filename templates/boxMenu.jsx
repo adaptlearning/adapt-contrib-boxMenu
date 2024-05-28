@@ -110,7 +110,10 @@ export default function BoxMenu (props) {
 
               {(body || pageBody) &&
               <div className="menu__body boxmenu__body">
-                <div className="menu__body-inner boxmenu__body-inner" dangerouslySetInnerHTML={{ __html: compile(pageBody || body) }} />
+                <div 
+                  className="menu__body-inner boxmenu__body-inner" 
+                  dangerouslySetInnerHTML={{ __html: compile(pageBody || body) }} 
+                />
               </div>
               }
 
