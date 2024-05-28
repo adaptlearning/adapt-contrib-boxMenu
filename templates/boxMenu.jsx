@@ -15,7 +15,7 @@ export default function BoxMenu (props) {
   const _boxMenu = Adapt.course.get('_boxMenu');
 
   // set menu logo image
-  const _graphic = _boxmenu?._graphic;
+  const _graphic = _boxMenu?._graphic;
 
   // set menu background image
   const backgroundImages = _boxmenu?._backgroundImage;
