@@ -17,7 +17,8 @@ export default function BoxMenuGroup (props) {
 
           {displayTitle &&
           <div className="menu-group__title boxmenu-group__title">
-            <div className={classes([
+            <div 
+              className={classes([
               'menu-group__title-inner',
               'boxmenu-group__title-inner',
               'js-heading'
