@@ -55,11 +55,11 @@ export default function BoxMenuItem (props) {
           <div className="menu-item__title boxmenu-item__title">
             <div 
               className={classes([
-              'menu-item__title-inner',
-              'boxmenu-item__title-inner',
-              'js-heading'
-            ])}
-            data-a11y-heading-type="menuItem">
+                'menu-item__title-inner',
+                'boxmenu-item__title-inner',
+                'js-heading'
+              ])}
+              data-a11y-heading-type="menuItem">
             </div>
           </div>
           }
