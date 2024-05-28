@@ -24,7 +24,7 @@ export default function BoxMenu (props) {
   const styles = _boxMenu._backgroundStyles;
 
   // set header background image
-  const header = _boxmenu?._menuHeader;
+  const header = _boxMenu?._menuHeader;
   const headerBackgroundImages = header._backgroundImage;
   const headerBackgroundImage = headerBackgroundImages[`_${device.screenSize}`] ?? headerBackgroundImages._small;
   // set header background styles
