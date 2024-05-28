@@ -83,7 +83,10 @@ export default function BoxMenuItem (props) {
 
           {duration &&
           <div className="menu-item__duration boxmenu-item__duration">
-            <div className="menu-item__duration-inner boxmenu-item__duration-inner" dangerouslySetInnerHTML={{ __html: compile(durationLabel, props) }} />
+            <div 
+              className="menu-item__duration-inner boxmenu-item__duration-inner" 
+              dangerouslySetInnerHTML={{ __html: compile(durationLabel, props) }} 
+            />
           </div>
           }
 
