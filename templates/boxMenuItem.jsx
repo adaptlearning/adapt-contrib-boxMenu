@@ -65,7 +65,10 @@ export default function BoxMenuItem (props) {
           }
 
           {_graphic?.alt &&
-          <span className="aria-label" dangerouslySetInnerHTML={{ __html: compile(_graphic.alt) }} />
+          <span 
+            className="aria-label" 
+            dangerouslySetInnerHTML={{ __html: compile(_graphic.alt) }} 
+          />
           }
 
           {body &&
