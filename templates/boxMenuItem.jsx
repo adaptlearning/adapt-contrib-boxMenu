@@ -53,7 +53,8 @@ export default function BoxMenuItem (props) {
 
           {displayTitle &&
           <div className="menu-item__title boxmenu-item__title">
-            <div className={classes([
+            <div 
+              className={classes([
               'menu-item__title-inner',
               'boxmenu-item__title-inner',
               'js-heading'
