@@ -40,7 +40,11 @@ export default function BoxMenuItem (props) {
 
       {_graphic?.src &&
       <div className="menu-item__image-container boxmenu-item__image-container">
-        <img className="menu-item__image boxmenu-item__image" src={_graphic.src} aria-hidden="true" />
+        <img 
+          className="menu-item__image boxmenu-item__image" 
+          src={_graphic.src} 
+          aria-hidden="true" 
+        />
       </div>
       }
 
