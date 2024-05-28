@@ -6,7 +6,7 @@ import BoxMenuGroupView from './BoxMenuGroupView';
 class BoxMenuView extends MenuView {
 
   className() {
-    const backgroundImages = this.model.get('_boxmenu')?._backgroundImage;
+    const backgroundImages = this.model.get('_boxMenu')?._backgroundImage;
     const backgroundImage = backgroundImages[`_${device.screenSize}`] ?? backgroundImages._small;
     const textAlignment = this.model.get('_boxmenu')?._menuHeader?._textAlignment;
 
