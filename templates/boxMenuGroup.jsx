@@ -17,31 +17,31 @@ export default function BoxMenuGroup (props) {
 
           {displayTitle &&
           <div className="menu-group__title boxmenu-group__title">
-            <div 
+            <div
               className={classes([
-              'menu-group__title-inner',
-              'boxmenu-group__title-inner',
-              'js-heading'
-            ])}
-            data-a11y-heading-type="menuGroup"
+                'menu-group__title-inner',
+                'boxmenu-group__title-inner',
+                'js-heading'
+              ])}
+              data-a11y-heading-type="menuGroup"
             />
           </div>
           }
 
           {body &&
           <div className="menu-group__body boxmenu-group__body">
-            <div 
-              className="menu-group__body-inner boxmenu-group__body-inner" 
-              dangerouslySetInnerHTML={{ __html: compile(body) }} 
+            <div
+              className="menu-group__body-inner boxmenu-group__body-inner"
+              dangerouslySetInnerHTML={{ __html: compile(body) }}
             />
           </div>
           }
 
           {instruction &&
           <div className="menu-group__instruction boxmenu-group__instruction">
-            <div 
-              className="menu-group__instruction-inner boxmenu-group__instruction-inner" 
-              dangerouslySetInnerHTML={{ __html: compile(instruction) }} 
+            <div
+              className="menu-group__instruction-inner boxmenu-group__instruction-inner"
+              dangerouslySetInnerHTML={{ __html: compile(instruction) }}
             />
           </div>
           }

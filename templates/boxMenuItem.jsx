@@ -40,10 +40,10 @@ export default function BoxMenuItem (props) {
 
       {_graphic?.src &&
       <div className="menu-item__image-container boxmenu-item__image-container">
-        <img 
-          className="menu-item__image boxmenu-item__image" 
-          src={_graphic.src} 
-          aria-hidden="true" 
+        <img
+          className="menu-item__image boxmenu-item__image"
+          src={_graphic.src}
+          aria-hidden="true"
         />
       </div>
       }
@@ -53,7 +53,7 @@ export default function BoxMenuItem (props) {
 
           {displayTitle &&
           <div className="menu-item__title boxmenu-item__title">
-            <div 
+            <div
               className={classes([
                 'menu-item__title-inner',
                 'boxmenu-item__title-inner',
@@ -65,27 +65,26 @@ export default function BoxMenuItem (props) {
           }
 
           {_graphic?.alt &&
-          <span 
-            className="aria-label" 
-            dangerouslySetInnerHTML={{ __html: compile(_graphic.alt) }} 
+          <span
+            className="aria-label"
+            dangerouslySetInnerHTML={{ __html: compile(_graphic.alt) }}
           />
           }
 
           {body &&
           <div className="menu-item__body boxmenu-item__body">
-            <div 
-              className="menu-item__body-inner boxmenu-item__body-inner" 
+            <div
+              className="menu-item__body-inner boxmenu-item__body-inner"
               dangerouslySetInnerHTML={{ __html: compile(body) }}
             />
-            </div>
           </div>
           }
 
           {duration &&
           <div className="menu-item__duration boxmenu-item__duration">
-            <div 
-              className="menu-item__duration-inner boxmenu-item__duration-inner" 
-              dangerouslySetInnerHTML={{ __html: compile(durationLabel, props) }} 
+            <div
+              className="menu-item__duration-inner boxmenu-item__duration-inner"
+              dangerouslySetInnerHTML={{ __html: compile(durationLabel, props) }}
             />
           </div>
           }
