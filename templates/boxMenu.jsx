@@ -18,7 +18,7 @@ export default function BoxMenu (props) {
   const _graphic = _boxMenu?._graphic;
 
   // set menu background image
-  const backgroundImages = _boxmenu?._backgroundImage;
+  const backgroundImages = _boxMenu?._backgroundImage;
   const backgroundImage = backgroundImages[`_${device.screenSize}`] ?? backgroundImages._small;
   // set menu background styles
   const styles = _boxmenu._backgroundStyles;
