@@ -20,6 +20,6 @@ class BoxMenuItemView extends MenuItemView {
   }
 }
 
-BoxMenuItemView.template = 'boxMenuItem';
+BoxMenuItemView.template = 'boxMenuItem.jsx';
 
 export default BoxMenuItemView;

@@ -23,7 +23,7 @@ class BoxMenuGroupView extends MenuItemView {
   }
 }
 
-BoxMenuGroupView.template = 'boxMenuGroup';
+BoxMenuGroupView.template = 'boxMenuGroup.jsx';
 BoxMenuGroupView.childContainer = '.js-group-children';
 BoxMenuGroupView.childView = BoxMenuItemView;
 
