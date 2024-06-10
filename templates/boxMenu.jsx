@@ -40,7 +40,7 @@ export default function BoxMenu (props) {
         className="background"
         aria-hidden="true"
         style={{
-          backgroundImage: 'url(' + backgroundImage + ')',
+          backgroundImage: backgroundImage && 'url(' + backgroundImage + ')',
           backgroundRepeat: styles._backgroundRepeat,
           backgroundSize: styles._backgroundSize,
           backgroundPosition: styles._backgroundPosition
@@ -66,7 +66,7 @@ export default function BoxMenu (props) {
             className="background"
             aria-hidden="true"
             style={{
-              backgroundImage: 'url(' + headerBackgroundImage + ')',
+              backgroundImage: headerBackgroundImage && 'url(' + headerBackgroundImage + ')',
               backgroundRepeat: headerBackgroundStyles._backgroundRepeat,
               backgroundSize: headerBackgroundStyles._backgroundSize,
               backgroundPosition: headerBackgroundStyles._backgroundPosition
