@@ -19,19 +19,19 @@ export default function BoxMenu (props) {
 
   // set menu background image
   const backgroundImages = _boxMenu?._backgroundImage;
-  const backgroundImage = backgroundImages[`_${device.screenSize}`] ?? backgroundImages._small;
+  const backgroundImage = backgroundImages?.[`_${device.screenSize}`] ?? backgroundImages?._small;
   // set menu background styles
-  const styles = _boxMenu._backgroundStyles;
+  const styles = _boxMenu?._backgroundStyles || {};
 
   // set header background image
   const header = _boxMenu?._menuHeader;
-  const headerBackgroundImages = header._backgroundImage;
-  const headerBackgroundImage = headerBackgroundImages[`_${device.screenSize}`] ?? headerBackgroundImages._small;
+  const headerBackgroundImages = header?._backgroundImage;
+  const headerBackgroundImage = headerBackgroundImages?.[`_${device.screenSize}`] ?? headerBackgroundImages?._small;
   // set header background styles
-  const headerBackgroundStyles = header._backgroundStyles;
+  const headerBackgroundStyles = header?._backgroundStyles || {};
   // set header minimum height
-  const headerMinimumHeights = header._minimumHeights;
-  const headerMinimumHeight = headerMinimumHeights[`_${device.screenSize}`] ?? headerMinimumHeights._small;
+  const headerMinimumHeights = header?._minimumHeights;
+  const headerMinimumHeight = headerMinimumHeights?.[`_${device.screenSize}`] ?? headerMinimumHeights?._small;
 
   return (
     <>
