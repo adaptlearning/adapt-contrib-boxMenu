@@ -40,7 +40,6 @@ export default function BoxMenuItem (props) {
 
       <templates.image {..._graphic}
         classNamePrefixes={['menu-item', 'boxmenu-item']}
-        attributionClassNamePrefixes={['menu-item', 'boxmenu-item']}
         alt={null}
       />
 
