@@ -1,6 +1,6 @@
 import React from 'react';
 import Adapt from 'core/js/adapt';
-import { classes, compile } from 'core/js/reactHelpers';
+import { classes, compile, templates } from 'core/js/reactHelpers';
 
 export default function BoxMenuItem (props) {
 
@@ -38,15 +38,11 @@ export default function BoxMenuItem (props) {
   return (
     <div className="menu-item__inner boxmenu-item__inner">
 
-      {_graphic?.src &&
-      <div className="menu-item__image-container boxmenu-item__image-container">
-        <img
-          className="menu-item__image boxmenu-item__image"
-          src={_graphic.src}
-          aria-hidden="true"
-        />
-      </div>
-      }
+      <templates.image {..._graphic}
+        classNamePrefixes={['menu-item', 'boxmenu-item']}
+        alt={null}
+        attribution={null}
+      />
 
       <div className="menu-item__details boxmenu-item__details">
         <div className="menu-item__details-inner boxmenu-item__details-inner">
