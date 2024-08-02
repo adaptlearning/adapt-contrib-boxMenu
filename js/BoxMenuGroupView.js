@@ -11,6 +11,8 @@ class BoxMenuGroupView extends MenuItemView {
     _.defer(this.addChildren.bind(this));
     this.$el.imageready(this.setReadyStatus.bind(this));
     this.$el.parents('.boxmenu__item-container').addClass('has-groups');
+    this.$el.parents('.streamingmenu__item-container').addClass('has-groups');
+    this.$('.js-group-children').attr('aria-labelledby', this.model.get('_id') + '-heading');
     this.updateItemCount();
   }
 
