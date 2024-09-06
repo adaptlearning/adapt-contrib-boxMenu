@@ -4,7 +4,7 @@ describe('Menu Page', function () {
       if (!config?.build?.includes?.includes('adapt-contrib-boxMenu')) {
         this.skip();
       }
-    }
+    });
   });
 
   beforeEach(function () {
