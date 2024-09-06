@@ -12,7 +12,7 @@ describe('Menu Page', function () {
       this.boxMenus = this.data.filter(item => item._component === 'boxMenu' || item._view === 'boxMenu');
       if (this.boxMenus.length) return;
       this.boxMenus = this.data.filter(item => ['course', 'menu'].includes(item._type));
-    }
+    });
 
     cy.visit('/');
   });
