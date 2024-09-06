@@ -1,13 +1,17 @@
 describe('Menu Page', function () {
-  beforeEach(function () {
+  before(function() {
     cy.getConfig().then((config) => {
-      if (!config?.build?.includes?.includes('adapt-contrib-boxMenu')) return;
+      if (!config?.build?.includes?.includes('adapt-contrib-boxMenu')) {
+        this.skip();
+      }
+    }
+  });
 
-      cy.getData().then((data) => {
-        this.boxMenus = this.data.filter(item => item._component === 'boxMenu' || item._view === 'boxMenu');
-        if (this.boxMenus.length) return;
-        this.boxMenus = this.data.filter(item => ['course', 'menu'].includes(item._type));
-      });
+  beforeEach(function () {
+    cy.getData().then((data) => {
+      this.boxMenus = this.data.filter(item => item._component === 'boxMenu' || item._view === 'boxMenu');
+      if (this.boxMenus.length) return;
+      this.boxMenus = this.data.filter(item => ['course', 'menu'].includes(item._type));
     }
 
     cy.visit('/');
