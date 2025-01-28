@@ -9,11 +9,14 @@ const getGlobals = content => {
   return getCourse(content)?._globals?._menu?._boxMenu;
 };
 
-describe('Box menu - v2.0.0 to v3.0.0', async () => {
+describe('Box menu - v2.0.2 to v2.0.3', async () => {
+
+  // https://github.com/adaptlearning/adapt-contrib-boxMenu/compare/v2.0.2..v2.0.3
+
   let courseBoxMenuGlobals;
   const durationLabel = 'Duration:';
 
-  whereFromPlugin('Box menu - from v2.0.0', { name: 'adapt-contrib-boxMenu', version: '<3.0.0' });
+  whereFromPlugin('Box menu - from v2.0.2', { name: 'adapt-contrib-boxMenu', version: '<2.0.3' });
 
   mutateContent('Box menu - add globals if missing', async (content) => {
     courseBoxMenuGlobals = getGlobals(content);
@@ -32,5 +35,5 @@ describe('Box menu - v2.0.0 to v3.0.0', async () => {
     return getGlobals(content).durationLabel === durationLabel;
   });
 
-  updatePlugin('Box menu - update to v3.0.0', { name: 'adapt-contrib-boxMenu', version: '3.0.0', framework: '">=2.1' });
+  updatePlugin('Box menu - update to v2.0.3', { name: 'adapt-contrib-boxMenu', version: '2.0.3', framework: '">=2.0.0' });
 });
