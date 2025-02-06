@@ -1,7 +1,8 @@
 import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
+import _ from 'lodash';
 
 const getCourse = content => {
-  const [course] = content.filter(({ _type }) => _type === 'course');
+  const course = content.find(({ _type }) => _type === 'course');
   return course;
 };
 
@@ -33,7 +34,9 @@ describe('Box menu - v6.0.2 to v6.1.0', async () => {
   });
 
   checkContent('Box menu - check _textAlignment attribute', async (content) => {
-    return course._boxMenu._menuHeader._textAlignment === defaultTextAlignment;
+    const isValid = _.isEqual(course._boxMenu._menuHeader._textAlignment, defaultTextAlignment);
+    if (!isValid) throw new Error('Box menu - course attribute _textAlignment');
+    return true;
   });
 
   updatePlugin('Box menu - update to v6.1.0', { name: 'adapt-contrib-boxMenu', version: '6.1.0', framework: '">=5.22.6' });
@@ -62,7 +65,9 @@ describe('Box menu - v6.2.0 to v6.2.1', async () => {
   });
 
   checkContent('Box menu - check _graphic attribute', async (content) => {
-    return course._boxMenu._graphic === defaultGraphic;
+    const isValid = _.isEqual(course._boxMenu._graphic, defaultGraphic);
+    if (!isValid) throw new Error('Box menu - course attribute _graphic');
+    return true;
   });
 
   updatePlugin('Box menu - update to v6.2.1', { name: 'adapt-contrib-boxMenu', version: '6.2.1', framework: '">=5.24.2' });
@@ -99,17 +104,21 @@ describe('Box menu - v6.3.8 to v6.3.9', async () => {
   });
 
   checkContent('Box menu - check _xlarge attribute', async (content) => {
-    return (
+    const isValid = (
       !course._boxMenu._backgroundImage ||
       course._boxMenu._backgroundImage._xlarge === ''
     );
+    if (!isValid) throw new Error('Box menu - course attribute _xlarge');
+    return true;
   });
 
   checkContent('Box menu - check _xlarge attribute for _menuHeader', async (content) => {
-    return (
+    const isValid = (
       !course._boxMenu._menuHeader?._backgroundImage ||
       course._boxMenu._menuHeader._backgroundImage._xlarge === ''
     );
+    if (!isValid) throw new Error('Box menu - course attribute _xlarge');
+    return true;
   });
 
   updatePlugin('Box menu - update to v6.3.9', { name: 'adapt-contrib-boxMenu', version: '6.3.9', framework: '">=5.24.2' });
@@ -119,17 +128,15 @@ describe('Box menu - v6.3.9 to v6.3.10', async () => {
 
   // https://github.com/adaptlearning/adapt-contrib-boxMenu/compare/v6.3.9..v6.3.10
 
-  let courseBoxMenuGlobals;
+  let course, courseBoxMenuGlobals;
   const itemCount = 'Item {{_nthChild}} of {{_totalChild}}';
 
   whereFromPlugin('Box menu - from v6.3.9', { name: 'adapt-contrib-boxMenu', version: '<v6.3.10' });
 
   mutateContent('Box menu - add globals if missing', async (content) => {
-    courseBoxMenuGlobals = getGlobals(content);
-    if (courseBoxMenuGlobals) return true;
-    const course = getCourse(content);
-    course._globals._menu = course._globals._menu || {};
-    courseBoxMenuGlobals = course._globals._menu._boxMenu = {};
+    course = getCourse(content);
+    if (!_.has(course, '_globals._menu._boxMenu')) _.set(course, '_globals._menu._boxMenu', {});
+    courseBoxMenuGlobals = course._globals._menu._boxMenu;
     return true;
   });
 
@@ -139,7 +146,9 @@ describe('Box menu - v6.3.9 to v6.3.10', async () => {
   });
 
   checkContent('Box menu - check new globals', async (content) => {
-    return getGlobals(content).itemCount === itemCount;
+    const isValid = getGlobals(content).itemCount === itemCount;
+    if (!isValid) throw new Error('Box menu - global attribute itemCount');
+    return true;
   });
 
   updatePlugin('Box menu - update to v6.3.10', { name: 'adapt-contrib-boxMenu', version: 'v6.3.10', framework: '">=5.24.2' });
