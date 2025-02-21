@@ -32,19 +32,19 @@ describe('Box menu - v3.0.0 to v4.0.0', async () => {
   });
 
   checkContent('Box menu - check global attribute ariaRegion', async (content) => {
-    const isValid = Object.hasOwn(courseBoxMenuGlobals, 'ariaRegion') === false;
+    const isValid = !_.has(courseBoxMenuGlobals, 'ariaRegion');
     if (!isValid) throw new Error('Box menu - global attributes ariaRegion');
     return true;
   });
 
   checkContent('Box menu - check global attribute menuItem', async (content) => {
-    const isValid = Object.hasOwn(courseBoxMenuGlobals, 'menuItem') === false;
+    const isValid = !_.has(courseBoxMenuGlobals, 'menuItem');
     if (!isValid) throw new Error('Box menu - global attributes menuItem');
     return true;
   });
 
   checkContent('Box menu - check global attribute menuEnd', async (content) => {
-    const isValid = Object.hasOwn(courseBoxMenuGlobals, 'menuEnd') === false;
+    const isValid = !_.has(courseBoxMenuGlobals, 'menuEnd');
     if (!isValid) throw new Error('Box menu - global attributes menuEnd');
     return true;
   });
