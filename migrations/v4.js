@@ -33,19 +33,19 @@ describe('Box menu - v3.0.0 to v4.0.0', async () => {
 
   checkContent('Box menu - check global attribute ariaRegion', async (content) => {
     const isValid = !_.has(courseBoxMenuGlobals, 'ariaRegion');
-    if (!isValid) throw new Error('Box menu - global attributes ariaRegion');
+    if (!isValid) throw new Error('Box menu - global attribute ariaRegion');
     return true;
   });
 
   checkContent('Box menu - check global attribute menuItem', async (content) => {
     const isValid = !_.has(courseBoxMenuGlobals, 'menuItem');
-    if (!isValid) throw new Error('Box menu - global attributes menuItem');
+    if (!isValid) throw new Error('Box menu - global attribute menuItem');
     return true;
   });
 
   checkContent('Box menu - check global attribute menuEnd', async (content) => {
     const isValid = !_.has(courseBoxMenuGlobals, 'menuEnd');
-    if (!isValid) throw new Error('Box menu - global attributes menuEnd');
+    if (!isValid) throw new Error('Box menu - global attribute menuEnd');
     return true;
   });
 
