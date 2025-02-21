@@ -1,14 +1,5 @@
-import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
+import { describe, getCourse, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
 import _ from 'lodash';
-
-const getCourse = content => {
-  const course = content.find(({ _type }) => _type === 'course');
-  return course;
-};
-
-const getGlobals = content => {
-  return getCourse(content)?._globals?._menu?._boxMenu;
-};
 
 describe('Box menu - v6.0.2 to v6.1.0', async () => {
 
@@ -24,7 +15,7 @@ describe('Box menu - v6.0.2 to v6.1.0', async () => {
   whereFromPlugin('Box menu - from v6.0.2', { name: 'adapt-contrib-boxMenu', version: '<6.1.0' });
 
   whereContent('Box menu - where course has _menuHeader', async (content) => {
-    course = getCourse(content);
+    course = getCourse();
     return course?._boxMenu?._menuHeader;
   });
 
@@ -55,7 +46,7 @@ describe('Box menu - v6.2.0 to v6.2.1', async () => {
   whereFromPlugin('Box menu - from v6.2.0', { name: 'adapt-contrib-boxMenu', version: '<6.2.1' });
 
   whereContent('Box menu - where course has _boxMenu', async (content) => {
-    course = getCourse(content);
+    course = getCourse();
     return course?._boxMenu;
   });
 
@@ -82,7 +73,7 @@ describe('Box menu - v6.3.8 to v6.3.9', async () => {
   whereFromPlugin('Box menu - from v6.3.8', { name: 'adapt-contrib-boxMenu', version: '<6.3.9' });
 
   whereContent('Box menu - where course has _backgroundImage', async (content) => {
-    course = getCourse(content);
+    course = getCourse();
     return (
       course?._boxMenu?._backgroundImage ||
       course?._boxMenu?._menuHeader?._backgroundImage
@@ -131,10 +122,10 @@ describe('Box menu - v6.3.9 to v6.3.10', async () => {
   let course, courseBoxMenuGlobals;
   const itemCount = 'Item {{_nthChild}} of {{_totalChild}}';
 
-  whereFromPlugin('Box menu - from v6.3.9', { name: 'adapt-contrib-boxMenu', version: '<v6.3.10' });
+  whereFromPlugin('Box menu - from v6.3.9', { name: 'adapt-contrib-boxMenu', version: '<6.3.10' });
 
   mutateContent('Box menu - add globals if missing', async (content) => {
-    course = getCourse(content);
+    course = getCourse();
     if (!_.has(course, '_globals._menu._boxMenu')) _.set(course, '_globals._menu._boxMenu', {});
     courseBoxMenuGlobals = course._globals._menu._boxMenu;
     return true;
@@ -146,10 +137,10 @@ describe('Box menu - v6.3.9 to v6.3.10', async () => {
   });
 
   checkContent('Box menu - check new globals', async (content) => {
-    const isValid = getGlobals(content).itemCount === itemCount;
+    const isValid = courseBoxMenuGlobals.itemCount === itemCount;
     if (!isValid) throw new Error('Box menu - global attribute itemCount');
     return true;
   });
 
-  updatePlugin('Box menu - update to v6.3.10', { name: 'adapt-contrib-boxMenu', version: 'v6.3.10', framework: '">=5.24.2' });
+  updatePlugin('Box menu - update to v6.3.10', { name: 'adapt-contrib-boxMenu', version: '6.3.10', framework: '">=5.24.2' });
 });
