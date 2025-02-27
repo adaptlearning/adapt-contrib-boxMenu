@@ -1,4 +1,4 @@
-import { describe, getCourse, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
+import { describe, getCourse, whereFromPlugin, mutateContent, checkContent, updatePlugin, testStopWhere, testSuccessWhere, whereContent } from 'adapt-migrations';
 import _ from 'lodash';
 
 describe('Box menu - v3.0.0 to v4.0.0', async () => {
@@ -9,9 +9,9 @@ describe('Box menu - v3.0.0 to v4.0.0', async () => {
 
   whereFromPlugin('Box menu - from v3.0.0', { name: 'adapt-contrib-boxMenu', version: '<4.0.0' });
 
-  mutateContent('Box menu - add globals if missing', async (content) => {
+  whereContent('Box menu - where globals', async (content) => {
     course = getCourse();
-    if (!_.has(course, '_globals._menu._boxMenu')) _.set(course, '_globals._menu._boxMenu', {});
+    if (!_.has(course, '_globals._menu._boxMenu')) return false;
     courseBoxMenuGlobals = course._globals._menu._boxMenu;
     return true;
   });
@@ -21,12 +21,12 @@ describe('Box menu - v3.0.0 to v4.0.0', async () => {
     return true;
   });
 
-  mutateContent('Box menu - remove globas attribute menuItem', async (content) => {
+  mutateContent('Box menu - remove globals attribute menuItem', async (content) => {
     delete courseBoxMenuGlobals.menuItem;
     return true;
   });
 
-  mutateContent('Box menu - remove globas attribute menuEnd', async (content) => {
+  mutateContent('Box menu - remove globals attribute menuEnd', async (content) => {
     delete courseBoxMenuGlobals.menuEnd;
     return true;
   });
@@ -50,4 +50,40 @@ describe('Box menu - v3.0.0 to v4.0.0', async () => {
   });
 
   updatePlugin('Box menu - update to v4.0.0', { name: 'adapt-contrib-boxMenu', version: '4.0.0', framework: '">=4' });
+
+  testStopWhere('boxMenu with empty course', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '3.0.0' }],
+    content: [
+      { _type: 'course' }
+    ]
+  });
+
+  testSuccessWhere('boxMenu with course globals', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '3.0.0' }],
+    content: [
+      {
+        _type: 'course',
+        _globals: {
+          _menu: {
+            _boxMenu: {
+              ariaRegion: 'ariaRegion',
+              menuItem: 'menuItem',
+              menuEnd: 'menuEnd'
+            }
+          }
+        }
+      }
+    ]
+  });
+
+  testSuccessWhere('boxMenu with empty course globals', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '3.0.0' }],
+    content: [
+      { _type: 'course', _globals: { _menu: { _boxMenu: {} } } }
+    ]
+  });
+
+  testStopWhere('incorrect version', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '4.0.0' }]
+  });
 });

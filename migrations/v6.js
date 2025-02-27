@@ -1,4 +1,4 @@
-import { describe, getCourse, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
+import { describe, getCourse, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin, testStopWhere, testSuccessWhere } from 'adapt-migrations';
 import _ from 'lodash';
 
 describe('Box menu - v6.0.2 to v6.1.0', async () => {
@@ -31,6 +31,29 @@ describe('Box menu - v6.0.2 to v6.1.0', async () => {
   });
 
   updatePlugin('Box menu - update to v6.1.0', { name: 'adapt-contrib-boxMenu', version: '6.1.0', framework: '">=5.22.6' });
+
+  testSuccessWhere('boxMenu with course _boxMenu._menuHeader', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.0.2' }],
+    content: [ { _type: 'course', _boxMenu: { _menuHeader: {} } }]
+  });
+
+  testStopWhere('boxMenu with empty course', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.0.2' }],
+    content: [
+      { _type: 'course' }
+    ]
+  });
+
+  testStopWhere('boxMenu with empty course _boxMenu', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.0.2' }],
+    content: [
+      { _type: 'course', _boxMenu: {} }
+    ]
+  });
+
+  testStopWhere('incorrect version', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.1.0' }]
+  });
 });
 
 describe('Box menu - v6.2.0 to v6.2.1', async () => {
@@ -62,6 +85,22 @@ describe('Box menu - v6.2.0 to v6.2.1', async () => {
   });
 
   updatePlugin('Box menu - update to v6.2.1', { name: 'adapt-contrib-boxMenu', version: '6.2.1', framework: '">=5.24.2' });
+
+  testSuccessWhere('boxMenu with course _boxMenu', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.2.0' }],
+    content: [ { _type: 'course', _boxMenu: {} }]
+  });
+
+  testStopWhere('boxMenu with empty course', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.2.0' }],
+    content: [
+      { _type: 'course' }
+    ]
+  });
+
+  testStopWhere('incorrect version', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.2.1' }]
+  });
 });
 
 describe('Box menu - v6.3.8 to v6.3.9', async () => {
@@ -113,6 +152,34 @@ describe('Box menu - v6.3.8 to v6.3.9', async () => {
   });
 
   updatePlugin('Box menu - update to v6.3.9', { name: 'adapt-contrib-boxMenu', version: '6.3.9', framework: '">=5.24.2' });
+
+  testSuccessWhere('boxMenu with course._boxMenu._backgroundImage', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.3.8' }],
+    content: [ { _type: 'course', _boxMenu: { _backgroundImage: '' } }]
+  });
+
+  testSuccessWhere('boxMenu with course._boxMenu._menuHeader._backgroundImage', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.3.8' }],
+    content: [ { _type: 'course', _boxMenu: { _menuHeader: { _backgroundImage: {} } } }]
+  });
+
+  testStopWhere('boxMenu with empty course', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.3.8' }],
+    content: [
+      { _type: 'course' }
+    ]
+  });
+
+  testStopWhere('boxMenu with course._boxMenu', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.3.8' }],
+    content: [
+      { _type: 'course', _boxMenu: {} }
+    ]
+  });
+
+  testStopWhere('incorrect version', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.3.9' }]
+  });
 });
 
 describe('Box menu - v6.3.9 to v6.3.10', async () => {
@@ -143,4 +210,22 @@ describe('Box menu - v6.3.9 to v6.3.10', async () => {
   });
 
   updatePlugin('Box menu - update to v6.3.10', { name: 'adapt-contrib-boxMenu', version: '6.3.10', framework: '">=5.24.2' });
+
+  testSuccessWhere('boxMenu with empty course', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.3.9' }],
+    content: [
+      { _type: 'course' }
+    ]
+  });
+
+  testSuccessWhere('boxMenu with course globals', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.3.9' }],
+    content: [
+      { _type: 'course', _globals: { _menu: { _boxMenu: {} } } }
+    ]
+  });
+
+  testStopWhere('incorrect version', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.3.10' }]
+  });
 });

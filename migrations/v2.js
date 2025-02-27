@@ -1,4 +1,4 @@
-import { describe, getCourse, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
+import { describe, getCourse, whereFromPlugin, mutateContent, checkContent, updatePlugin, testStopWhere, testSuccessWhere } from 'adapt-migrations';
 import _ from 'lodash';
 
 describe('Box menu - v2.0.2 to v2.0.3', async () => {
@@ -29,4 +29,22 @@ describe('Box menu - v2.0.2 to v2.0.3', async () => {
   });
 
   updatePlugin('Box menu - update to v2.0.3', { name: 'adapt-contrib-boxMenu', version: '2.0.3', framework: '">=2.0.0' });
+
+  testSuccessWhere('boxMenu with empty course', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '2.0.2' }],
+    content: [
+      { _type: 'course' }
+    ]
+  });
+
+  testSuccessWhere('boxMenu with course globals', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '2.0.2' }],
+    content: [
+      { _type: 'course', _globals: { _menu: { _boxMenu: {} } } }
+    ]
+  });
+
+  testStopWhere('incorrect version', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '2.0.3' }]
+  });
 });
