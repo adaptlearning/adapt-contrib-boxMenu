@@ -120,14 +120,14 @@ describe('Box menu - v6.3.8 to v6.3.9', async () => {
   });
 
   mutateContent('Box menu - add _xlarge attribute', async (content) => {
-    if (course._boxMenu._backgroundImage) {
+    if (_.has(course, '_boxMenu._backgroundImage')) {
       course._boxMenu._backgroundImage._xlarge = '';
     }
     return true;
   });
 
   mutateContent('Box menu - add _xlarge attribute to _menuHeader', async (content) => {
-    if (course._boxMenu._menuHeader._backgroundImage) {
+    if (_.has(course, '_boxMenu._menuHeader._backgroundImage')) {
       course._boxMenu._menuHeader._backgroundImage._xlarge = '';
     }
     return true;
@@ -155,7 +155,7 @@ describe('Box menu - v6.3.8 to v6.3.9', async () => {
 
   testSuccessWhere('boxMenu with course._boxMenu._backgroundImage', {
     fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.3.8' }],
-    content: [ { _type: 'course', _boxMenu: { _backgroundImage: '' } }]
+    content: [ { _type: 'course', _boxMenu: { _backgroundImage: {} } }]
   });
 
   testSuccessWhere('boxMenu with course._boxMenu._menuHeader._backgroundImage', {
