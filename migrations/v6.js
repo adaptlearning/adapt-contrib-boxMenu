@@ -5,7 +5,7 @@ describe('Box menu - v6.0.2 to v6.1.0', async () => {
 
   // https://github.com/adaptlearning/adapt-contrib-boxMenu/compare/v6.0.2..v6.1.0
 
-  let course;
+  let menusWithHeaders;
   const defaultTextAlignment = {
     _title: '',
     _body: '',
@@ -14,18 +14,19 @@ describe('Box menu - v6.0.2 to v6.1.0', async () => {
 
   whereFromPlugin('Box menu - from v6.0.2', { name: 'adapt-contrib-boxMenu', version: '<6.1.0' });
 
-  whereContent('Box menu - where course has _menuHeader', async (content) => {
-    course = getCourse();
-    return course?._boxMenu?._menuHeader;
+  whereContent('Box menu - where menus have _menuHeader', async (content) => {
+    const candidates = [getCourse(), ...content.filter(({ _type, _component }) => _type === 'menu' && (!_component || _component === 'boxMenu'))];
+    menusWithHeaders = candidates.filter(({ _boxMenu }) => _boxMenu?._menuHeader);
+    return menusWithHeaders.length;
   });
 
   mutateContent('Box menu - add _textAlignment attribute', async (content) => {
-    course._boxMenu._menuHeader._textAlignment = defaultTextAlignment;
+    menusWithHeaders.forEach(({ _boxMenu }) => (_boxMenu._menuHeader._textAlignment = defaultTextAlignment));
     return true;
   });
 
   checkContent('Box menu - check _textAlignment attribute', async (content) => {
-    const isValid = _.isEqual(course._boxMenu._menuHeader._textAlignment, defaultTextAlignment);
+    const isValid = menusWithHeaders.every(({ _boxMenu }) => _.isEqual(_boxMenu._menuHeader._textAlignment, defaultTextAlignment));
     if (!isValid) throw new Error('Box menu - course attribute _textAlignment');
     return true;
   });
@@ -34,7 +35,10 @@ describe('Box menu - v6.0.2 to v6.1.0', async () => {
 
   testSuccessWhere('boxMenu with course _boxMenu._menuHeader', {
     fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.0.2' }],
-    content: [ { _type: 'course', _boxMenu: { _menuHeader: {} } }]
+    content: [
+      { _type: 'course', _boxMenu: { _menuHeader: {} } },
+      { _type: 'contentObject', _boxMenu: { _menuHeader: {} } }
+    ]
   });
 
   testStopWhere('boxMenu with empty course', {
@@ -60,7 +64,7 @@ describe('Box menu - v6.2.0 to v6.2.1', async () => {
 
   // https://github.com/adaptlearning/adapt-contrib-boxMenu/compare/v6.2.0..v6.2.1
 
-  let course;
+  let menusWithGraphics;
   const defaultGraphic = {
     _src: '',
     alt: ''
@@ -68,18 +72,19 @@ describe('Box menu - v6.2.0 to v6.2.1', async () => {
 
   whereFromPlugin('Box menu - from v6.2.0', { name: 'adapt-contrib-boxMenu', version: '<6.2.1' });
 
-  whereContent('Box menu - where course has _boxMenu', async (content) => {
-    course = getCourse();
-    return course?._boxMenu;
+  whereContent('Box menu - where menus are configured', async (content) => {
+    const candidates = [getCourse(), ...content.filter(({ _type, _component }) => _type === 'menu' && (!_component || _component === 'boxMenu'))];
+    menusWithGraphics = candidates.filter(({ _boxMenu }) => _boxMenu);
+    return menusWithGraphics.length;
   });
 
   mutateContent('Box menu - add _graphic attribute', async (content) => {
-    course._boxMenu._graphic = defaultGraphic;
+    menusWithGraphics.forEach(({ _boxMenu }) => (_boxMenu._graphic = defaultGraphic));
     return true;
   });
 
   checkContent('Box menu - check _graphic attribute', async (content) => {
-    const isValid = _.isEqual(course._boxMenu._graphic, defaultGraphic);
+    const isValid = menusWithGraphics.every(({ _boxMenu }) => _.isEqual(_boxMenu._graphic, defaultGraphic));
     if (!isValid) throw new Error('Box menu - course attribute _graphic');
     return true;
   });
@@ -107,46 +112,49 @@ describe('Box menu - v6.3.8 to v6.3.9', async () => {
 
   // https://github.com/adaptlearning/adapt-contrib-boxMenu/compare/v6.3.8..v6.3.9
 
-  let course;
+  let menusWithBgImage;
 
   whereFromPlugin('Box menu - from v6.3.8', { name: 'adapt-contrib-boxMenu', version: '<6.3.9' });
 
-  whereContent('Box menu - where course has _backgroundImage', async (content) => {
-    course = getCourse();
-    return (
-      course?._boxMenu?._backgroundImage ||
-      course?._boxMenu?._menuHeader?._backgroundImage
-    );
+  whereContent('Box menu - where menus have _backgroundImage', async (content) => {
+    const candidates = [getCourse(), ...content.filter(({ _type, _component }) => _type === 'menu' && (!_component || _component === 'boxMenu'))];
+    menusWithBgImage = candidates.filter(({ _boxMenu }) => (
+      _boxMenu?._backgroundImage ||
+      _boxMenu?._menuHeader?._backgroundImage
+    ));
+    return menusWithBgImage.length;
   });
 
   mutateContent('Box menu - add _xlarge attribute', async (content) => {
-    if (_.has(course, '_boxMenu._backgroundImage')) {
-      course._boxMenu._backgroundImage._xlarge = '';
-    }
+    menusWithBgImage.forEach(({ _boxMenu }) => {
+      if (_.has(_boxMenu, '_backgroundImage')) {
+        _boxMenu._backgroundImage._xlarge = '';
+      }
+    });
     return true;
   });
 
   mutateContent('Box menu - add _xlarge attribute to _menuHeader', async (content) => {
-    if (_.has(course, '_boxMenu._menuHeader._backgroundImage')) {
-      course._boxMenu._menuHeader._backgroundImage._xlarge = '';
-    }
+    menusWithBgImage.forEach(({ _boxMenu }) => {
+      if (_.has(_boxMenu, '_menuHeader._backgroundImage')) {
+        _boxMenu._menuHeader._backgroundImage._xlarge = '';
+      }
+    });
     return true;
   });
 
   checkContent('Box menu - check _xlarge attribute', async (content) => {
-    const isValid = (
-      !course._boxMenu._backgroundImage ||
-      course._boxMenu._backgroundImage._xlarge === ''
-    );
+    const isValid = menusWithBgImage.every(({ _boxMenu }) => (
+      !_boxMenu._backgroundImage || _boxMenu._backgroundImage._xlarge === ''
+    ));
     if (!isValid) throw new Error('Box menu - course attribute _xlarge');
     return true;
   });
 
   checkContent('Box menu - check _xlarge attribute for _menuHeader', async (content) => {
-    const isValid = (
-      !course._boxMenu._menuHeader?._backgroundImage ||
-      course._boxMenu._menuHeader._backgroundImage._xlarge === ''
-    );
+    const isValid = menusWithBgImage.every(({ _boxMenu }) => (
+      !_boxMenu._menuHeader?._backgroundImage || _boxMenu._menuHeader._backgroundImage._xlarge === ''
+    ));
     if (!isValid) throw new Error('Box menu - course attribute _xlarge');
     return true;
   });
