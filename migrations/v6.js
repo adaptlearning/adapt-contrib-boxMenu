@@ -64,7 +64,7 @@ describe('Box menu - v6.2.0 to v6.2.1', async () => {
 
   // https://github.com/adaptlearning/adapt-contrib-boxMenu/compare/v6.2.0..v6.2.1
 
-  let menusWithGraphics;
+  let menus;
   const defaultGraphic = {
     _src: '',
     alt: ''
@@ -74,17 +74,17 @@ describe('Box menu - v6.2.0 to v6.2.1', async () => {
 
   whereContent('Box menu - where menus are configured', async (content) => {
     const candidates = [getCourse(), ...content.filter(({ _type, _component }) => _type === 'menu' && (!_component || _component === 'boxMenu'))];
-    menusWithGraphics = candidates.filter(({ _boxMenu }) => _boxMenu);
-    return menusWithGraphics.length;
+    menus = candidates.filter(({ _boxMenu }) => _boxMenu);
+    return menus.length;
   });
 
   mutateContent('Box menu - add _graphic attribute', async (content) => {
-    menusWithGraphics.forEach(({ _boxMenu }) => (_boxMenu._graphic = defaultGraphic));
+    menus.forEach(({ _boxMenu }) => (_boxMenu._graphic = defaultGraphic));
     return true;
   });
 
   checkContent('Box menu - check _graphic attribute', async (content) => {
-    const isValid = menusWithGraphics.every(({ _boxMenu }) => _.isEqual(_boxMenu._graphic, defaultGraphic));
+    const isValid = menus.every(({ _boxMenu }) => _.isEqual(_boxMenu._graphic, defaultGraphic));
     if (!isValid) throw new Error('Box menu - course attribute _graphic');
     return true;
   });
