@@ -37,7 +37,7 @@ describe('Box menu - v6.0.2 to v6.1.0', async () => {
     fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.0.2' }],
     content: [
       { _type: 'course', _boxMenu: { _menuHeader: {} } },
-      { _type: 'contentObject', _boxMenu: { _menuHeader: {} } }
+      { _type: 'menu', _boxMenu: { _menuHeader: {} } }
     ]
   });
 
@@ -93,13 +93,17 @@ describe('Box menu - v6.2.0 to v6.2.1', async () => {
 
   testSuccessWhere('boxMenu with course _boxMenu', {
     fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.2.0' }],
-    content: [ { _type: 'course', _boxMenu: {} }]
+    content: [
+      { _type: 'course', _boxMenu: {} },
+      { _type: 'menu', _boxMenu: {} }
+    ]
   });
 
   testStopWhere('boxMenu with empty course', {
     fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.2.0' }],
     content: [
-      { _type: 'course' }
+      { _type: 'course' },
+      { _type: 'menu' }
     ]
   });
 
@@ -163,12 +167,18 @@ describe('Box menu - v6.3.8 to v6.3.9', async () => {
 
   testSuccessWhere('boxMenu with course._boxMenu._backgroundImage', {
     fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.3.8' }],
-    content: [ { _type: 'course', _boxMenu: { _backgroundImage: {} } }]
+    content: [
+      { _type: 'course', _boxMenu: { _backgroundImage: {} } },
+      { _type: 'menu', _boxMenu: { _backgroundImage: {} } }
+    ]
   });
 
   testSuccessWhere('boxMenu with course._boxMenu._menuHeader._backgroundImage', {
     fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.3.8' }],
-    content: [ { _type: 'course', _boxMenu: { _menuHeader: { _backgroundImage: {} } } }]
+    content: [
+      { _type: 'course', _boxMenu: { _menuHeader: { _backgroundImage: {} } } },
+      { _type: 'menu', _boxMenu: { _menuHeader: { _backgroundImage: {} } } }
+    ]
   });
 
   testStopWhere('boxMenu with empty course', {
