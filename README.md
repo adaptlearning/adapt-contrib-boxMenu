@@ -137,7 +137,7 @@ The following attributes, set within *contentObjects.json*, configure the defaul
 
 **displayTitle** (string):  This text is displayed on the menu item.
 
->**altTitle** (string): This will be read out by screen readers instead of **title** for the menu button text. Use if **title** contains punctuation or html syntax that shouldn't be read.
+>**titleAriaLabel** (string): This will be read out by screen readers instead of **title** for the menu button text. Use if **title** contains punctuation or html syntax that shouldn't be read.
 
 **body** (string):  Optional text that appears on the menu item. Often used to inform the learner about the menu choice. If no **pageBody** is supplied, this text will also appear as the body text of the page header.
 
