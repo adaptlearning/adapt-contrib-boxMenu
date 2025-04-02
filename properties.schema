@@ -289,6 +289,15 @@
               "type": "object",
               "required": false,
               "properties": {
+                "altTitle": {
+                  "type": "string",
+                  "inputType": "Text",
+                  "validators": [],
+                  "title": "Alternative Title",
+                  "help": "Alternative text read out by screen readers for the menu button text"
+                  "required": false,
+                  "translatable": true
+                },
                 "_renderAsGroup": {
                   "type": "boolean",
                   "required": false,
