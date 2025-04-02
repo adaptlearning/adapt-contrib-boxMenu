@@ -13,10 +13,10 @@
           "title": "Box Menu",
           "default": {},
           "properties": {
-            "altTitle": {
+            "titleAriaLabel": {
               "type": "string",
-              "title": "Alternative Title",
-              "description": "Alternative text read out by screen readers for the menu button text",
+              "title": "Title ARIA label",
+              "description": "Alternative title text read out by screen readers for the menu button text",
               "default": "",
               "_adapt": {
                 "translatable": true
