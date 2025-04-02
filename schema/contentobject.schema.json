@@ -13,6 +13,15 @@
           "title": "Box Menu",
           "default": {},
           "properties": {
+            "altTitle": {
+              "type": "string",
+              "title": "Alternative Title",
+              "description": "Alternative text read out by screen readers for the menu button text",
+              "default": "",
+              "_adapt": {
+                "translatable": true
+              }
+            },
             "_renderAsGroup": {
               "type": "boolean",
               "title": "Make this a parent group of menu items",
