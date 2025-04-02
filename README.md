@@ -137,6 +137,8 @@ The following attributes, set within *contentObjects.json*, configure the defaul
 
 **displayTitle** (string):  This text is displayed on the menu item.
 
+>**altTitle** (string): This will be read out by screen readers instead of **title** for the menu button text. Use if **title** contains punctuation or html syntax that shouldn't be read.
+
 **body** (string):  Optional text that appears on the menu item. Often used to inform the learner about the menu choice. If no **pageBody** is supplied, this text will also appear as the body text of the page header.
 
 **pageBody** (string): Optional text that appears as the body text of the page header. If this text is not provided, the **body** text will be used (if it is supplied). Reference [*adapt-contrib-vanilla/templates/page.hbs*](https://github.com/adaptlearning/adapt-contrib-vanilla/blob/master/templates/page.hbs).
