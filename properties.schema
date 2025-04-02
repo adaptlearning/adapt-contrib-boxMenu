@@ -289,12 +289,12 @@
               "type": "object",
               "required": false,
               "properties": {
-                "altTitle": {
+                "titleAriaLabel": {
                   "type": "string",
                   "inputType": "Text",
                   "validators": [],
-                  "title": "Alternative Title",
-                  "help": "Alternative text read out by screen readers for the menu button text"
+                  "title": "Title ARIA label",
+                  "help": "Alternative title text read out by screen readers for the menu button text"
                   "required": false,
                   "translatable": true
                 },
