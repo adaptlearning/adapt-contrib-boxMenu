@@ -33,7 +33,7 @@ describe('Box menu - v6.0.2 to v6.1.0', async () => {
 
   updatePlugin('Box menu - update to v6.1.0', { name: 'adapt-contrib-boxMenu', version: '6.1.0', framework: '">=5.22.6' });
 
-  testSuccessWhere('boxMenu with course _boxMenu._menuHeader', {
+  testSuccessWhere('boxMenu with course/menu _boxMenu._menuHeader', {
     fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.0.2' }],
     content: [
       { _type: 'course', _boxMenu: { _menuHeader: {} } },
@@ -131,18 +131,16 @@ describe('Box menu - v6.3.8 to v6.3.9', async () => {
 
   mutateContent('Box menu - add _xlarge attribute', async (content) => {
     menusWithBgImage.forEach(({ _boxMenu }) => {
-      if (_.has(_boxMenu, '_backgroundImage')) {
-        _boxMenu._backgroundImage._xlarge = '';
-      }
+      if (!_.has(_boxMenu, '_backgroundImage')) return true;
+      _boxMenu._backgroundImage._xlarge = '';
     });
     return true;
   });
 
   mutateContent('Box menu - add _xlarge attribute to _menuHeader', async (content) => {
     menusWithBgImage.forEach(({ _boxMenu }) => {
-      if (_.has(_boxMenu, '_menuHeader._backgroundImage')) {
-        _boxMenu._menuHeader._backgroundImage._xlarge = '';
-      }
+      if (!_.has(_boxMenu, '_menuHeader._backgroundImage')) return true;
+      _boxMenu._menuHeader._backgroundImage._xlarge = '';
     });
     return true;
   });
