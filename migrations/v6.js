@@ -1,6 +1,12 @@
 import { describe, getCourse, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin, testStopWhere, testSuccessWhere } from 'adapt-migrations';
 import _ from 'lodash';
 
+function getBoxMenus(content) {
+  return content.filter(({ _type, _component }) =>
+    (_type === 'menu' || _type === 'course') &&
+    (!_component || _component === 'boxMenu'));
+}
+
 describe('Box menu - v6.0.2 to v6.1.0', async () => {
 
   // https://github.com/adaptlearning/adapt-contrib-boxMenu/compare/v6.0.2..v6.1.0
@@ -15,8 +21,7 @@ describe('Box menu - v6.0.2 to v6.1.0', async () => {
   whereFromPlugin('Box menu - from v6.0.2', { name: 'adapt-contrib-boxMenu', version: '<6.1.0' });
 
   whereContent('Box menu - where menus have _menuHeader', async (content) => {
-    const candidates = [getCourse(), ...content.filter(({ _type, _component }) => _type === 'menu' && (!_component || _component === 'boxMenu'))];
-    menusWithHeaders = candidates.filter(({ _boxMenu }) => _boxMenu?._menuHeader);
+    menusWithHeaders = getBoxMenus(content).filter(({ _boxMenu }) => _boxMenu?._menuHeader);
     return menusWithHeaders.length;
   });
 
@@ -37,7 +42,8 @@ describe('Box menu - v6.0.2 to v6.1.0', async () => {
     fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.0.2' }],
     content: [
       { _type: 'course', _boxMenu: { _menuHeader: {} } },
-      { _type: 'menu', _boxMenu: { _menuHeader: {} } }
+      { _type: 'menu', _boxMenu: { _menuHeader: {} } },
+      { _type: 'menu', _boxMenu: { } }
     ]
   });
 
@@ -73,8 +79,7 @@ describe('Box menu - v6.2.0 to v6.2.1', async () => {
   whereFromPlugin('Box menu - from v6.2.0', { name: 'adapt-contrib-boxMenu', version: '<6.2.1' });
 
   whereContent('Box menu - where menus are configured', async (content) => {
-    const candidates = [getCourse(), ...content.filter(({ _type, _component }) => _type === 'menu' && (!_component || _component === 'boxMenu'))];
-    menus = candidates.filter(({ _boxMenu }) => _boxMenu);
+    menus = getBoxMenus(content).filter(({ _boxMenu }) => _boxMenu);
     return menus.length;
   });
 
@@ -95,7 +100,8 @@ describe('Box menu - v6.2.0 to v6.2.1', async () => {
     fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.2.0' }],
     content: [
       { _type: 'course', _boxMenu: {} },
-      { _type: 'menu', _boxMenu: {} }
+      { _type: 'menu', _boxMenu: {} },
+      { _type: 'menu' }
     ]
   });
 
@@ -121,8 +127,7 @@ describe('Box menu - v6.3.8 to v6.3.9', async () => {
   whereFromPlugin('Box menu - from v6.3.8', { name: 'adapt-contrib-boxMenu', version: '<6.3.9' });
 
   whereContent('Box menu - where menus have _backgroundImage', async (content) => {
-    const candidates = [getCourse(), ...content.filter(({ _type, _component }) => _type === 'menu' && (!_component || _component === 'boxMenu'))];
-    menusWithBgImage = candidates.filter(({ _boxMenu }) => (
+    menusWithBgImage = getBoxMenus(content).filter(({ _boxMenu }) => (
       _boxMenu?._backgroundImage ||
       _boxMenu?._menuHeader?._backgroundImage
     ));
@@ -167,7 +172,8 @@ describe('Box menu - v6.3.8 to v6.3.9', async () => {
     fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.3.8' }],
     content: [
       { _type: 'course', _boxMenu: { _backgroundImage: {} } },
-      { _type: 'menu', _boxMenu: { _backgroundImage: {} } }
+      { _type: 'menu', _boxMenu: { _backgroundImage: {} } },
+      { _type: 'menu', _boxMenu: {} }
     ]
   });
 
