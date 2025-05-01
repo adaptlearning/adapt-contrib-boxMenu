@@ -107,10 +107,12 @@ export default function BoxMenuItem (props) {
               aria-disabled={_isLocked ? true : null}
               role="link"
             >
+              {linkText &&
               <span
                 className="menu-item__button-text boxmenu-item__button-text"
                 dangerouslySetInnerHTML={{ __html: compile(linkText) }}
               />
+              }
             </button>
 
             <span className='menu-item__status boxmenu-item__status'>
