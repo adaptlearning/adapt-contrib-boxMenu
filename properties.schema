@@ -294,7 +294,7 @@
                   "inputType": "Text",
                   "validators": [],
                   "title": "Title ARIA label",
-                  "help": "Alternative title text read out by screen readers for the menu button text"
+                  "help": "Alternative title text read out by screen readers for the menu button text",
                   "required": false,
                   "translatable": true
                 },
