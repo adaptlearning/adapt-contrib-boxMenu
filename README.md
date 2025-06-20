@@ -149,9 +149,9 @@ The following attributes, set within *contentObjects.json*, configure the defaul
 
 **linkText** (string): This text is displayed on the menu item's link/button.
 
-**linkIconClass** (string): CSS class name to be applied to the `button` icon. The class must be predefined in one of the Less files with the corresponding icon included as part of a font. To have *no* icon, leave this field blank. See the list of all available [*vanilla* icons](https://github.com/adaptlearning/adapt-contrib-vanilla/wiki/Icons) to choose from.
+**_linkIconClass** (string): CSS class name to be applied to the `button` icon. The class must be predefined in one of the Less files with the corresponding icon included as part of a font. To have *no* icon, leave this field blank. See the list of all available [*vanilla* icons](https://github.com/adaptlearning/adapt-contrib-vanilla/wiki/Icons) to choose from.
 
-**linkIconPosition** (string): Determines how the icon is aligned to the text. Options include `left` and `right`. Defaults to `left` if left blank.
+**_linkIconPosition** (string): Determines how the icon is aligned to the text. Options include `left` and `right`. Defaults to `left` if left blank.
 
 **duration** (string): Optional text which follows **durationLabel** (e.g., `"2 mins"`).
 

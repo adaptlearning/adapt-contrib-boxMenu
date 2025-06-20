@@ -56,8 +56,8 @@
             "src": "course/en/images/origami-menu-one.jpg"
         },
         "linkText": "View",
-        "linkIconClass": "icon-controls-right",
-        "linkIconPosition": "left",
+        "_linkIconClass": "icon-controls-right",
+        "_linkIconPosition": "left",
         "duration": "2 mins"
     }
 
