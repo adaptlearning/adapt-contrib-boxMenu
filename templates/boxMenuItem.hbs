@@ -28,7 +28,7 @@
       {{/if}}
 
       {{#all _globals._accessibility._ariaLabels.optional _globals._accessibility._ariaLabels.required}}
-        <div class='menu-item__priority boxmenu-item__priority' aria-hidden="true">
+        <div class='menu-item__priority boxmenu-item__priority'>
             <span class="label">
               {{#if _isOptional}}{{{_globals._accessibility._ariaLabels.optional}}}{{else}}{{{_globals._accessibility._ariaLabels.required}}}{{/if}}
             </span>
