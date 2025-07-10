@@ -12,4 +12,13 @@
   @media (min-width: @device-width-medium) {
     width: 50%;
   }
+
+  &__button {
+    display: flex;
+    column-gap: (@icon-padding / 4);
+
+    &.has-icon-right {
+      flex-direction: row-reverse;
+    }
+  }
 }
