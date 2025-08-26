@@ -102,7 +102,8 @@ export default function BoxMenuItem (props) {
                 'menu-item__button',
                 'boxmenu-item__button',
                 'js-btn-click',
-                _linkIconPosition && `has-icon-${_linkIconPosition}`,
+                _linkIconClass && 'has-icon',
+                (_linkIconClass && _linkIconPosition) && `has-icon-${_linkIconPosition}`,
                 _isVisited && 'is-visited',
                 _isLocked && 'is-locked'
               ])}
