@@ -10,6 +10,8 @@ export default function BoxMenuItem (props) {
     body,
     duration,
     linkText,
+    _linkIconClass,
+    _linkIconPosition,
     _isVisited,
     _isLocked,
     _isComplete,
@@ -100,6 +102,8 @@ export default function BoxMenuItem (props) {
                 'menu-item__button',
                 'boxmenu-item__button',
                 'js-btn-click',
+                _linkIconClass && 'has-icon',
+                (_linkIconClass && _linkIconPosition) && `has-icon-${_linkIconPosition}`,
                 _isVisited && 'is-visited',
                 _isLocked && 'is-locked'
               ])}
@@ -107,6 +111,14 @@ export default function BoxMenuItem (props) {
               aria-disabled={_isLocked ? true : null}
               role="link"
             >
+              {_linkIconClass &&
+                <span className="menu-item__button-icon boxmenu-item__button-icon" aria-hidden="true">
+                  <span className={classes([
+                    'icon',
+                    _linkIconClass
+                  ])} />
+                </span>
+              }
               {linkText &&
               <span
                 className="menu-item__button-text boxmenu-item__button-text"
