@@ -18,7 +18,7 @@ describe('Box menu - v@@CURRENT_VERSION to v@@RELEASE_VERSION', async () => {
   });
 
   mutateContent('Box menu - add titleAriaLabel to contentObjects', async (content) => {
-    boxMenus.titleAriaLabel = "";
+    boxMenus.titleAriaLabel = '';
     return true;
   });
 
