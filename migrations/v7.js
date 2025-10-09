@@ -8,7 +8,7 @@ function getBoxMenus(content) {
 }
 
 describe('Box menu - v@@CURRENT_VERSION to v@@RELEASE_VERSION', async () => {
-  let boxMenus
+  let boxMenus;
 
   whereFromPlugin('Box menu - from v@@CURRENT_VERSION', { name: 'adapt-contrib-boxMenu', version: '<@@RELEASE_VERSION' });
 
