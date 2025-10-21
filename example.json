@@ -18,6 +18,7 @@
         "_menuHeader": {
             "_textAlignment": {
                 "_title": "left",
+                "_subtitle": "center",
                 "_body": "center",
                 "_instruction": "right"
             },
