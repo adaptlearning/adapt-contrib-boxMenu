@@ -20,19 +20,23 @@ class BoxMenuItemView extends MenuItemView {
   }
 
   setUpViewData() {
-    const _globals = Adapt.course.get('_globals');
     const _boxMenu = Adapt.course.get('_boxMenu');
     const _priorityLabels = _boxMenu?._priorityLabels;
+    if (!_priorityLabels) return;
+
+    const _globals = Adapt.course.get('_globals');
     const _isOptional = this.model.get('_isOptional');
 
     const optionalLabel = _globals?._accessibility?._ariaLabels?.optional;
     const requiredLabel = _globals?._accessibility?._ariaLabels?.required;
 
-    const showPriorityWhenOptional = _priorityLabels?._showPriorityWhenOptional && _isOptional && optionalLabel;
-    const showPriorityWhenRequired = _priorityLabels?._showPriorityWhenRequired && !_isOptional && requiredLabel;
+    const showPriorityWhenOptional = _priorityLabels._showPriorityWhenOptional && _isOptional && optionalLabel;
+    const showPriorityWhenRequired = _priorityLabels._showPriorityWhenRequired && !_isOptional && requiredLabel;
+
+    if (!showPriorityWhenOptional && !showPriorityWhenRequired) return;
 
     this.model.set({
-      showPriority: showPriorityWhenOptional || showPriorityWhenRequired,
+      showPriority: true,
       priorityClass: _isOptional ? 'is-optional' : 'is-required',
       priorityLabel: _isOptional ? optionalLabel : requiredLabel
     });
