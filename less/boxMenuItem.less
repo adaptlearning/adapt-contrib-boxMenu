@@ -9,6 +9,15 @@
     .icon-tick;
   }
 
+  &__priority {
+    display: flex;
+    column-gap: (@icon-padding / 4);
+
+    .icon {
+      .icon-exclamation;
+    }
+  }
+
   @media (min-width: @device-width-medium) {
     width: 50%;
   }
