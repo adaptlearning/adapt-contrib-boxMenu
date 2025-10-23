@@ -1,5 +1,9 @@
     // course.json
     "_boxMenu": {
+        "_priorityLabels": {
+            "_showPriorityWhenOptional": false,
+            "_showPriorityWhenRequired": false  
+        },
         "_graphic": {
             "alt": "",
             "_src": "course/en/images/logo-graphic.jpg"
