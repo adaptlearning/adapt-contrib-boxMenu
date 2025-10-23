@@ -51,6 +51,18 @@ export default function BoxMenuItem (props) {
       <div className="menu-item__details boxmenu-item__details">
         <div className="menu-item__details-inner boxmenu-item__details-inner">
 
+          {priorityLabel &&
+            <div className={classes([
+              'menu-item__priority boxmenu-item__priority',
+              priorityClass
+            ])}>
+              <span
+                className="menu-item__priority-inner boxmenu-item__priority-inner"
+                dangerouslySetInnerHTML={{ __html: compile(priorityLabel, props) }}
+              />
+            </div>
+          }
+
           {displayTitle &&
           <div className="menu-item__title boxmenu-item__title">
             <div
@@ -76,18 +88,6 @@ export default function BoxMenuItem (props) {
             <div
               className="menu-item__body-inner boxmenu-item__body-inner"
               dangerouslySetInnerHTML={{ __html: compile(body) }}
-            />
-          </div>
-          }
-
-          {priorityLabel &&
-            <div className={classes([
-              'menu-item__priority boxmenu-item__priority',
-              priorityClass
-            ])}>
-            <span
-              className="menu-item__priority-inner boxmenu-item__priority-inner"
-              dangerouslySetInnerHTML={{ __html: compile(priorityLabel, props) }}
             />
           </div>
           }
