@@ -21,7 +21,9 @@ class BoxMenuItemView extends MenuItemView {
 
   setUpViewData() {
     const _boxMenu = Adapt.course.get('_boxMenu');
-    const _priorityLabels = _boxMenu?._priorityLabels;
+    if (!_boxMenu) return;
+
+    const _priorityLabels = _boxMenu._priorityLabels;
     if (!_priorityLabels) return;
 
     const _globals = Adapt.course.get('_globals');
