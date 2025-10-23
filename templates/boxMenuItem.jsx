@@ -17,7 +17,6 @@ export default function BoxMenuItem (props) {
     _isComplete,
     title,
     _isOptional,
-    showPriority,
     priorityClass,
     priorityLabel,
     _nthChild,
@@ -81,7 +80,7 @@ export default function BoxMenuItem (props) {
           </div>
           }
 
-          {showPriority &&
+          {priorityLabel &&
             <div className={classes([
               'menu-item__priority boxmenu-item__priority',
               priorityClass

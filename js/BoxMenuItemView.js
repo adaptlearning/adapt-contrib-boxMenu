@@ -38,7 +38,6 @@ class BoxMenuItemView extends MenuItemView {
     if (!showPriorityWhenOptional && !showPriorityWhenRequired) return;
 
     this.model.set({
-      showPriority: true,
       priorityClass: _isOptional ? 'is-optional' : 'is-required',
       priorityLabel: _isOptional ? optionalLabel : requiredLabel
     });
