@@ -16,14 +16,15 @@ class BoxMenuGroupView extends MenuItemView {
 
   updateItemCount() {
     const models = this.model.getChildren().where({
-      _isHidden: false
+      _isHidden: false,
+      _isAvailable: true
     });
     const totalChildren = models.length;
     models.forEach(model => model.set('_totalChild', totalChildren));
   }
 }
 
-BoxMenuGroupView.template = 'boxMenuGroup';
+BoxMenuGroupView.template = 'boxMenuGroup.jsx';
 BoxMenuGroupView.childContainer = '.js-group-children';
 BoxMenuGroupView.childView = BoxMenuItemView;
 
