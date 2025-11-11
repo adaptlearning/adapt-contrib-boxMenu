@@ -14,6 +14,7 @@ class BoxMenuView extends MenuView {
       `${super.className()} boxmenu`,
       backgroundImage && 'has-bg-image',
       textAlignment?._title && `title-align-${textAlignment._title}`,
+      textAlignment?._subtitle && `subtitle-align-${textAlignment._subtitle}`,
       textAlignment?._body && `body-align-${textAlignment._body}`,
       textAlignment?._instruction && `instruction-align-${textAlignment._instruction}`
     ].join(' ');
