@@ -39,15 +39,9 @@ The attributes listed below are used in *course.json* and *contentObjects.json* 
 #### *course.json*
 The following attributes, set within *course.json*, configure the defaults for **Box Menu**.
 
-**\_boxMenu** (object): The boxMenu object that contains value for **\_priorityLabels**, **\_graphic**, **\_backgroundImage**, **\_backgroundStyles**, and **\_menuHeader**.
+**\_boxMenu** (object): The boxMenu object that contains value for **\_backgroundImage**, **\_backgroundStyles**, and **\_menuHeader**.
 
->**\_priorityLabels** (object): The priorityLabels object that contains values for **\_showPriorityWhenOptional** and **\_showPriorityWhenRequired**.
-
->>**\_showPriorityWhenOptional** (boolean): When true, shows an "optional" label on the item if it is *optional* for course completion. Defaults to false.
-
->>**\_showPriorityWhenRequired** (boolean): When true, shows a "required" label on the item if it is *required* for course completion. Defaults to false.
-
->**\_graphic** (object): The graphic object that contains values for **\_src** and **alt**. Typically used to display a logo image
+>**\_graphic_** (object): The graphic object that contains values for **\_src** and **alt**. Typically used to display a logo image
 
 >>**\_src** (string): File name (including path) of the image
 

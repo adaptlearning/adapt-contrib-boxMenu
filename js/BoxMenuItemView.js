@@ -1,4 +1,3 @@
-import Adapt from 'core/js/adapt';
 import MenuItemView from 'core/js/views/menuItemView';
 import router from 'core/js/router';
 
@@ -20,27 +19,11 @@ class BoxMenuItemView extends MenuItemView {
   }
 
   setUpViewData() {
-    const _boxMenu = Adapt.course.get('_boxMenu');
-    if (!_boxMenu) return;
-
-    const _priorityLabels = _boxMenu._priorityLabels;
-    if (!_priorityLabels) return;
-
-    const _globals = Adapt.course.get('_globals');
-    const _isOptional = this.model.get('_isOptional');
-
-    const optionalLabel = _globals?._accessibility?._ariaLabels?.optional;
-    const requiredLabel = _globals?._accessibility?._ariaLabels?.required;
-
-    const showPriorityWhenOptional = _priorityLabels._showPriorityWhenOptional && _isOptional && optionalLabel;
-    const showPriorityWhenRequired = _priorityLabels._showPriorityWhenRequired && !_isOptional && requiredLabel;
-
-    if (!showPriorityWhenOptional && !showPriorityWhenRequired) return;
-
-    this.model.set({
-      priorityClass: _isOptional ? 'is-optional' : 'is-required',
-      priorityLabel: _isOptional ? optionalLabel : requiredLabel
-    });
+    // Use inherited getPriorityLabels() from AdaptView
+    const priorityData = this.getPriorityLabels();
+    if (priorityData) {
+      this.model.set(priorityData);
+    }
   }
 
   onClickMenuItemButton(event) {
