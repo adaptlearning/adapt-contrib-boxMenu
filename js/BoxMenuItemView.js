@@ -13,19 +13,6 @@ class BoxMenuItemView extends MenuItemView {
     };
   }
 
-  initialize(...args) {
-    super.initialize(...args);
-    this.setUpViewData();
-  }
-
-  setUpViewData() {
-    // Use inherited getPriorityLabels() from AdaptView
-    const priorityData = this.getPriorityLabels();
-    if (priorityData) {
-      this.model.set(priorityData);
-    }
-  }
-
   onClickMenuItemButton(event) {
     if (event && event.preventDefault) event.preventDefault();
     if (this.model.get('_isLocked')) return;
