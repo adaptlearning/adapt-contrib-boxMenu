@@ -17,7 +17,7 @@ export default function BoxMenuItem (props) {
     _isComplete,
     title,
     _isOptional,
-    priorityClass,
+    _priorityClass,
     priorityLabel,
     _nthChild,
     _totalChild
@@ -54,7 +54,7 @@ export default function BoxMenuItem (props) {
           {priorityLabel &&
           <div className={classes([
             'menu-item__priority boxmenu-item__priority',
-            priorityClass
+            _priorityClass
           ])}>
             <span className="icon" aria-hidden="true" />
             <div
