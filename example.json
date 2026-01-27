@@ -18,6 +18,7 @@
         "_menuHeader": {
             "_textAlignment": {
                 "_title": "left",
+                "_subtitle": "center",
                 "_body": "center",
                 "_instruction": "right"
             },
@@ -96,15 +97,4 @@
         "displayTitle": "Title",
         "body": "Body",
         "instruction": "Instruction"
-    }
-
-    // course.json
-    // Priority labels configuration
-    "_globals": {
-        "_priorityLabels": {
-            "_menuItem": {
-                "_showWhenOptional": false,
-                "_showWhenRequired": false
-            }
-        }
     }
