@@ -111,7 +111,7 @@
     }
 
     // contentObjects.json
-    // Priority label overrides for specific pages.
+    // Priority label overrides for specific pages or sub menus.
     // Add directly to specific content objects.
     "_priorityLabels": {
         "_isOverride": true,
