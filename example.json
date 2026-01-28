@@ -110,9 +110,9 @@
         }
     }
 
-    // course.json and contentObjects.json
-    // Priority label overrides for specific menus or pages.
-    // Add directly to main course config or specific content objects.
+    // contentObjects.json
+    // Priority label overrides for specific pages.
+    // Add directly to specific content objects.
     "_priorityLabels": {
         "_isOverride": true,
         "_showWhenRequired": true,
