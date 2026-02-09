@@ -98,3 +98,23 @@
         "body": "Body",
         "instruction": "Instruction"
     }
+
+    // course.json
+    // Priority labels global configuration
+    "_globals": {
+        "_priorityLabels": {
+            "_menuItem": {
+                "_showWhenOptional": true,
+                "_showWhenRequired": false
+            }
+        }
+    }
+
+    // contentObjects.json
+    // Priority label overrides for specific pages or sub menus.
+    // Add directly to specific content objects.
+    "_priorityLabels": {
+        "_isOverride": true,
+        "_showWhenRequired": true,
+        "_showWhenOptional": false
+    },
