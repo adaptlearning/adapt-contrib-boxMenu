@@ -82,7 +82,6 @@ export default function BoxMenu (props) {
                 className="menu__image boxmenu__image"
                 src={_graphic?._src}
                 alt={_graphic?.alt}
-                aria-hidden={!_graphic?.alt ? true : null}
               />
             </div>
             }
