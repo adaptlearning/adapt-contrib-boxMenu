@@ -9,7 +9,10 @@ export default function BoxMenu (props) {
     subtitle,
     body,
     pageBody,
-    instruction
+    instruction,
+    _priorityClass,
+    _priorityIconClass,
+    priorityLabel
   } = props;
 
   const _boxMenu = Adapt.course.get('_boxMenu');
@@ -49,7 +52,6 @@ export default function BoxMenu (props) {
       }
 
       <div className="menu__inner boxmenu__inner">
-
         {(displayTitle || subtitle || body || instruction) &&
         <div
           className={classes([
@@ -87,6 +89,20 @@ export default function BoxMenu (props) {
             }
 
             <div className="menu__header-content boxmenu__header-content">
+              {priorityLabel &&
+                <div className={classes([
+                  'menu__priority boxmenu__priority',
+                  _priorityClass
+                ])}>
+                  {_priorityIconClass &&
+                    <span className={classes(['icon', _priorityIconClass])} aria-hidden="true" />
+                  }
+                  <div
+                    className="menu__priority-label boxmenu__priority-label"
+                    dangerouslySetInnerHTML={{ __html: compile(priorityLabel, props) }}
+                  />
+                </div>
+              }
 
               {displayTitle &&
               <div className="menu__title boxmenu__title">
