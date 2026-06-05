@@ -25,6 +25,10 @@ class BoxMenuView extends MenuView {
   }
 
   addChildren() {
+    // BoxMenu renders all children in a single pass. Ignore subsequent calls
+    // (e.g. triggered by trickle:kill) that would otherwise append a second
+    // full set of child views and duplicate the menu items.
+    if (this.getChildViews()) return;
     let nthChild = 0;
     const models = this.model.getChildren().models;
     const totalChild = this.model.getChildren().where({
