@@ -137,7 +137,8 @@ describe('Box menu - v6.3.8 to v6.3.9', async () => {
   mutateContent('Box menu - add _xlarge attribute', async (content) => {
     menusWithBgImage.forEach(({ _boxMenu }) => {
       if (!_.has(_boxMenu, '_backgroundImage')) return true;
-      _boxMenu._backgroundImage._xlarge = '';
+      // carry _large over so existing backgrounds survive at the new xlarge breakpoint
+      _boxMenu._backgroundImage._xlarge = _boxMenu._backgroundImage._large ?? '';
     });
     return true;
   });
@@ -145,23 +146,32 @@ describe('Box menu - v6.3.8 to v6.3.9', async () => {
   mutateContent('Box menu - add _xlarge attribute to _menuHeader', async (content) => {
     menusWithBgImage.forEach(({ _boxMenu }) => {
       if (!_.has(_boxMenu, '_menuHeader._backgroundImage')) return true;
-      _boxMenu._menuHeader._backgroundImage._xlarge = '';
+      // carry _large over so existing backgrounds survive at the new xlarge breakpoint
+      _boxMenu._menuHeader._backgroundImage._xlarge = _boxMenu._menuHeader._backgroundImage._large ?? '';
     });
     return true;
   });
 
   checkContent('Box menu - check _xlarge attribute', async (content) => {
-    const isValid = menusWithBgImage.every(({ _boxMenu }) => (
-      !_boxMenu._backgroundImage || _boxMenu._backgroundImage._xlarge === ''
-    ));
+    const isValid = menusWithBgImage.every(({ _boxMenu }) => {
+      const backgroundImage = _boxMenu._backgroundImage;
+      if (!backgroundImage) return true;
+      if (typeof backgroundImage._xlarge !== 'string') return false;
+      // a populated _large must have been carried over, not blanked
+      return !backgroundImage._large || backgroundImage._xlarge === backgroundImage._large;
+    });
     if (!isValid) throw new Error('Box menu - course attribute _xlarge');
     return true;
   });
 
   checkContent('Box menu - check _xlarge attribute for _menuHeader', async (content) => {
-    const isValid = menusWithBgImage.every(({ _boxMenu }) => (
-      !_boxMenu._menuHeader?._backgroundImage || _boxMenu._menuHeader._backgroundImage._xlarge === ''
-    ));
+    const isValid = menusWithBgImage.every(({ _boxMenu }) => {
+      const backgroundImage = _boxMenu._menuHeader?._backgroundImage;
+      if (!backgroundImage) return true;
+      if (typeof backgroundImage._xlarge !== 'string') return false;
+      // a populated _large must have been carried over, not blanked
+      return !backgroundImage._large || backgroundImage._xlarge === backgroundImage._large;
+    });
     if (!isValid) throw new Error('Box menu - course attribute _xlarge');
     return true;
   });
@@ -182,6 +192,20 @@ describe('Box menu - v6.3.8 to v6.3.9', async () => {
     content: [
       { _type: 'course', _boxMenu: { _menuHeader: { _backgroundImage: {} } } },
       { _type: 'menu', _boxMenu: { _menuHeader: { _backgroundImage: {} } } }
+    ]
+  });
+
+  testSuccessWhere('boxMenu with populated _large carried over to _xlarge', {
+    fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.3.8' }],
+    content: [
+      {
+        _type: 'course',
+        _boxMenu: {
+          _backgroundImage: { _large: 'menu-lg.jpg', _medium: 'menu-md.jpg', _small: 'menu-sm.jpg' },
+          _menuHeader: { _backgroundImage: { _large: 'hdr-lg.jpg', _medium: 'hdr-md.jpg', _small: 'hdr-sm.jpg' } }
+        }
+      },
+      { _type: 'menu', _boxMenu: { _backgroundImage: { _large: 'sub-lg.jpg', _medium: '', _small: '' } } }
     ]
   });
 
