@@ -36,7 +36,7 @@ describe('Box menu - v6.0.2 to v6.1.0', async () => {
     return true;
   });
 
-  updatePlugin('Box menu - update to v6.1.0', { name: 'adapt-contrib-boxMenu', version: '6.1.0', framework: '">=5.22.6' });
+  updatePlugin('Box menu - update to v6.1.0', { name: 'adapt-contrib-boxMenu', version: '6.1.0', framework: '>=5.22.6' });
 
   testSuccessWhere('boxMenu with course/menu _boxMenu._menuHeader', {
     fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.0.2' }],
@@ -94,7 +94,7 @@ describe('Box menu - v6.2.0 to v6.2.1', async () => {
     return true;
   });
 
-  updatePlugin('Box menu - update to v6.2.1', { name: 'adapt-contrib-boxMenu', version: '6.2.1', framework: '">=5.24.2' });
+  updatePlugin('Box menu - update to v6.2.1', { name: 'adapt-contrib-boxMenu', version: '6.2.1', framework: '>=5.24.2' });
 
   testSuccessWhere('boxMenu with course _boxMenu', {
     fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.2.0' }],
@@ -176,7 +176,7 @@ describe('Box menu - v6.3.8 to v6.3.9', async () => {
     return true;
   });
 
-  updatePlugin('Box menu - update to v6.3.9', { name: 'adapt-contrib-boxMenu', version: '6.3.9', framework: '">=5.24.2' });
+  updatePlugin('Box menu - update to v6.3.9', { name: 'adapt-contrib-boxMenu', version: '6.3.9', framework: '>=5.24.2' });
 
   testSuccessWhere('boxMenu with course._boxMenu._backgroundImage', {
     fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.3.8' }],
@@ -255,7 +255,7 @@ describe('Box menu - v6.3.9 to v6.3.10', async () => {
     return true;
   });
 
-  updatePlugin('Box menu - update to v6.3.10', { name: 'adapt-contrib-boxMenu', version: '6.3.10', framework: '">=5.24.2' });
+  updatePlugin('Box menu - update to v6.3.10', { name: 'adapt-contrib-boxMenu', version: '6.3.10', framework: '>=5.24.2' });
 
   testSuccessWhere('boxMenu with empty course', {
     fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '6.3.9' }],
