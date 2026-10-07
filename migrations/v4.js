@@ -49,7 +49,7 @@ describe('Box menu - v3.0.0 to v4.0.0', async () => {
     return true;
   });
 
-  updatePlugin('Box menu - update to v4.0.0', { name: 'adapt-contrib-boxMenu', version: '4.0.0', framework: '">=4' });
+  updatePlugin('Box menu - update to v4.0.0', { name: 'adapt-contrib-boxMenu', version: '4.0.0', framework: '>=4' });
 
   testStopWhere('boxMenu with empty course', {
     fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '3.0.0' }],

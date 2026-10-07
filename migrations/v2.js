@@ -28,7 +28,7 @@ describe('Box menu - v2.0.2 to v2.0.3', async () => {
     return true;
   });
 
-  updatePlugin('Box menu - update to v2.0.3', { name: 'adapt-contrib-boxMenu', version: '2.0.3', framework: '">=2.0.0' });
+  updatePlugin('Box menu - update to v2.0.3', { name: 'adapt-contrib-boxMenu', version: '2.0.3', framework: '>=2.0.0' });
 
   testSuccessWhere('boxMenu with empty course', {
     fromPlugins: [{ name: 'adapt-contrib-boxMenu', version: '2.0.2' }],
